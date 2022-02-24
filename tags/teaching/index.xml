@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>teaching on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/teaching/</link>
+    <description>Recent content in teaching on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Benford&#39;s Law and RNA-seq</title>
+      <link>https://dbrg77.github.io/posts/2020-02-27-benfords-law-and-rna-seq/</link>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/posts/2020-02-27-benfords-law-and-rna-seq/</guid>
+      <description>More than two years ago, I started to watch videos from the YouTube channel Numberphile. I came across Benford&amp;rsquo;s Law, and I was amazed when I saw it on this video. Basically, Benford&amp;rsquo;s Law is an observation about the relative frequency distribution of the first digits from real-world data sets, where the data span multiple orders of magnitude. Intuitively, we expect them to be uniformly distributed so that each digit (from 1 to 9) has a relative frequency around 1/9.</description>
+    </item>
+    
+  </channel>
+</rss>

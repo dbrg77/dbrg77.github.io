@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sequencing library on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/sequencing-library/</link>
+    <description>Recent content in sequencing library on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 13 Jul 2018 00:00:00 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/sequencing-library/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project scg_lib_structs</title>
+      <link>https://dbrg77.github.io/posts/2018-07-13-project-scg-lib-structs/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/posts/2018-07-13-project-scg-lib-structs/</guid>
+      <description>Being able to perform genomic studies on the material obtained from single cells is just awesome. In 2009, Tang et al. presented the first study of mRNA-seq from single cells (scRNA-seq). Two years later, Navin et al. successfully sequenced the genome of single cells. Ever since then, the field of single cell genomics is rapidly evolving and has proved to be powerful in many aspects of biology.
+Many methods (mainly for scRNA-seq) are invented along the way, which is a good thing.</description>
+    </item>
+    
+  </channel>
+</rss>
