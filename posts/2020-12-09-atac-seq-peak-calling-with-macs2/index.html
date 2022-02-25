@@ -21,25 +21,25 @@
     
 
     
-    <title>Running classic Windows game on modern MAC OS using wine</title>
+    <title>ATAC-seq Peak Calling With MACS2</title>
     <meta name="description" content="Search, search, research ...">
-    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, classic game, diablo 2, wine, Windows, Mac'>
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, bioinformatics, atac-seq, peak calling, macs2'>
 
-    <meta property="og:url" content="https://dbrg77.github.io/posts/2016-11-17-running-classic-windows-game-on-modern-mac-os-using-wine/">
+    <meta property="og:url" content="https://dbrg77.github.io/posts/2020-12-09-atac-seq-peak-calling-with-macs2/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Running classic Windows game on modern MAC OS using wine">
+    <meta property="og:title" content="ATAC-seq Peak Calling With MACS2">
     <meta property="og:description" content="Search, search, research ...">
     <meta property="og:image" content="/images/profile_avatar.png">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Running classic Windows game on modern MAC OS using wine">
+    <meta name="twitter:title" content="ATAC-seq Peak Calling With MACS2">
     <meta name="twitter:description" content="Search, search, research ...">
-    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2016-11-17-running-classic-windows-game-on-modern-mac-os-using-wine/">
-    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2016-11-17-running-classic-windows-game-on-modern-mac-os-using-wine/">
+    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2020-12-09-atac-seq-peak-calling-with-macs2/">
+    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2020-12-09-atac-seq-peak-calling-with-macs2/">
     <meta name="twitter:image" content="/images/profile_avatar.png">
 
     
-    <link rel="canonical" href="https://dbrg77.github.io/posts/2016-11-17-running-classic-windows-game-on-modern-mac-os-using-wine/" />
+    <link rel="canonical" href="https://dbrg77.github.io/posts/2020-12-09-atac-seq-peak-calling-with-macs2/" />
 
     <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -167,57 +167,44 @@
     <div class="post container">
 
     <div class="post-header-section">
-        <h1>Running classic Windows game on modern MAC OS using wine</h1>
+        <h1>ATAC-seq Peak Calling With MACS2</h1>
         <small role="doc-subtitle"></small>
         <p class="post-date">
-            November 17, 2016
+            December 9, 2020
         </p>
 
         <ul class="post-tags">
         
-            <li class="post-tag"><a href="/tags/classic-game">classic game</a></li>
+            <li class="post-tag"><a href="/tags/bioinformatics">bioinformatics</a></li>
         
-            <li class="post-tag"><a href="/tags/diablo-2">diablo 2</a></li>
+            <li class="post-tag"><a href="/tags/genomics">genomics</a></li>
         
-            <li class="post-tag"><a href="/tags/wine">wine</a></li>
+            <li class="post-tag"><a href="/tags/atac-seq">atac-seq</a></li>
         
-            <li class="post-tag"><a href="/tags/windows">Windows</a></li>
+            <li class="post-tag"><a href="/tags/peak-calling">peak calling</a></li>
         
-            <li class="post-tag"><a href="/tags/mac">Mac</a></li>
+            <li class="post-tag"><a href="/tags/macs2">macs2</a></li>
         
         </ul>
     </div>
 
     <div class="post-content">
         <p>
-            <p>It is relatively straightforward. All you need is <strong><a href="https://www.winehq.org/">wine</a></strong>, which is a free open source software that allows you to run Windows applications (*.exe files) on unix systems (Linux, Mac OSX etc).</p>
-<p>In this post, I’m going to use the classic game Diablo II as an example. The latest patch of Diablo II is 1.14d, which can function on modern Mac OS. However, the experience is very awful. The most annoying thing to me is that the mouse cursor freezes for ~0.5 seconds whenever you open your character screen or quest log screen.</p>
-<p>Eventually, I gave up on the Diablo II Mac client, and instead, using wine to run Windows client on Mac.</p>
-<p>To do this, you need to be familiar and comfortable with using command line (Terminal app).</p>
-<p>First, you need to install wine. This is an excellent post: <strong><a href="https://www.davidbaumgold.com/tutorials/wine-mac/">Installing Wine on Mac OS X</a></strong>. Then, get Diablo II and Diablo II LOD Windows client from Battle.net. After that, go to the client folder in Terminal, and type:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wine Installer.exe
-</code></pre></div><p>From now on, everything is like Windows, just follow the instruction, and install the game in C:\Program Files. When you do that, the game is actually located at <code>~/.wine/drive_c/Program\ Files/Diablo\ II/</code>. If you want to play runeword mode, download the runeword mode patch from <strong><a href="http://www.chrisclarke.co.uk/D2stuff/PDFs/Mac%20Files/">here</a></strong>. Make sure, you download 1.13d RWM.zip.</p>
-<p>Unzip it, and put the folder (Runewords) into your Diablo II folder. Now, to play runeword mode, you need to go to the Runewords folder to run the game, like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.wine/drive_c/Program<span style="color:#ae81ff">\ </span>Files/Diablo<span style="color:#ae81ff">\ </span>II/Runewords/
- 
-wine ../Game.exe -direct -txt
-</code></pre></div><p>If everything goes right, you should be able to play Diablo II. However, to this stage, the graphic is not very satisfying. One solution is to use Sven’s glide-wrapper. Go to download the latest <strong><a href="http://www.svenswrapper.de/english/downloads.html">glide-wrapper</a></strong>. Again, unzip it into your Diablo II folder.</p>
-<p>To configure the glide-wrapper, go to you Diablo II folder, and run glide-init.exe:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.wine/drive_c/Program<span style="color:#ae81ff">\ </span>Files/Diablo<span style="color:#ae81ff">\ </span>II/
- 
-wine glide-init.exe
-</code></pre></div><p>Then, the configuration window will pop up, and click “settings” at the left hand side, tick things like this:</p>
-<p><img src="/images/000/glide1.png" alt=""></p>
-<p>If you want to play window-mode, simply tick it. Then click “Extensions” at the left hand side, and tick the options like this (the following options work the best for me, but it might be dependent on machines):</p>
-<p><img src="/images/000/glide2.png" alt=""></p>
-<p>After that is done, simply click “Quit” at the left hand side.</p>
-<p>Now, to run the game with rune word mode and glide-wrapper, run the game like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.wine/drive_c/Program<span style="color:#ae81ff">\ </span>Files<span style="color:#ae81ff">\D</span>iablo<span style="color:#ae81ff">\ </span>II/Runewords/
- 
-wine ../Game.exe -direct -txt -3dfx
-</code></pre></div><p>In the game, check the graphic by typing <code>/fps</code> in the dialogue, then you should see that the top right corner shows <code>Video: Glide</code>, meaning it is working. If you still see <code>Video: DDraw</code>, the glide is not configured properly.</p>
-<p><img src="/images/000/screenshot011.jpg" alt=""></p>
-<p>Have fun!</p>
+            <p>Although <strong><a href="http://www.nature.com/nmeth/journal/v10/n12/full/nmeth.2688.html">ATAC-seq</a></strong> has been extensively used in the functional genomics field to study chromatin accessibility, it is still under debate how we should perform peak calling to identify oepn chromatin regions. <a href="https://github.com/macs3-project/MACS">MACS2</a> is a very popular peak caller for ChIP-seq, and it has been used for ATAC-seq as well. How should we perform ATAC-seq peak calling using MACS2? That is a recurring question. If you pay attention to the details in those publications that uses ATAC-seq, you might notice that some people uses the <code>--shift -100 --extsize 200</code> flags during MACS2 peak calling.</p>
+<p>For us, we routinely convert paired <code>BAM</code> to simple <code>BED</code> file and use the following flags with MACS2 to call ATAC-seq peaks:</p>
+<pre tabindex="0"><code>-f BED --keep-dup all --nomodel --shift -100 --extsize 200
+</code></pre><p>Why? Here are the reasons:</p>
+<p>People tend to remove duplicates using the <a href="https://broadinstitute.github.io/picard/">Picard</a> tools after read alignment. By default, MACS2 will also remove duplicates in the data. If you use Picard, <code>--keep-dup all</code> will tell MACS2 not to perform duplicate removal. If you don&rsquo;t use Picard, you can remove that option and let MACS2 do the work. The point here is NOT to perform the same step twice with possibly different standards, <em>i.e.</em> Picard vs MACS2.</p>
+<p>Like many other peak callers, MACS2 is designed for ChIP-seq. In ChIP-seq, the reads are flanking the actual binding site of the protein. Therefore, many peak callers either shift or extend reads towards the middle of the fragments to reflect the actual binding site. MACS2 uses extension, that is, the <code>--ext</code> flag.</p>
+<p><img src="/images/2020-12-09/chip-seq.png" alt=""></p>
+<p>In ATAC-seq/DNase-seq, the middle of the fragments is not really what we are interested in. Instead, we are interested in the blue and red dots in the figure shown below which are the cutting sites of the enzyme. Those dots are the start (5' end) of your reads, so the default of MACS2 doesn&rsquo;t fit here.</p>
+<p><img src="/images/2020-12-09/atac-seq.png" alt=""></p>
+<p>Instead, we want to call peaks with fragments centred on the 5' end of your reads. We had this discussion about 6 years ago in the MACS2 google usergroup. Both <a href="https://twitter.com/fooliu">@fooliu</a> and <a href="https://twitter.com/anshulkundaje">@anshulkundaje</a> provided excellent information. Check <a href="https://groups.google.com/g/macs-announcement/c/4OCE59gkpKY/m/v9Tnh9jWriUJ">this link</a> if haven&rsquo;t seen it before.</p>
+<p>An update of MACS2 (ver 2.1.0 20140616) was made after the discussion, and you could freely manipulate the read positions with the combination of the <code>--shift</code> and the <code>--extsize</code> flags. Of course, when you do that, you need to add the <code>--nomodel</code> flag as well to ask MACS2 not to determine the shift size automatically. Then, why do we covert paired BAM to simple BED to use <code>-f BED</code>?</p>
+<p>According to <a href="https://github.com/macs3-project/MACS/issues/145">Issue #145</a> from the MACS2 GitHub, when you set <code>-f BAM</code> or <code>-f BAMPE</code>, MACS2 only takes the left read, ignoring the other. However, in ATAC-seq the 5' ends of both R1 and R2 are of interest. Convert to BED will solve this problem, I guess?</p>
+<p>Finally, why <code>--shift -100 --extsize 200</code>? Well &hellip; this is arbituary and it is a habbit from ChIP-seq. To be honest, according to a <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2596141/">MNase-seq</a> study (check their Figure 1), it seems that using a fragment size of 75 bp centered on the cutting site might give better resolution. Maybe this chioce is better. In that case, it should be <code>--shift -37 --extsize 75</code>. The <a href="https://www.encodeproject.org">ENCODE</a> project used these parameters.</p>
+<p>Not sure if all those modifications will make huge difference, but the results are different. I haven&rsquo;t tried other choices like HMMRATAC, Genrich, MACS3 <em>etc.</em> yet. I will probably do that in future. Hope this helps to those who are new to this type of analysis.</p>
+<p>You can also find the Twitter discussion from <a href="https://twitter.com/XiChenUoM/status/1336658454866325506">this thread</a>.</p>
 
         </p>
     </div>

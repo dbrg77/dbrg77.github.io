@@ -17,11 +17,47 @@
     </item>
     
     <item>
+      <title>ATAC-seq</title>
+      <link>https://dbrg77.github.io/tags/atac-seq/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/atac-seq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>bioinformatics</title>
       <link>https://dbrg77.github.io/tags/bioinformatics/</link>
-      <pubDate>Thu, 27 Feb 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
       
       <guid>https://dbrg77.github.io/tags/bioinformatics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>genomics</title>
+      <link>https://dbrg77.github.io/tags/genomics/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/genomics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>macs2</title>
+      <link>https://dbrg77.github.io/tags/macs2/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/macs2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>peak calling</title>
+      <link>https://dbrg77.github.io/tags/peak-calling/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/peak-calling/</guid>
       <description></description>
     </item>
     
@@ -130,15 +166,6 @@
       <pubDate>Fri, 13 Jul 2018 00:00:00 +0800</pubDate>
       
       <guid>https://dbrg77.github.io/tags/single-cell-genomics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ATAC-seq</title>
-      <link>https://dbrg77.github.io/tags/atac-seq/</link>
-      <pubDate>Fri, 10 Feb 2017 00:00:00 +0800</pubDate>
-      
-      <guid>https://dbrg77.github.io/tags/atac-seq/</guid>
       <description></description>
     </item>
     

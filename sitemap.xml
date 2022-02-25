@@ -17,10 +17,25 @@
     <loc>https://dbrg77.github.io/tags/</loc>
     <lastmod>2022-02-23T23:39:49+08:00</lastmod>
   </url><url>
-    <loc>https://dbrg77.github.io/posts/2020-02-27-benfords-law-and-rna-seq/</loc>
-    <lastmod>2020-02-27T00:00:00+08:00</lastmod>
+    <loc>https://dbrg77.github.io/tags/atac-seq/</loc>
+    <lastmod>2020-12-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/posts/2020-12-09-atac-seq-peak-calling-with-macs2/</loc>
+    <lastmod>2020-12-09T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/tags/bioinformatics/</loc>
+    <lastmod>2020-12-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/genomics/</loc>
+    <lastmod>2020-12-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/macs2/</loc>
+    <lastmod>2020-12-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/peak-calling/</loc>
+    <lastmod>2020-12-09T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/posts/2020-02-27-benfords-law-and-rna-seq/</loc>
     <lastmod>2020-02-27T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/tags/statistics/</loc>
@@ -70,9 +85,6 @@
   </url><url>
     <loc>https://dbrg77.github.io/posts/2018-07-02-setting-up-public-links-for-ucsc-visualisation/</loc>
     <lastmod>2018-07-02T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/tags/atac-seq/</loc>
-    <lastmod>2017-02-10T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/posts/2017-02-10-atac-seq-insert-size-plotting/</loc>
     <lastmod>2017-02-10T00:00:00+08:00</lastmod>
