@@ -2,28 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dbrg77.github.io/posts/2022-02-27-about-fastq-files-submission/</loc>
+    <lastmod>2022-02-27T10:07:27+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/bioinformatics/</loc>
+    <lastmod>2022-02-27T10:07:27+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/fastq/</loc>
+    <lastmod>2022-02-27T10:07:27+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/illumina-sequencing/</loc>
+    <lastmod>2022-02-27T10:07:27+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/</loc>
+    <lastmod>2022-02-27T10:07:27+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/posts/</loc>
+    <lastmod>2022-02-27T10:07:27+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/sequencing-library/</loc>
+    <lastmod>2022-02-27T10:07:27+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/</loc>
+    <lastmod>2022-02-27T10:07:27+08:00</lastmod>
+  </url><url>
     <loc>https://dbrg77.github.io/posts/2022-02-24-hello-hugo/</loc>
     <lastmod>2022-02-23T23:39:49+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/tags/introduction/</loc>
     <lastmod>2022-02-23T23:39:49+08:00</lastmod>
   </url><url>
-    <loc>https://dbrg77.github.io/</loc>
-    <lastmod>2022-02-23T23:39:49+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/posts/</loc>
-    <lastmod>2022-02-23T23:39:49+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/tags/</loc>
-    <lastmod>2022-02-23T23:39:49+08:00</lastmod>
-  </url><url>
     <loc>https://dbrg77.github.io/tags/atac-seq/</loc>
     <lastmod>2020-12-09T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/posts/2020-12-09-atac-seq-peak-calling-with-macs2/</loc>
-    <lastmod>2020-12-09T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/tags/bioinformatics/</loc>
     <lastmod>2020-12-09T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/tags/genomics/</loc>
@@ -68,16 +80,10 @@
     <loc>https://dbrg77.github.io/tags/cuttag/</loc>
     <lastmod>2018-10-23T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://dbrg77.github.io/tags/illumina-sequencing/</loc>
-    <lastmod>2018-10-23T00:00:00+08:00</lastmod>
-  </url><url>
     <loc>https://dbrg77.github.io/posts/2018-10-23-why-do-i-like-cut-and-run-more-than-chip-seq/</loc>
     <lastmod>2018-10-23T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/posts/2018-07-13-project-scg-lib-structs/</loc>
-    <lastmod>2018-07-13T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/tags/sequencing-library/</loc>
     <lastmod>2018-07-13T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/tags/single-cell-genomics/</loc>

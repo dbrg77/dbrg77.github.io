@@ -6,7 +6,17 @@
     <description>Recent content in illumina sequencing on Not A Rocket Scientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/illumina-sequencing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Feb 2022 10:07:27 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/illumina-sequencing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About FastQ Files Submission</title>
+      <link>https://dbrg77.github.io/posts/2022-02-27-about-fastq-files-submission/</link>
+      <pubDate>Sun, 27 Feb 2022 10:07:27 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/posts/2022-02-27-about-fastq-files-submission/</guid>
+      <description>This post collects my thoughts about fastq files accumlated over the years, specifically focusing on what should be included during a submission. It is not about the format of fastq files. If you are not sure about the format, you can check the Wikipedia page and this excellent paper by Cock et al. that contains very deteiled information and the history about the fastq file.
+Let&amp;rsquo;s first look at what you will get from a typical Illumina sequencing experiment.</description>
+    </item>
+    
     <item>
       <title>Why do I like CUT&amp;RUN more than ChIP-seq</title>
       <link>https://dbrg77.github.io/posts/2018-10-23-why-do-i-like-cut-and-run-more-than-chip-seq/</link>

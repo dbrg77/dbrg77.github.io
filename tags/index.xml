@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Not A Rocket Scientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 23 Feb 2022 23:39:49 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Feb 2022 10:07:27 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bioinformatics</title>
+      <link>https://dbrg77.github.io/tags/bioinformatics/</link>
+      <pubDate>Sun, 27 Feb 2022 10:07:27 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/bioinformatics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fastq</title>
+      <link>https://dbrg77.github.io/tags/fastq/</link>
+      <pubDate>Sun, 27 Feb 2022 10:07:27 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/fastq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>illumina sequencing</title>
+      <link>https://dbrg77.github.io/tags/illumina-sequencing/</link>
+      <pubDate>Sun, 27 Feb 2022 10:07:27 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/illumina-sequencing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sequencing library</title>
+      <link>https://dbrg77.github.io/tags/sequencing-library/</link>
+      <pubDate>Sun, 27 Feb 2022 10:07:27 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/sequencing-library/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>introduction</title>
       <link>https://dbrg77.github.io/tags/introduction/</link>
@@ -22,15 +58,6 @@
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
       
       <guid>https://dbrg77.github.io/tags/atac-seq/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bioinformatics</title>
-      <link>https://dbrg77.github.io/tags/bioinformatics/</link>
-      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
-      
-      <guid>https://dbrg77.github.io/tags/bioinformatics/</guid>
       <description></description>
     </item>
     
@@ -139,24 +166,6 @@
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0800</pubDate>
       
       <guid>https://dbrg77.github.io/tags/cuttag/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>illumina sequencing</title>
-      <link>https://dbrg77.github.io/tags/illumina-sequencing/</link>
-      <pubDate>Tue, 23 Oct 2018 00:00:00 +0800</pubDate>
-      
-      <guid>https://dbrg77.github.io/tags/illumina-sequencing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sequencing library</title>
-      <link>https://dbrg77.github.io/tags/sequencing-library/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0800</pubDate>
-      
-      <guid>https://dbrg77.github.io/tags/sequencing-library/</guid>
       <description></description>
     </item>
     
