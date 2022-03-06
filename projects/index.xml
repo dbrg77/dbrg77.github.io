@@ -6,5 +6,16 @@
     <description>Recent content in Projects on Not A Rocket Scientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language><atom:link href="https://dbrg77.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Latex And Beamer Snippets</title>
+      <link>https://dbrg77.github.io/projects/learning-latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dbrg77.github.io/projects/learning-latex/</guid>
+      <description>This project page contains code snippets to achieve some specific effects in Latex and Beamer. I need to doccument this for future reference, since I used them frequently, but not frequent enough to remember them in my head.
+Temporarily change format The curly brackets {} can be used for this.
+% example 1, change color {\color{blue} This will be blue}, but this will be back to default colour % example 2, change the title frame, not the rest { \metroset{background=dark} \maketitle } Temporarily change the margin of a frame In Beamer, a quick and dirty way is to create a column (not columnonlywidth) environment and then create just one column with 1.</description>
+    </item>
+    
   </channel>
 </rss>

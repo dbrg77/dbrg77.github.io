@@ -138,5 +138,16 @@ $ cat Oct4_union_peaks.bed chr1 3062833 3063056 chr1 3343519 3343843 chr1 348263
 awk &amp;#39;{print NF}&amp;#39; some_file.txt 3. Print the last column of a text file:</description>
     </item>
     
+    <item>
+      <title>Latex And Beamer Snippets</title>
+      <link>https://dbrg77.github.io/projects/learning-latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dbrg77.github.io/projects/learning-latex/</guid>
+      <description>This project page contains code snippets to achieve some specific effects in Latex and Beamer. I need to doccument this for future reference, since I used them frequently, but not frequent enough to remember them in my head.
+Temporarily change format The curly brackets {} can be used for this.
+% example 1, change color {\color{blue} This will be blue}, but this will be back to default colour % example 2, change the title frame, not the rest { \metroset{background=dark} \maketitle } Temporarily change the margin of a frame In Beamer, a quick and dirty way is to create a column (not columnonlywidth) environment and then create just one column with 1.</description>
+    </item>
+    
   </channel>
 </rss>
