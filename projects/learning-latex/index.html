@@ -91,27 +91,27 @@
         <div class="nav-links">
             
             <div class="nav-link">
-                <a href="/"><span data-feather='home'></span>  </a>
+                <a href="/"><span data-feather='home'></span> Home </a>
             </div>
             
             <div class="nav-link">
-                <a href="/posts/"> Posts </a>
+                <a href="/about/"><span data-feather='user'></span> About </a>
             </div>
             
             <div class="nav-link">
-                <a href="/projects/"> Projects </a>
+                <a href="/posts/"><span data-feather='book-open'></span> Posts </a>
             </div>
             
             <div class="nav-link">
-                <a href="/about/"> About </a>
+                <a href="/projects/"><span data-feather='square'></span> Projects </a>
             </div>
             
             <div class="nav-link">
-                <a href="/tags/"> Tags </a>
+                <a href="/tags/"><span data-feather='tag'></span> Tags </a>
             </div>
             
             <div class="nav-link">
-                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='columns'></span>  </a>
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
             </div>
             
             <div class="nav-link">
@@ -136,27 +136,27 @@
             <ul class="nav-hamburger-list visibility-hidden">
                 
                 <li class="nav-item">
-                    <a href="/"><span data-feather='home'></span>  </a>
+                    <a href="/"><span data-feather='home'></span> Home </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/posts/"> Posts </a>
+                    <a href="/about/"><span data-feather='user'></span> About </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/projects/"> Projects </a>
+                    <a href="/posts/"><span data-feather='book-open'></span> Posts </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/about/"> About </a>
+                    <a href="/projects/"><span data-feather='square'></span> Projects </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/tags/"> Tags </a>
+                    <a href="/tags/"><span data-feather='tag'></span> Tags </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='columns'></span>  </a>
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
                 </li>
                 
                 <li class="nav-item">
@@ -185,7 +185,13 @@
     <div class="post-content">
         <p>
             <p>This project page contains code snippets to achieve some specific effects in Latex and Beamer. I need to doccument this for future reference, since I used them frequently, but not frequent enough to remember them in my head.</p>
-<h4 id="temporarily-change-format">Temporarily change format</h4>
+<p>Content:</p>
+<ol>
+<li><a href="#temporarily-change-format">Temporarily change format</a></li>
+<li><a href="#temporarily-change-the-margin-of-a-frame">Temporarily change the margin of a frame</a></li>
+<li><a href="#draw-curved-arrows">Draw curved arrows</a></li>
+</ol>
+<h2 id="temporarily-change-format">Temporarily change format</h2>
 <p>The curly brackets <code>{}</code> can be used for this.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#75715e">% example 1, change color
 </span><span style="color:#75715e"></span>{<span style="color:#66d9ef">\color</span>{blue} This will be blue}, but this will be back to default colour
@@ -195,7 +201,7 @@
 <span style="color:#66d9ef">\metroset</span>{background=dark}
 <span style="color:#66d9ef">\maketitle</span>
 }
-</code></pre></div><h4 id="temporarily-change-the-margin-of-a-frame">Temporarily change the margin of a frame</h4>
+</code></pre></div><h2 id="temporarily-change-the-margin-of-a-frame">Temporarily change the margin of a frame</h2>
 <p>In <code>Beamer</code>, a quick and dirty way is to create a <code>column</code> (not <code>columnonlywidth</code>) environment and then create just one column with 1.1 or 1.15 <code>textwidth</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\begin</span>{frame}
     <span style="color:#66d9ef">\begin</span>{columns}
@@ -253,6 +259,51 @@
 <figure><img src="/images/project-learning-latex/change-margin.png" width="500"/>
 </figure>
 
+<h2 id="draw-curved-arrows">Draw curved arrows</h2>
+<p>The curve is automatically determined when you set the angle of <code>out</code> and <code>in</code>. Note you need to use <code>to</code> between two coordinates.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\begin</span>{tikzpicture}
+    <span style="color:#66d9ef">\draw</span>&lt;3-&gt; [very thick, -&gt;, &gt;={Triangle[scale width=0.5]}, out=225, in=90] (5, 5) to (4, 3);
+<span style="color:#66d9ef">\end</span>{tikzpicture}
+</code></pre></div><h2 id="pgfplots-axis-tuning">Pgfplots axis tuning</h2>
+<p>The following are commonly used paramters for tuning axis and labels</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#75715e">% The [baseline] option helps vertical alignment of two plots side by side
+</span><span style="color:#75715e">% Note the x ticklabel rotation pushes the 2nd plot up, but thanks to [basesline],
+</span><span style="color:#75715e">% they still align
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">\begin</span>{frame}{Pgfplot Axis}
+    <span style="color:#66d9ef">\begin</span>{tikzpicture}[baseline]
+        <span style="color:#66d9ef">\begin</span>{axis}[
+            height=6cm, width=6cm, axis on top,
+            axis x line=middle, axis y line=middle, axis line style=very thick,
+            tick style={very thick, blue}, tick align=outside, scaled ticks=false,
+            xmin=-100, xmax=1100, ymin=-100, ymax=1100,
+            enlargelimits=false
+            ]
+        <span style="color:#66d9ef">\end</span>{axis}
+    <span style="color:#66d9ef">\end</span>{tikzpicture}
+    <span style="color:#66d9ef">\begin</span>{tikzpicture}[baseline]
+        <span style="color:#66d9ef">\begin</span>{axis}[
+            <span style="color:#75715e">% size and general
+</span><span style="color:#75715e"></span>            height=6cm, width=6cm, axis on top,
+            <span style="color:#75715e">% use axis x/y line* to remove arrows in the axis line
+</span><span style="color:#75715e"></span>            axis x line=middle, axis y line=middle,
+            <span style="color:#75715e">% tick alignment and colour, can do separately with xtick style and ytick style
+</span><span style="color:#75715e"></span>            axis line style=very thick, tick style={very thick, blue}, tick align=outside,
+            xticklabel style={rotate=45, anchor=east},
+            xmin=-100, xmax=1100, ymin=-100, ymax=1100,
+            <span style="color:#75715e">% turn off the annoying automatically scaling
+</span><span style="color:#75715e"></span>            scaled ticks=false,
+            <span style="color:#75715e">% control label position, cs stands for coordinate system
+</span><span style="color:#75715e"></span>            xlabel=<span style="color:#e6db74">$</span>x<span style="color:#e6db74">$</span>, x label style={at={(axis description cs:1.1,-0.03)}},
+            ylabel=<span style="color:#e6db74">$</span>f_{X}<span style="color:#f92672">(</span>x<span style="color:#f92672">)</span><span style="color:#e6db74">$</span>, y label style={at={(axis description cs:0,1.15)}},
+            title={Title inside axis}, title style={at={(axis description cs:0.5,0.5)}},
+            enlargelimits=false
+            ]
+        <span style="color:#66d9ef">\end</span>{axis}
+    <span style="color:#66d9ef">\end</span>{tikzpicture}
+<span style="color:#66d9ef">\end</span>{frame}
+</code></pre></div><p>Output:</p>
+<p><img src="/images/project-learning-latex/pgfplots_axis.png" alt=""></p>
 
         </p>
     </div>

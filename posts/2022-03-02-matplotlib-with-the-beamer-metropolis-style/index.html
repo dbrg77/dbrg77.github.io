@@ -91,27 +91,27 @@
         <div class="nav-links">
             
             <div class="nav-link">
-                <a href="/"><span data-feather='home'></span>  </a>
+                <a href="/"><span data-feather='home'></span> Home </a>
             </div>
             
             <div class="nav-link">
-                <a href="/posts/"> Posts </a>
+                <a href="/about/"><span data-feather='user'></span> About </a>
             </div>
             
             <div class="nav-link">
-                <a href="/projects/"> Projects </a>
+                <a href="/posts/"><span data-feather='book-open'></span> Posts </a>
             </div>
             
             <div class="nav-link">
-                <a href="/about/"> About </a>
+                <a href="/projects/"><span data-feather='square'></span> Projects </a>
             </div>
             
             <div class="nav-link">
-                <a href="/tags/"> Tags </a>
+                <a href="/tags/"><span data-feather='tag'></span> Tags </a>
             </div>
             
             <div class="nav-link">
-                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='columns'></span>  </a>
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
             </div>
             
             <div class="nav-link">
@@ -136,27 +136,27 @@
             <ul class="nav-hamburger-list visibility-hidden">
                 
                 <li class="nav-item">
-                    <a href="/"><span data-feather='home'></span>  </a>
+                    <a href="/"><span data-feather='home'></span> Home </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/posts/"> Posts </a>
+                    <a href="/about/"><span data-feather='user'></span> About </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/projects/"> Projects </a>
+                    <a href="/posts/"><span data-feather='book-open'></span> Posts </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/about/"> About </a>
+                    <a href="/projects/"><span data-feather='square'></span> Projects </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/tags/"> Tags </a>
+                    <a href="/tags/"><span data-feather='tag'></span> Tags </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='columns'></span>  </a>
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
                 </li>
                 
                 <li class="nav-item">
@@ -203,16 +203,16 @@
 <p>The style of the plots are not consistent with the general theme. I set my Beamer background colour to be <code>#FEFBF1</code>, which makes my eyes feel comfortable. The white background of the image from matplotlib is not good in this case. This is a easy fix. I could just set <code>mpl.rcParams['figure.facecolor'] = 'none'</code>, which makes the figure have transparent background at the same time preservses the axes grey colour. However, the style still does not fit due to the typeface and other small things. Then I found <a href="https://jwalton.info/Matplotlib-metropolis-beamer/">a very nice post</a> from <a href="https://jwalton.info/about/">Jack</a>. It seems I&rsquo;m not the only person who want a metropolis style from matplotlib. Anyway, the solution from that post is to use <a href="https://ctan.org/tex-archive/fonts/fira?lang=en">the LaTeX package FiraSans</a> and put your preamble into <code>mpl.rcParams['text.latex.preamble']</code>. Using the <code>metropolis.mplstyle</code> from the post, I&rsquo;m one step closer to what I want.</p>
 <p>The first problem is that matplotlib gives errors when using the <code>metropolis.mplstyle</code>. It turns out I need to remove the comma in the <code>text.latex.preamble</code>, like this:</p>
 <pre tabindex="0"><code>text.latex.preamble: \usepackage[T1]{fontenc} \usepackage[lf]{FiraSans} \usepackage{sfmath}
-</code></pre><p>Once I did that, I got this:</p>
+</code></pre><p>The output:</p>
 <p><img src="/images/2022-03-02/fira_preamble.png" alt=""></p>
-<p>Looks much better but still not exactly what I want. My problem is the default math font in the Beamer theme, which is in a <code>sans-serif</code> style, that produces letters and numbers like shown above. This is what <code>x</code> and <code>y</code> look like in another plot if I just use that:</p>
+<p>Looks much better but still not exactly what I want. My problem is the default math font in the metropolis theme, which is in a <code>sans-serif</code> style, that produces letters and numbers like shown above. This is what <code>x</code> and <code>y</code> look like in another plot if I just use the default metropolis theme:</p>
 <figure><img src="/images/2022-03-02/date2.png" width="500"/>
 </figure>
 
-<p>What I really want is the default latex math font, the <a href="https://ctan.org/tex-archive/fonts/lm-math?lang=en">Latin Modern Math</a>, that shows <code>x</code> and <code>y</code> as $x$ and $y$. In Beamer, I use <code>\usefonttheme[onlymath]{serif}</code> to solve the problem, but it resulted in an error when putting that into <code>mpl.rcParams['text.latex.preamble']</code>. I&rsquo;m not very proficient in <code>latex</code>, so it is difficult for me to debug. After fiddling around a bit, the solution is as simple as removing <code>\usepackage{sfmath}</code> 😂!</p>
+<p>What I really want is the original latex math font, the <a href="https://ctan.org/tex-archive/fonts/lm-math?lang=en">Latin Modern Math</a>, that displays <code>x</code> and <code>y</code> as $x$ and $y$. In Beamer, I use <code>\usefonttheme[onlymath]{serif}</code> to solve the problem, but it resulted in an error when putting that into <code>mpl.rcParams['text.latex.preamble']</code>. I&rsquo;m not very proficient in <code>latex</code>, so it is difficult for me to debug. After fiddling around a bit, the solution is as simple as removing <code>\usepackage{sfmath}</code> 😂!</p>
 <p>Now I almost got what I want. Once the <code>usepackage{sfmath}</code> is removed, this is what the slide looks like:</p>
 <p><img src="/images/2022-03-02/fira_preamble_no_math.png" alt=""></p>
-<p>One last problem is that the strokes of the generated math writing from matplotlib are too thin. It is good for regular reading, but for presentation, bold fonts would be great. One solution is that I could use the <a href="https://ctan.org/pkg/amsmath?lang=en">amsmath package</a> and use the <code>\boldsymbol</code> that comes with it to control the font weight. I&rsquo;m pretty sure I want all of them to be bold, so a simpler solution is to just use <code>\boldmath</code> in <code>mpl.rcParams['text.latex.preamble']</code>.</p>
+<p>One last problem is the strokes of the generated math writing from matplotlib are too thin. It is good for regular reading, but for presentation, bold fonts would be great. One solution is that I could use the <a href="https://ctan.org/pkg/amsmath?lang=en">amsmath package</a> and use the <code>\boldsymbol</code> that comes with it to control the font weight. I&rsquo;m pretty sure I want all of them to be bold, so a simpler solution is to just use <code>\boldmath</code> in <code>mpl.rcParams['text.latex.preamble']</code>.</p>
 <p>The final look is like this:</p>
 <p><img src="/images/2022-03-02/the_solution.png" alt=""></p>
 <p>Other plots are like this:</p>
@@ -222,7 +222,7 @@
 <figure><img src="/images/2022-03-02/boxplot_gene_expression.png" width="500"/>
 </figure>
 </p>
-<p>Eventually, my own <code>metropolis.mplstyle</code> looks like this:</p>
+<p>Eventually, here is the <code>metropolis.mplstyle</code> that works for me:</p>
 <pre tabindex="0"><code># Matplotlib style file to create plots that integrate nicely
 # with the metropolis beamer template
 
