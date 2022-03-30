@@ -184,12 +184,15 @@
 
     <div class="post-content">
         <p>
-            <p>This project page contains code snippets to achieve some specific effects in Latex and Beamer. I need to doccument this for future reference, since I used them frequently, but not frequent enough to remember them in my head.</p>
+            <p>In 2012, when I was at the final stage of my PhD to write a thesis, I put &ldquo;learning LaTeX&rdquo; on my to-do list. Early 2021, I finally remove the item from the list. I read the <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Learn LaTeX in 30 minutes</a> article from <a href="https://www.overleaf.com">Overleaf</a>, and then immediately start using it. When I encountered some problems along the way, I just Google them. This way of learning is not very systematic, but it does the job.</p>
+<p>This project page contains code snippets to achieve some specific effects in Latex and Beamer. I need to doccument this for future reference, since I used them frequently, but not frequent enough to remember them in my head.</p>
 <p>Content:</p>
 <ol>
 <li><a href="#temporarily-change-format">Temporarily change format</a></li>
 <li><a href="#temporarily-change-the-margin-of-a-frame">Temporarily change the margin of a frame</a></li>
 <li><a href="#draw-curved-arrows">Draw curved arrows</a></li>
+<li><a href="#pgfplots-axis-tuning">Pgfplots axis tuning</a></li>
+<li><a href="#gauss-curve-plotting">Gauss curve plotting</a></li>
 </ol>
 <h2 id="temporarily-change-format">Temporarily change format</h2>
 <p>The curly brackets <code>{}</code> can be used for this.</p>
@@ -198,8 +201,8 @@
 
 <span style="color:#75715e">% example 2, change the title frame, not the rest
 </span><span style="color:#75715e"></span>{
-<span style="color:#66d9ef">\metroset</span>{background=dark}
-<span style="color:#66d9ef">\maketitle</span>
+    <span style="color:#66d9ef">\metroset</span>{background=dark}
+    <span style="color:#66d9ef">\maketitle</span>
 }
 </code></pre></div><h2 id="temporarily-change-the-margin-of-a-frame">Temporarily change the margin of a frame</h2>
 <p>In <code>Beamer</code>, a quick and dirty way is to create a <code>column</code> (not <code>columnonlywidth</code>) environment and then create just one column with 1.1 or 1.15 <code>textwidth</code></p>
@@ -262,7 +265,7 @@
 <h2 id="draw-curved-arrows">Draw curved arrows</h2>
 <p>The curve is automatically determined when you set the angle of <code>out</code> and <code>in</code>. Note you need to use <code>to</code> between two coordinates.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\begin</span>{tikzpicture}
-    <span style="color:#66d9ef">\draw</span>&lt;3-&gt; [very thick, -&gt;, &gt;={Triangle[scale width=0.5]}, out=225, in=90] (5, 5) to (4, 3);
+    <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[very thick, -&gt;, &gt;={Triangle[scale width=0.5]</span>}, out=225, in=90] (5, 5) to (4, 3);
 <span style="color:#66d9ef">\end</span>{tikzpicture}
 </code></pre></div><h2 id="pgfplots-axis-tuning">Pgfplots axis tuning</h2>
 <p>The following are commonly used paramters for tuning axis and labels</p>
@@ -289,10 +292,10 @@
 </span><span style="color:#75715e"></span>            axis x line=middle, axis y line=middle,
             <span style="color:#75715e">% tick alignment and colour, can do separately with xtick style and ytick style
 </span><span style="color:#75715e"></span>            axis line style=very thick, tick style={very thick, blue}, tick align=outside,
-            xticklabel style={rotate=45, anchor=east},
-            xmin=-100, xmax=1100, ymin=-100, ymax=1100,
             <span style="color:#75715e">% turn off the annoying automatically scaling
 </span><span style="color:#75715e"></span>            scaled ticks=false,
+            xticklabel style={rotate=45, anchor=east, font=<span style="color:#66d9ef">\small</span>, /pgf/number format/fixed},
+            xmin=-100, xmax=1100, ymin=-100, ymax=1100,
             <span style="color:#75715e">% control label position, cs stands for coordinate system
 </span><span style="color:#75715e"></span>            xlabel=<span style="color:#e6db74">$</span>x<span style="color:#e6db74">$</span>, x label style={at={(axis description cs:1.1,-0.03)}},
             ylabel=<span style="color:#e6db74">$</span>f_{X}<span style="color:#f92672">(</span>x<span style="color:#f92672">)</span><span style="color:#e6db74">$</span>, y label style={at={(axis description cs:0,1.15)}},
@@ -304,6 +307,37 @@
 <span style="color:#66d9ef">\end</span>{frame}
 </code></pre></div><p>Output:</p>
 <p><img src="/images/project-learning-latex/pgfplots_axis.png" alt=""></p>
+<h2 id="gauss-curve-plotting">Gauss curve plotting</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#75715e">%% put the following in the preampble
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">% define gauss function:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">\pgfmathdeclarefunction</span>{gauss}{2}{
+  <span style="color:#66d9ef">\pgfmathparse</span>{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}
+}
+
+<span style="color:#75715e">%% Then do the plotting
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">\begin</span>{frame}{Gaussian Mixture}
+    <span style="color:#66d9ef">\centering</span>
+    <span style="color:#66d9ef">\begin</span>{tikzpicture}
+        <span style="color:#66d9ef">\begin</span>{axis}[axis x line=bottom, axis y line=left, width=7cm, height=7cm, axis line style=very thick,
+                     axis on top, xtick=<span style="color:#66d9ef">\empty</span>, ytick=<span style="color:#66d9ef">\empty</span>, xmin=-6, xmax=6, ymin=0, ymax=0.3]
+            <span style="color:#66d9ef">\addplot</span> [draw=none, samples=200, smooth, fill=red!50, domain=-6:6,] {0.6*gauss(-2,1) + 0.4*gauss(1,1)} <span style="color:#66d9ef">\closedcycle</span>;
+            <span style="color:#66d9ef">\addplot</span> [very thick, samples=200, smooth, domain=-6:6] {0.6*gauss(-2,1) + 0.4*gauss(1,1)};
+        <span style="color:#66d9ef">\end</span>{axis}
+    <span style="color:#66d9ef">\end</span>{tikzpicture}
+    <span style="color:#66d9ef">\begin</span>{tikzpicture}
+        <span style="color:#66d9ef">\begin</span>{axis}[axis x line=bottom, axis y line=left, width=7cm, height=7cm, axis line style=very thick,
+                     axis on top, xtick=<span style="color:#66d9ef">\empty</span>, ytick=<span style="color:#66d9ef">\empty</span>, xmin=-6, xmax=6, ymin=0, ymax=0.3]
+            <span style="color:#66d9ef">\addplot</span> [draw=none, samples=200, smooth, fill=red!50, domain=-2.5:1.5] {0.6*gauss(-2,1) + 0.4*gauss(1,1)} <span style="color:#66d9ef">\closedcycle</span>;
+            <span style="color:#66d9ef">\addplot</span> [very thick, samples=200, smooth, domain=-6:6] {0.6*gauss(-2,1) + 0.4*gauss(1,1)};
+            <span style="color:#66d9ef">\addplot</span> [very thick, dashed] coordinates {(-2.5,0) (-2.5,0.211)};
+            <span style="color:#66d9ef">\addplot</span> [very thick, dashed] coordinates {(1.5,0) (1.5,0.141)};
+        <span style="color:#66d9ef">\end</span>{axis}
+    <span style="color:#66d9ef">\end</span>{tikzpicture}
+<span style="color:#66d9ef">\end</span>{frame}
+</code></pre></div><p>Output:</p>
+<p><img src="/images/project-learning-latex/gauss_mixture.png" alt=""></p>
 
         </p>
     </div>
