@@ -99,7 +99,7 @@
             </div>
             
             <div class="nav-link">
-                <a href="/posts/"><span data-feather='book-open'></span> Posts </a>
+                <a href="/posts/"><span data-feather='list'></span> Posts </a>
             </div>
             
             <div class="nav-link">
@@ -144,7 +144,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a href="/posts/"><span data-feather='book-open'></span> Posts </a>
+                    <a href="/posts/"><span data-feather='list'></span> Posts </a>
                 </li>
                 
                 <li class="nav-item">
@@ -184,7 +184,7 @@
 
     <div class="post-content">
         <p>
-            <p>In 2012, when I was at the final stage of my PhD to write a thesis, I put &ldquo;learning LaTeX&rdquo; on my to-do list. Early 2021, I finally remove the item from the list. I read the <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Learn LaTeX in 30 minutes</a> article from <a href="https://www.overleaf.com">Overleaf</a>, and then immediately start using it. When I encountered some problems along the way, I just Google them. This way of learning is not very systematic, but it does the job.</p>
+            <p>In 2012, when I was at the final stage of my PhD to write a thesis, I put &ldquo;learning LaTeX&rdquo; on my to-do list. Early 2021, I finally remove the item from the list. I read the <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Learn LaTeX in 30 minutes</a> article from <a href="https://www.overleaf.com">Overleaf</a>, and then immediately started using it. When I encountered some problems along the way, I just Google them. This way of learning is not very systematic, but it does the job.</p>
 <p>This project page contains code snippets to achieve some specific effects in Latex and Beamer. I need to doccument this for future reference, since I used them frequently, but not frequent enough to remember them in my head.</p>
 <p>Content:</p>
 <ol>
@@ -193,6 +193,7 @@
 <li><a href="#draw-curved-arrows">Draw curved arrows</a></li>
 <li><a href="#pgfplots-axis-tuning">Pgfplots axis tuning</a></li>
 <li><a href="#gauss-curve-plotting">Gauss curve plotting</a></li>
+<li><a href="#use-xshift-and-yshift-in-tikzpicture">Use xshift and yshift in tikzpicture</a></li>
 </ol>
 <h2 id="temporarily-change-format">Temporarily change format</h2>
 <p>The curly brackets <code>{}</code> can be used for this.</p>
@@ -338,6 +339,53 @@
 <span style="color:#66d9ef">\end</span>{frame}
 </code></pre></div><p>Output:</p>
 <p><img src="/images/project-learning-latex/gauss_mixture.png" alt=""></p>
+<h2 id="use-xshift-and-yshift-in-tikzpicture">Use xshift and yshift in tikzpicture</h2>
+<p>This is useful when you want to plot multiple axes in one tikzpicture and annotate them together using other drawings.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#66d9ef">\begin</span>{frame}{Foundation}
+    <span style="color:#66d9ef">\vspace</span>{10pt}
+    <span style="color:#66d9ef">\begin</span>{tikzpicture}
+    <span style="color:#66d9ef">\begin</span>{axis}[width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
+                 axis x line = bottom, axis y line=none, xtick=<span style="color:#66d9ef">\empty</span>, xmin=-4.2, xmax=4.2, ymin=0,ymax=0.42]
+        <span style="color:#66d9ef">\addplot</span> [draw=none, smooth, domain=-4:-1.96, samples=100, fill=red!50] {gauss(0,1)} <span style="color:#66d9ef">\closedcycle</span>;
+        <span style="color:#66d9ef">\addplot</span> [very thick, dashed] coordinates {(-1.96,0) (-1.96,0.058)};
+        <span style="color:#66d9ef">\addplot</span> [draw=none, smooth, domain=1.96:4, samples=100, fill=red!50] {gauss(0,1)} <span style="color:#66d9ef">\closedcycle</span>;
+        <span style="color:#66d9ef">\addplot</span> [very thick, dashed] coordinates {(1.96,0) (1.96,0.058)};
+        <span style="color:#66d9ef">\addplot</span> [very thick, smooth, domain=-4:4, samples=100] {gauss(0,1)};
+    <span style="color:#66d9ef">\end</span>{axis}
+    
+    <span style="color:#66d9ef">\begin</span>{axis}[xshift=4.5cm, width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
+                 axis x line = bottom, axis y line=none, xtick=<span style="color:#66d9ef">\empty</span>, ymin=0, ymax=0.12, xmin=-1, xmax=33]
+        <span style="color:#66d9ef">\addplot</span> [draw=none, smooth, fill=red!50] table [x=xs, y=ys, col sep=comma] {../data/chi_df_9_lower.csv} <span style="color:#66d9ef">\closedcycle</span>;
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[draw=none, very thick, fill=red!70]</span> table [x=xs, y=ys, col sep=comma] {../data/chi_df_9_upper.csv} <span style="color:#66d9ef">\closedcycle</span>;
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[very thick, smooth]</span> table [x=xs, y=ys, col sep=comma] {../data/chi_df_9.csv};
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[very thick, dashed]</span> coordinates {(2.7,0) (2.7,0.032)};
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[very thick, dashed]</span> coordinates {(19.1,0) (19.1,0.009)};
+    <span style="color:#66d9ef">\end</span>{axis}
+    
+    <span style="color:#66d9ef">\begin</span>{axis}[xshift=9cm, width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
+                 axis x line = bottom, axis y line=none, xtick=<span style="color:#66d9ef">\empty</span>, xmin=-1, xmax=7.5, ymin=0]
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[draw=none, smooth, fill=red!50]</span> table [x=xs, y=ys, col sep=comma] {../data/f_df_9_10_lower_tail.csv} <span style="color:#66d9ef">\closedcycle</span>;
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[very thick, dashed]</span> coordinates {(0.3,0) (0.3,0.4)};
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[draw=none, smooth, fill=red!50]</span> table [x=xs, y=ys, col sep=comma] {../data/f_df_9_10_upper_tail.csv} <span style="color:#66d9ef">\closedcycle</span>;
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[very thick, dashed]</span> coordinates {(3.7,0) (3.7,0.023)};
+        <span style="color:#66d9ef">\addplot</span><span style="color:#a6e22e">[smooth, very thick]</span> table [x=xs, y=ys, col sep=comma] {../data/f_df_9_10.csv};
+    <span style="color:#66d9ef">\end</span>{axis}
+    
+    <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span>}, gray, dashed] (6.5,-0.5) -- (1,0.15);
+    <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span>}, gray, dashed] (6.5,-0.5) -- (3.35,0.15);
+    <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span>}, gray, dashed] (6.5,-0.5) -- (4.9,0.15);
+    <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span>}, gray, dashed] (6.5,-0.5) -- (7.25,0.15);
+    <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span>}, gray, dashed] (6.5,-0.5) -- (9.65,0.15);
+    <span style="color:#66d9ef">\draw</span><span style="color:#a6e22e">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span>}, gray, dashed] (6.5,-0.5) -- (11.5,0.05) node [pos=0, anchor=north] {<span style="color:#66d9ef">\color</span>{red!50} rejection region};
+    <span style="color:#66d9ef">\end</span>{tikzpicture}
+    
+    <span style="color:#66d9ef">\begin</span>{itemize}
+        <span style="color:#66d9ef">\item</span> <span style="color:#66d9ef">\small</span> <span style="color:#66d9ef">\textcolor</span>{darkred}{Sampling distribution of the difference/ratio of the sample proportion/mean/variance}
+        <span style="color:#66d9ef">\item</span> <span style="color:#66d9ef">\small</span> <span style="color:#66d9ef">\textbf</span>{<span style="color:#66d9ef">\alert</span>{Logic:}} if <span style="color:#e6db74">$</span>H_<span style="color:#ae81ff">0</span><span style="color:#e6db74">$</span> were true, we would expect the majority of the test statistics (<span style="color:#e6db74">$</span>z,t,\chi^<span style="color:#ae81ff">2</span>,F<span style="color:#e6db74">$</span>) falling into <span style="color:#66d9ef">\alert</span>{the middle area} of the corresponding distribution. Therefore, the probability that the test statistic falls into <span style="color:#66d9ef">\alert</span>{the rejection regions} is small. If we observe that, we reject <span style="color:#e6db74">$</span>H_<span style="color:#ae81ff">0</span><span style="color:#e6db74">$</span>.
+    <span style="color:#66d9ef">\end</span>{itemize}
+<span style="color:#66d9ef">\end</span>{frame}
+</code></pre></div><p>Output:</p>
+<p><img src="/images/project-learning-latex/xshift_yshift.png" alt=""></p>
 
         </p>
     </div>
