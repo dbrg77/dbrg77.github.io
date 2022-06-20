@@ -237,9 +237,9 @@ https://oss-cn-hongkong.aliyuncs.com
 
 and a few more in other countries.
 </code></pre><p>Okay, just like Amazon S3, you need to create a bucket and put your files into the bucket. For example, I created a bucket called <code>myatacbucket</code> by (Note: only lowercase letters, numbers and <code>-</code> are allowed to name a bucket):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ossutil64 mb oss://myatacbucket --acl<span style="color:#f92672">=</span>public-read --storage-class Standard
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ossutil64 mb oss://myatacbucket --acl<span style="color:#ff79c6">=</span>public-read --storage-class Standard
 </code></pre></div><p>This creates a bucket called <code>myatacbucket</code> that can be read by public. Okay, now locate the bigWig file in your local machine, and transfer it to the bucket:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ossutil64 cp my_bigwig.bw oss://myatacbucket
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ossutil64 cp my_bigwig.bw oss://myatacbucket
 </code></pre></div><p>Now, to get an URL so that UCSC can reach it. You go to your OSS console, and do <code>your bucket name --&gt; File Management --&gt; Tick your files --&gt; Export URL</code>, like this:</p>
 <p><img src="/images/000/oss_url.png" alt=""></p>
 <p>So, using the above example, my URL will be:</p>

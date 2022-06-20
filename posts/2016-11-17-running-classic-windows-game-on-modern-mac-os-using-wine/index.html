@@ -205,15 +205,15 @@
 <p>Eventually, I gave up on the Diablo II Mac client, and instead, using wine to run Windows client on Mac.</p>
 <p>To do this, you need to be familiar and comfortable with using command line (Terminal app).</p>
 <p>First, you need to install wine. This is an excellent post: <strong><a href="https://www.davidbaumgold.com/tutorials/wine-mac/">Installing Wine on Mac OS X</a></strong>. Then, get Diablo II and Diablo II LOD Windows client from Battle.net. After that, go to the client folder in Terminal, and type:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wine Installer.exe
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wine Installer.exe
 </code></pre></div><p>From now on, everything is like Windows, just follow the instruction, and install the game in C:\Program Files. When you do that, the game is actually located at <code>~/.wine/drive_c/Program\ Files/Diablo\ II/</code>. If you want to play runeword mode, download the runeword mode patch from <strong><a href="http://www.chrisclarke.co.uk/D2stuff/PDFs/Mac%20Files/">here</a></strong>. Make sure, you download 1.13d RWM.zip.</p>
 <p>Unzip it, and put the folder (Runewords) into your Diablo II folder. Now, to play runeword mode, you need to go to the Runewords folder to run the game, like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.wine/drive_c/Program<span style="color:#ae81ff">\ </span>Files/Diablo<span style="color:#ae81ff">\ </span>II/Runewords/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8be9fd;font-style:italic">cd</span> ~/.wine/drive_c/Program<span style="color:#f1fa8c">\ </span>Files/Diablo<span style="color:#f1fa8c">\ </span>II/Runewords/
  
 wine ../Game.exe -direct -txt
 </code></pre></div><p>If everything goes right, you should be able to play Diablo II. However, to this stage, the graphic is not very satisfying. One solution is to use Sven’s glide-wrapper. Go to download the latest <strong><a href="http://www.svenswrapper.de/english/downloads.html">glide-wrapper</a></strong>. Again, unzip it into your Diablo II folder.</p>
 <p>To configure the glide-wrapper, go to you Diablo II folder, and run glide-init.exe:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.wine/drive_c/Program<span style="color:#ae81ff">\ </span>Files/Diablo<span style="color:#ae81ff">\ </span>II/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8be9fd;font-style:italic">cd</span> ~/.wine/drive_c/Program<span style="color:#f1fa8c">\ </span>Files/Diablo<span style="color:#f1fa8c">\ </span>II/
  
 wine glide-init.exe
 </code></pre></div><p>Then, the configuration window will pop up, and click “settings” at the left hand side, tick things like this:</p>
@@ -222,7 +222,7 @@ wine glide-init.exe
 <p><img src="/images/000/glide2.png" alt=""></p>
 <p>After that is done, simply click “Quit” at the left hand side.</p>
 <p>Now, to run the game with rune word mode and glide-wrapper, run the game like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.wine/drive_c/Program<span style="color:#ae81ff">\ </span>Files<span style="color:#ae81ff">\D</span>iablo<span style="color:#ae81ff">\ </span>II/Runewords/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8be9fd;font-style:italic">cd</span> ~/.wine/drive_c/Program<span style="color:#f1fa8c">\ </span>Files<span style="color:#f1fa8c">\D</span>iablo<span style="color:#f1fa8c">\ </span>II/Runewords/
  
 wine ../Game.exe -direct -txt -3dfx
 </code></pre></div><p>In the game, check the graphic by typing <code>/fps</code> in the dialogue, then you should see that the top right corner shows <code>Video: Glide</code>, meaning it is working. If you still see <code>Video: DDraw</code>, the glide is not configured properly.</p>

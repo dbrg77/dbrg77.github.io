@@ -208,18 +208,18 @@
 
 Last login: Thu Jun  7 18:38:55 2018 from *.*.*.*
 </code></pre><p>Once you are in <code>web-bfint</code>, there are two places that will be useful to you:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># for short term deposition of files for collaborators and research</span>
-<span style="color:#75715e"># data will be removed after a while</span>
-<span style="color:#75715e">#(I think it is every six months, not entirely sure though)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4"># for short term deposition of files for collaborators and research</span>
+<span style="color:#6272a4"># data will be removed after a while</span>
+<span style="color:#6272a4">#(I think it is every six months, not entirely sure though)</span>
 
 /data/scratch/project
 
-<span style="color:#75715e"># for long term files associated with formal journal publications or archival</span>
+<span style="color:#6272a4"># for long term files associated with formal journal publications or archival</span>
 
 /data/production
 </code></pre></div><p>You create a ticket via ServiceDesk, asking them to create a directory there for your team under either <code>/data/scratch/project</code> or <code>/data/production</code> or both. Check with the IT person in your team, maybe you already have one there. For example, our team directory are <code>/data/scratch/project/team205</code> and <code>/data/production/teichmann</code>. The public address associated with those two directories are <code>ftp://ngs.sanger.ac.uk/scratch/project/team205</code> and <code>ftp://ngs.sanger.ac.uk/production/teichmann</code>, respectively. Anybody can access those places via those addresses anywhere, even outside Sanger network. You and your team members can create subdirectories for youselves.</p>
 <p>For example, I have a bigWig file called <code>the_best_chip_seq_ever.bw</code> somewhere on Sanger farm, and I want to visualise it via UCSC genome browser. First, I need to transfer that file to my team directory on <code>web-bfint</code>. I locate the file on farm, and do:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp the_best_chip_seq_ever.bw xc1@web-bfint:/data/production/teichmann/xi/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp the_best_chip_seq_ever.bw xc1@web-bfint:/data/production/teichmann/xi/
 </code></pre></div><p>After the transfer, if I enter this address in my Chrome/Firefox <code>ftp://ngs.sanger.ac.uk/production/teichmann/xi</code>, I should be able to see the file there. Note: files are synced hourly, so you might exprience a delay between getting files to the directory and being able to see the files via the ftp address.</p>
 <p>To visualise the file, I can just go to UCSC genome browser to add a custom track by (just an example, the following text should be in one single line):</p>
 <pre tabindex="0"><code>track type=bigWig name=chip_seq description=the_best_chip_seq_ever_pileup
@@ -230,23 +230,23 @@ visibility=full maxHeightPixels=10:50:128 viewLimits=0:20 autoScale=OFF color=0,
 <p>The ftp method is easy, but it has a problem. Sometimes, especially when you have large amount of data, the UCSC genome browser shows an error: <code>ftp server error on cmd=[PASS x@genome.ucsc.edu]</code>. You have to keep refreshing the page several times, which is annoying.</p>
 <p>Another way is to use <strong><a href="https://aws.amazon.com/s3/">S3 storage</a></strong> provided under Sanger Flexible Computing Environment. Again, create a ticket via ServiceDesk, saying that you want to use S3 storage. You can request a maximum of 100 GB. 100 GB is quite small, but it can still host quite a large amount of bigWig files.</p>
 <p>After they created an S3 account for you, you will have a <code>.s3cfg</code> file in your home directory on Sanger farm, and the content will look like this (I ommited security part):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat ~/.s3cfg 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat ~/.s3cfg 
 
-<span style="color:#f92672">[</span>default<span style="color:#f92672">]</span>
-encrypt <span style="color:#f92672">=</span> False
-host_base <span style="color:#f92672">=</span> cog.sanger.ac.uk
-host_bucket <span style="color:#f92672">=</span> %<span style="color:#f92672">(</span>bucket<span style="color:#f92672">)</span>s.cog.sanger.ac.uk
-progress_meter <span style="color:#f92672">=</span> True
-use_https <span style="color:#f92672">=</span> True
-access_key <span style="color:#f92672">=</span> *************
-secret_key <span style="color:#f92672">=</span> *****************
+<span style="color:#ff79c6">[</span>default<span style="color:#ff79c6">]</span>
+<span style="color:#8be9fd;font-style:italic">encrypt</span> <span style="color:#ff79c6">=</span> False
+<span style="color:#8be9fd;font-style:italic">host_base</span> <span style="color:#ff79c6">=</span> cog.sanger.ac.uk
+<span style="color:#8be9fd;font-style:italic">host_bucket</span> <span style="color:#ff79c6">=</span> %<span style="color:#ff79c6">(</span>bucket<span style="color:#ff79c6">)</span>s.cog.sanger.ac.uk
+<span style="color:#8be9fd;font-style:italic">progress_meter</span> <span style="color:#ff79c6">=</span> True
+<span style="color:#8be9fd;font-style:italic">use_https</span> <span style="color:#ff79c6">=</span> True
+<span style="color:#8be9fd;font-style:italic">access_key</span> <span style="color:#ff79c6">=</span> *************
+<span style="color:#8be9fd;font-style:italic">secret_key</span> <span style="color:#ff79c6">=</span> *****************
 </code></pre></div><p>You will need the tool <code>s3cmd</code>, which is already installed on Sanger farm. S3 storage is so-called object storage. It does not have a hierarchical structure like the file system on unix. Instead, you create buckets, and you put your files/objects in the bucket you created. The name of the bucket must be unique within the entire institute, so it is better to name the bucket related to your Sanger user name.</p>
 <p>For example, I want to create a bucket named <code>xc1_mSp_scATAC</code> to put all my scATAC-seq bigWig files there, so, on Sanger farm, I do:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">s3cmd mb s3://xc1_mSp_scATAC
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">s3cmd mb s3://xc1_mSp_scATAC
 </code></pre></div><p>Then, I have a bigWig file called <code>the_best_atac_seq_ever.bw</code> somewhere on the farm. To visualise it, I first need to put it in my s3 bucket that I just created. This can be achieved by locating the bigWig file on the farm and doing:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">s3cmd put the_best_atac_seq_ever.bw s3://xc1_mSp_scATAC
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">s3cmd put the_best_atac_seq_ever.bw s3://xc1_mSp_scATAC
 </code></pre></div><p>By default, the file/object in the bucket is private. Then, I need to make the file public so that UCSC genome browser can reach it. This can be done by:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">s3cmd setacl --acl-public s3://xc1_mSp_scATAC/the_best_atac_seq_ever.bw
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">s3cmd setacl --acl-public s3://xc1_mSp_scATAC/the_best_atac_seq_ever.bw
 </code></pre></div><p>Now, it is done. The public address for the bigWig file is <code>https://cog.sanger.ac.uk/xc1_mSp_scATAC/the_best_atac_seq_ever.bw</code> (now you see why the bucket name must be unique across the entire institute, right?).</p>
 <p>To visualise the file, I can just go to UCSC genome browser to add a custom track by (similar example as the previous one, and again, the following text should be in one single line):</p>
 <pre tabindex="0"><code>track type=bigWig name=atac_seq description=the_best_atac_seq_ever_pileup
