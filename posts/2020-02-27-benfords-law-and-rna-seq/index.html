@@ -208,14 +208,14 @@
 <p><img src="/images/000/text_to_columns.png" alt=""></p>
 <p>After that, the first digit of every number is isolated. You can use the <code>COUNTIF</code> function of Excel to count the frequency of 1, 2, 3, &hellip;, and 9.</p>
 <p>The second way of achieving the same goal is through Linux commands. Many bioinformatics people use python or perl for text processing, but sometimes Linux commands are just better and quicker. I showed the students that you can do this using essentially one line of commands in just a few seconds:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tail -n +2 41592_2008_BFnmeth1226_MOESM22_ESM.txt | cut -f <span style="color:#bd93f9">6</span> | cut -c <span style="color:#bd93f9">1</span> | awk <span style="color:#f1fa8c">&#39;$1&gt;0&#39;</span> | sort | uniq -c
-</code></pre></div><p>Now let&rsquo;s break it up to see what each command does:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tail -n +2 41592_2008_BFnmeth1226_MOESM22_ESM.txt | <span style="color:#f1fa8c">\ </span><span style="color:#6272a4"># remove the header</span>
-cut -f <span style="color:#bd93f9">6</span> | <span style="color:#f1fa8c">\ </span><span style="color:#6272a4"># get the 6th column</span>
-cut -c <span style="color:#bd93f9">1</span> | <span style="color:#f1fa8c">\ </span><span style="color:#6272a4"># get the first character, i.e. the first digit</span>
-awk <span style="color:#f1fa8c">&#39;$1&gt;0&#39;</span> | <span style="color:#f1fa8c">\ </span><span style="color:#6272a4"># get rid of 0s</span>
-sort | uniq -c <span style="color:#6272a4"># count occurrence</span>
-</code></pre></div><p>Here is the result:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>tail -n +2 41592_2008_BFnmeth1226_MOESM22_ESM.txt | cut -f <span style="color:#bd93f9">6</span> | cut -c <span style="color:#bd93f9">1</span> | awk <span style="color:#f1fa8c">&#39;$1&gt;0&#39;</span> | sort | uniq -c
+</span></span></code></pre></div><p>Now let&rsquo;s break it up to see what each command does:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>tail -n +2 41592_2008_BFnmeth1226_MOESM22_ESM.txt | <span style="color:#f1fa8c">\ </span><span style="color:#6272a4"># remove the header</span>
+</span></span><span style="display:flex;"><span>cut -f <span style="color:#bd93f9">6</span> | <span style="color:#f1fa8c">\ </span><span style="color:#6272a4"># get the 6th column</span>
+</span></span><span style="display:flex;"><span>cut -c <span style="color:#bd93f9">1</span> | <span style="color:#f1fa8c">\ </span><span style="color:#6272a4"># get the first character, i.e. the first digit</span>
+</span></span><span style="display:flex;"><span>awk <span style="color:#f1fa8c">&#39;$1&gt;0&#39;</span> | <span style="color:#f1fa8c">\ </span><span style="color:#6272a4"># get rid of 0s</span>
+</span></span><span style="display:flex;"><span>sort | uniq -c <span style="color:#6272a4"># count occurrence</span>
+</span></span></code></pre></div><p>Here is the result:</p>
 <pre tabindex="0"><code>5411 1
 2820 2
 1839 3

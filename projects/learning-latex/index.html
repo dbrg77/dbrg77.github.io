@@ -197,194 +197,194 @@
 </ol>
 <h2 id="temporarily-change-format">Temporarily change format</h2>
 <p>The curly brackets <code>{}</code> can be used for this.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#6272a4">% example 1, change color
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\color</span><span style="color:#8be9fd;font-style:italic">{</span>blue<span style="color:#8be9fd;font-style:italic">}</span> This will be blue<span style="color:#8be9fd;font-style:italic">}</span>, but this will be back to default colour
-
-<span style="color:#6272a4">% example 2, change the title frame, not the rest
-</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">{</span>
-    <span style="color:#ff79c6">\metroset</span><span style="color:#8be9fd;font-style:italic">{</span>background=dark<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\maketitle</span>
-<span style="color:#8be9fd;font-style:italic">}</span>
-</code></pre></div><h2 id="temporarily-change-the-margin-of-a-frame">Temporarily change the margin of a frame</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#6272a4">% example 1, change color
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\color</span><span style="color:#8be9fd;font-style:italic">{</span>blue<span style="color:#8be9fd;font-style:italic">}</span> This will be blue<span style="color:#8be9fd;font-style:italic">}</span>, but this will be back to default colour
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">% example 2, change the title frame, not the rest
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\metroset</span><span style="color:#8be9fd;font-style:italic">{</span>background=dark<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\maketitle</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><h2 id="temporarily-change-the-margin-of-a-frame">Temporarily change the margin of a frame</h2>
 <p>In <code>Beamer</code>, a quick and dirty way is to create a <code>column</code> (not <code>columnonlywidth</code>) environment and then create just one column with 1.1 or 1.15 <code>textwidth</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>columns<span style="color:#8be9fd;font-style:italic">}</span>
-       <span style="color:#ff79c6">\column</span><span style="color:#8be9fd;font-style:italic">{</span>1.1<span style="color:#ff79c6">\textwidth</span><span style="color:#8be9fd;font-style:italic">}</span>
-       Your content
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>columns<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
-</code></pre></div><p>A more elegant way from <a href="https://texfaq.org/FAQ-chngmargonfly">Tex FAQ</a> is to define a new environment. This solution is more gerenal.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#ff79c6">\documentclass</span><span style="color:#50fa7b">[aspectratio=169]</span><span style="color:#8be9fd;font-style:italic">{</span>beamer<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\usepackage</span><span style="color:#50fa7b">[utf8]</span><span style="color:#8be9fd;font-style:italic">{</span>inputenc<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\usepackage</span><span style="color:#50fa7b">[export]</span><span style="color:#8be9fd;font-style:italic">{</span>adjustbox<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\usepackage</span><span style="color:#8be9fd;font-style:italic">{</span>graphicx,amsmath,ragged2e<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\usetheme</span><span style="color:#8be9fd;font-style:italic">{</span>metropolis<span style="color:#8be9fd;font-style:italic">}</span>
-
-<span style="color:#6272a4">%% define a new environment in the preamble
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">\newenvironment</span><span style="color:#8be9fd;font-style:italic">{</span>changemargin<span style="color:#8be9fd;font-style:italic">}</span>[2]<span style="color:#8be9fd;font-style:italic">{</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>  <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>list<span style="color:#8be9fd;font-style:italic">}{}{</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\topsep</span><span style="color:#8be9fd;font-style:italic">}{</span>0pt<span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\leftmargin</span><span style="color:#8be9fd;font-style:italic">}{</span>#1<span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\rightmargin</span><span style="color:#8be9fd;font-style:italic">}{</span>#2<span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\listparindent</span><span style="color:#8be9fd;font-style:italic">}{</span><span style="color:#ff79c6">\parindent</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\itemindent</span><span style="color:#8be9fd;font-style:italic">}{</span><span style="color:#ff79c6">\parindent</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\parsep</span><span style="color:#8be9fd;font-style:italic">}{</span><span style="color:#ff79c6">\parskip</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>  <span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
-</span><span style="color:#6272a4"></span>  <span style="color:#ff79c6">\item</span><span style="color:#50fa7b">[]</span><span style="color:#8be9fd;font-style:italic">}{</span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>list<span style="color:#8be9fd;font-style:italic">}}</span>
-<span style="color:#6272a4">%%
-</span><span style="color:#6272a4"></span>
-<span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>document<span style="color:#8be9fd;font-style:italic">}</span>
-
-<span style="color:#6272a4">% frame 1, normal margin
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Normal margin<span style="color:#8be9fd;font-style:italic">}</span>
-    Probability theory is nothing but common sense reduced to calculation.
-    <span style="color:#ff79c6">\flushright</span>
-    Laplace
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
-
-<span style="color:#6272a4">% frame 2, small margin
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Reduced margin<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>changemargin<span style="color:#8be9fd;font-style:italic">}{</span>-0.75cm<span style="color:#8be9fd;font-style:italic">}{</span>-0.75cm<span style="color:#8be9fd;font-style:italic">}</span>
-        Probability theory is nothing but common sense reduced to calculation.
-        <span style="color:#ff79c6">\flushright</span>
-        Laplace
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>changemargin<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
-
-<span style="color:#6272a4">% frame 3, back to normal margin
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Normal margin<span style="color:#8be9fd;font-style:italic">}</span>
-    Probability theory is nothing but common sense reduced to calculation.
-    <span style="color:#ff79c6">\flushright</span>
-    Laplace
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
-
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>document<span style="color:#8be9fd;font-style:italic">}</span>
-</code></pre></div><p>Here is the output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>columns<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#ff79c6">\column</span><span style="color:#8be9fd;font-style:italic">{</span>1.1<span style="color:#ff79c6">\textwidth</span><span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>       Your content
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>columns<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p>A more elegant way from <a href="https://texfaq.org/FAQ-chngmargonfly">Tex FAQ</a> is to define a new environment. This solution is more gerenal.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#ff79c6">\documentclass</span><span style="color:#50fa7b">[aspectratio=169]</span><span style="color:#8be9fd;font-style:italic">{</span>beamer<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\usepackage</span><span style="color:#50fa7b">[utf8]</span><span style="color:#8be9fd;font-style:italic">{</span>inputenc<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\usepackage</span><span style="color:#50fa7b">[export]</span><span style="color:#8be9fd;font-style:italic">{</span>adjustbox<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\usepackage</span><span style="color:#8be9fd;font-style:italic">{</span>graphicx,amsmath,ragged2e<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\usetheme</span><span style="color:#8be9fd;font-style:italic">{</span>metropolis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">%% define a new environment in the preamble
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\newenvironment</span><span style="color:#8be9fd;font-style:italic">{</span>changemargin<span style="color:#8be9fd;font-style:italic">}</span>[2]<span style="color:#8be9fd;font-style:italic">{</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>list<span style="color:#8be9fd;font-style:italic">}{}{</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\topsep</span><span style="color:#8be9fd;font-style:italic">}{</span>0pt<span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\leftmargin</span><span style="color:#8be9fd;font-style:italic">}{</span>#1<span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\rightmargin</span><span style="color:#8be9fd;font-style:italic">}{</span>#2<span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\listparindent</span><span style="color:#8be9fd;font-style:italic">}{</span><span style="color:#ff79c6">\parindent</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\itemindent</span><span style="color:#8be9fd;font-style:italic">}{</span><span style="color:#ff79c6">\parindent</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">\setlength</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\parsep</span><span style="color:#8be9fd;font-style:italic">}{</span><span style="color:#ff79c6">\parskip</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#8be9fd;font-style:italic">}</span><span style="color:#6272a4">%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#ff79c6">\item</span><span style="color:#50fa7b">[]</span><span style="color:#8be9fd;font-style:italic">}{</span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>list<span style="color:#8be9fd;font-style:italic">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">%%
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>document<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">% frame 1, normal margin
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Normal margin<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    Probability theory is nothing but common sense reduced to calculation.
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\flushright</span>
+</span></span><span style="display:flex;"><span>    Laplace
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">% frame 2, small margin
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Reduced margin<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>changemargin<span style="color:#8be9fd;font-style:italic">}{</span>-0.75cm<span style="color:#8be9fd;font-style:italic">}{</span>-0.75cm<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>        Probability theory is nothing but common sense reduced to calculation.
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\flushright</span>
+</span></span><span style="display:flex;"><span>        Laplace
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>changemargin<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">% frame 3, back to normal margin
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Normal margin<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    Probability theory is nothing but common sense reduced to calculation.
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\flushright</span>
+</span></span><span style="display:flex;"><span>    Laplace
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>document<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p>Here is the output:</p>
 <figure><img src="/images/project-learning-latex/change-margin.png" width="500"/>
 </figure>
 
 <h2 id="draw-curved-arrows">Draw curved arrows</h2>
 <p>The curve is automatically determined when you set the angle of <code>out</code> and <code>in</code>. Note you need to use <code>to</code> between two coordinates.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[very thick, -&gt;, &gt;={Triangle[scale width=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, out=225, in=90] (5, 5) to (4, 3);
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-</code></pre></div><h2 id="pgfplots-axis-tuning">Pgfplots axis tuning</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[very thick, -&gt;, &gt;={Triangle[scale width=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, out=225, in=90] (5, 5) to (4, 3);
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><h2 id="pgfplots-axis-tuning">Pgfplots axis tuning</h2>
 <p>The following are commonly used paramters for tuning axis and labels</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#6272a4">% The [baseline] option helps vertical alignment of two plots side by side
-</span><span style="color:#6272a4">% Note the x ticklabel rotation pushes the 2nd plot up, but thanks to [basesline],
-</span><span style="color:#6272a4">% they still align
-</span><span style="color:#6272a4"></span>
-<span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Pgfplot Axis<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>[baseline]
-        <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[
-            height=6cm, width=6cm, axis on top,
-            axis x line=middle, axis y line=middle, axis line style=very thick,
-            tick style=<span style="color:#8be9fd;font-style:italic">{</span>very thick, blue<span style="color:#8be9fd;font-style:italic">}</span>, tick align=outside, scaled ticks=false,
-            xmin=-100, xmax=1100, ymin=-100, ymax=1100,
-            enlargelimits=false
-            ]
-        <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>[baseline]
-        <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[
-            <span style="color:#6272a4">% size and general
-</span><span style="color:#6272a4"></span>            height=6cm, width=6cm, axis on top,
-            <span style="color:#6272a4">% use axis x/y line* to remove arrows in the axis line
-</span><span style="color:#6272a4"></span>            axis x line=middle, axis y line=middle,
-            <span style="color:#6272a4">% tick alignment and colour, can do separately with xtick style and ytick style
-</span><span style="color:#6272a4"></span>            axis line style=very thick, tick style=<span style="color:#8be9fd;font-style:italic">{</span>very thick, blue<span style="color:#8be9fd;font-style:italic">}</span>, tick align=outside,
-            <span style="color:#6272a4">% turn off the annoying automatically scaling
-</span><span style="color:#6272a4"></span>            scaled ticks=false,
-            xticklabel style=<span style="color:#8be9fd;font-style:italic">{</span>rotate=45, anchor=east, font=<span style="color:#ff79c6">\small</span>, /pgf/number format/fixed<span style="color:#8be9fd;font-style:italic">}</span>,
-            xmin=-100, xmax=1100, ymin=-100, ymax=1100,
-            <span style="color:#6272a4">% control label position, cs stands for coordinate system
-</span><span style="color:#6272a4"></span>            xlabel=<span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">x</span><span style="color:#f1fa8c">$</span>, x label style=<span style="color:#8be9fd;font-style:italic">{</span>at=<span style="color:#8be9fd;font-style:italic">{</span>(axis description cs:1.1,-0.03)<span style="color:#8be9fd;font-style:italic">}}</span>,
-            ylabel=<span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">f_{X}</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd;font-style:italic">x</span><span style="color:#ff79c6">)</span><span style="color:#f1fa8c">$</span>, y label style=<span style="color:#8be9fd;font-style:italic">{</span>at=<span style="color:#8be9fd;font-style:italic">{</span>(axis description cs:0,1.15)<span style="color:#8be9fd;font-style:italic">}}</span>,
-            title=<span style="color:#8be9fd;font-style:italic">{</span>Title inside axis<span style="color:#8be9fd;font-style:italic">}</span>, title style=<span style="color:#8be9fd;font-style:italic">{</span>at=<span style="color:#8be9fd;font-style:italic">{</span>(axis description cs:0.5,0.5)<span style="color:#8be9fd;font-style:italic">}}</span>,
-            enlargelimits=false
-            ]
-        <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
-</code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#6272a4">% The [baseline] option helps vertical alignment of two plots side by side
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">% Note the x ticklabel rotation pushes the 2nd plot up, but thanks to [basesline],
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">% they still align
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Pgfplot Axis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>[baseline]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[
+</span></span><span style="display:flex;"><span>            height=6cm, width=6cm, axis on top,
+</span></span><span style="display:flex;"><span>            axis x line=middle, axis y line=middle, axis line style=very thick,
+</span></span><span style="display:flex;"><span>            tick style=<span style="color:#8be9fd;font-style:italic">{</span>very thick, blue<span style="color:#8be9fd;font-style:italic">}</span>, tick align=outside, scaled ticks=false,
+</span></span><span style="display:flex;"><span>            xmin=-100, xmax=1100, ymin=-100, ymax=1100,
+</span></span><span style="display:flex;"><span>            enlargelimits=false
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>[baseline]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">% size and general
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            height=6cm, width=6cm, axis on top,
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">% use axis x/y line* to remove arrows in the axis line
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            axis x line=middle, axis y line=middle,
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">% tick alignment and colour, can do separately with xtick style and ytick style
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            axis line style=very thick, tick style=<span style="color:#8be9fd;font-style:italic">{</span>very thick, blue<span style="color:#8be9fd;font-style:italic">}</span>, tick align=outside,
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">% turn off the annoying automatically scaling
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            scaled ticks=false,
+</span></span><span style="display:flex;"><span>            xticklabel style=<span style="color:#8be9fd;font-style:italic">{</span>rotate=45, anchor=east, font=<span style="color:#ff79c6">\small</span>, /pgf/number format/fixed<span style="color:#8be9fd;font-style:italic">}</span>,
+</span></span><span style="display:flex;"><span>            xmin=-100, xmax=1100, ymin=-100, ymax=1100,
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">% control label position, cs stands for coordinate system
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>            xlabel=<span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">x</span><span style="color:#f1fa8c">$</span>, x label style=<span style="color:#8be9fd;font-style:italic">{</span>at=<span style="color:#8be9fd;font-style:italic">{</span>(axis description cs:1.1,-0.03)<span style="color:#8be9fd;font-style:italic">}}</span>,
+</span></span><span style="display:flex;"><span>            ylabel=<span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">f_{X}</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd;font-style:italic">x</span><span style="color:#ff79c6">)</span><span style="color:#f1fa8c">$</span>, y label style=<span style="color:#8be9fd;font-style:italic">{</span>at=<span style="color:#8be9fd;font-style:italic">{</span>(axis description cs:0,1.15)<span style="color:#8be9fd;font-style:italic">}}</span>,
+</span></span><span style="display:flex;"><span>            title=<span style="color:#8be9fd;font-style:italic">{</span>Title inside axis<span style="color:#8be9fd;font-style:italic">}</span>, title style=<span style="color:#8be9fd;font-style:italic">{</span>at=<span style="color:#8be9fd;font-style:italic">{</span>(axis description cs:0.5,0.5)<span style="color:#8be9fd;font-style:italic">}}</span>,
+</span></span><span style="display:flex;"><span>            enlargelimits=false
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p>Output:</p>
 <p><img src="/images/project-learning-latex/pgfplots_axis.png" alt=""></p>
 <h2 id="gauss-curve-plotting">Gauss curve plotting</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#6272a4">%% put the following in the preampble
-</span><span style="color:#6272a4"></span>
-<span style="color:#6272a4">% define gauss function:
-</span><span style="color:#6272a4"></span><span style="color:#ff79c6">\pgfmathdeclarefunction</span><span style="color:#8be9fd;font-style:italic">{</span>gauss<span style="color:#8be9fd;font-style:italic">}{</span>2<span style="color:#8be9fd;font-style:italic">}{</span>
-  <span style="color:#ff79c6">\pgfmathparse</span><span style="color:#8be9fd;font-style:italic">{</span>1/(#2*sqrt(2*pi))*exp(-((x-#1)<span style="color:#8be9fd;font-style:italic">^</span>2)/(2*#2<span style="color:#8be9fd;font-style:italic">^</span>2))<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#8be9fd;font-style:italic">}</span>
-
-<span style="color:#6272a4">%% Then do the plotting
-</span><span style="color:#6272a4"></span>
-<span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Gaussian Mixture<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\centering</span>
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-        <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[axis x line=bottom, axis y line=left, width=7cm, height=7cm, axis line style=very thick,
-                     axis on top, xtick=<span style="color:#ff79c6">\empty</span>, ytick=<span style="color:#ff79c6">\empty</span>, xmin=-6, xmax=6, ymin=0, ymax=0.3]
-            <span style="color:#ff79c6">\addplot</span> [draw=none, samples=200, smooth, fill=red!50, domain=-6:6,] <span style="color:#8be9fd;font-style:italic">{</span>0.6*gauss(-2,1) + 0.4*gauss(1,1)<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
-            <span style="color:#ff79c6">\addplot</span> [very thick, samples=200, smooth, domain=-6:6] <span style="color:#8be9fd;font-style:italic">{</span>0.6*gauss(-2,1) + 0.4*gauss(1,1)<span style="color:#8be9fd;font-style:italic">}</span>;
-        <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-        <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[axis x line=bottom, axis y line=left, width=7cm, height=7cm, axis line style=very thick,
-                     axis on top, xtick=<span style="color:#ff79c6">\empty</span>, ytick=<span style="color:#ff79c6">\empty</span>, xmin=-6, xmax=6, ymin=0, ymax=0.3]
-            <span style="color:#ff79c6">\addplot</span> [draw=none, samples=200, smooth, fill=red!50, domain=-2.5:1.5] <span style="color:#8be9fd;font-style:italic">{</span>0.6*gauss(-2,1) + 0.4*gauss(1,1)<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
-            <span style="color:#ff79c6">\addplot</span> [very thick, samples=200, smooth, domain=-6:6] <span style="color:#8be9fd;font-style:italic">{</span>0.6*gauss(-2,1) + 0.4*gauss(1,1)<span style="color:#8be9fd;font-style:italic">}</span>;
-            <span style="color:#ff79c6">\addplot</span> [very thick, dashed] coordinates <span style="color:#8be9fd;font-style:italic">{</span>(-2.5,0) (-2.5,0.211)<span style="color:#8be9fd;font-style:italic">}</span>;
-            <span style="color:#ff79c6">\addplot</span> [very thick, dashed] coordinates <span style="color:#8be9fd;font-style:italic">{</span>(1.5,0) (1.5,0.141)<span style="color:#8be9fd;font-style:italic">}</span>;
-        <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
-</code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#6272a4">%% put the following in the preampble
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">% define gauss function:
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\pgfmathdeclarefunction</span><span style="color:#8be9fd;font-style:italic">{</span>gauss<span style="color:#8be9fd;font-style:italic">}{</span>2<span style="color:#8be9fd;font-style:italic">}{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">\pgfmathparse</span><span style="color:#8be9fd;font-style:italic">{</span>1/(#2*sqrt(2*pi))*exp(-((x-#1)<span style="color:#8be9fd;font-style:italic">^</span>2)/(2*#2<span style="color:#8be9fd;font-style:italic">^</span>2))<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">%% Then do the plotting
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Gaussian Mixture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\centering</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[axis x line=bottom, axis y line=left, width=7cm, height=7cm, axis line style=very thick,
+</span></span><span style="display:flex;"><span>                     axis on top, xtick=<span style="color:#ff79c6">\empty</span>, ytick=<span style="color:#ff79c6">\empty</span>, xmin=-6, xmax=6, ymin=0, ymax=0.3]
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">\addplot</span> [draw=none, samples=200, smooth, fill=red!50, domain=-6:6,] <span style="color:#8be9fd;font-style:italic">{</span>0.6*gauss(-2,1) + 0.4*gauss(1,1)<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">\addplot</span> [very thick, samples=200, smooth, domain=-6:6] <span style="color:#8be9fd;font-style:italic">{</span>0.6*gauss(-2,1) + 0.4*gauss(1,1)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[axis x line=bottom, axis y line=left, width=7cm, height=7cm, axis line style=very thick,
+</span></span><span style="display:flex;"><span>                     axis on top, xtick=<span style="color:#ff79c6">\empty</span>, ytick=<span style="color:#ff79c6">\empty</span>, xmin=-6, xmax=6, ymin=0, ymax=0.3]
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">\addplot</span> [draw=none, samples=200, smooth, fill=red!50, domain=-2.5:1.5] <span style="color:#8be9fd;font-style:italic">{</span>0.6*gauss(-2,1) + 0.4*gauss(1,1)<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">\addplot</span> [very thick, samples=200, smooth, domain=-6:6] <span style="color:#8be9fd;font-style:italic">{</span>0.6*gauss(-2,1) + 0.4*gauss(1,1)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">\addplot</span> [very thick, dashed] coordinates <span style="color:#8be9fd;font-style:italic">{</span>(-2.5,0) (-2.5,0.211)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">\addplot</span> [very thick, dashed] coordinates <span style="color:#8be9fd;font-style:italic">{</span>(1.5,0) (1.5,0.141)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p>Output:</p>
 <p><img src="/images/project-learning-latex/gauss_mixture.png" alt=""></p>
 <h2 id="use-xshift-and-yshift-in-tikzpicture">Use xshift and yshift in tikzpicture</h2>
 <p>This is useful when you want to plot multiple axes in one tikzpicture and annotate them together using other drawings.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tex" data-lang="tex"><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Foundation<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\vspace</span><span style="color:#8be9fd;font-style:italic">{</span>10pt<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
-                 axis x line = bottom, axis y line=none, xtick=<span style="color:#ff79c6">\empty</span>, xmin=-4.2, xmax=4.2, ymin=0,ymax=0.42]
-        <span style="color:#ff79c6">\addplot</span> [draw=none, smooth, domain=-4:-1.96, samples=100, fill=red!50] <span style="color:#8be9fd;font-style:italic">{</span>gauss(0,1)<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
-        <span style="color:#ff79c6">\addplot</span> [very thick, dashed] coordinates <span style="color:#8be9fd;font-style:italic">{</span>(-1.96,0) (-1.96,0.058)<span style="color:#8be9fd;font-style:italic">}</span>;
-        <span style="color:#ff79c6">\addplot</span> [draw=none, smooth, domain=1.96:4, samples=100, fill=red!50] <span style="color:#8be9fd;font-style:italic">{</span>gauss(0,1)<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
-        <span style="color:#ff79c6">\addplot</span> [very thick, dashed] coordinates <span style="color:#8be9fd;font-style:italic">{</span>(1.96,0) (1.96,0.058)<span style="color:#8be9fd;font-style:italic">}</span>;
-        <span style="color:#ff79c6">\addplot</span> [very thick, smooth, domain=-4:4, samples=100] <span style="color:#8be9fd;font-style:italic">{</span>gauss(0,1)<span style="color:#8be9fd;font-style:italic">}</span>;
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
-    
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[xshift=4.5cm, width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
-                 axis x line = bottom, axis y line=none, xtick=<span style="color:#ff79c6">\empty</span>, ymin=0, ymax=0.12, xmin=-1, xmax=33]
-        <span style="color:#ff79c6">\addplot</span> [draw=none, smooth, fill=red!50] table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/chi<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>lower.csv<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[draw=none, very thick, fill=red!70]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/chi<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>upper.csv<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, smooth]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/chi<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9.csv<span style="color:#8be9fd;font-style:italic">}</span>;
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, dashed]</span> coordinates <span style="color:#8be9fd;font-style:italic">{</span>(2.7,0) (2.7,0.032)<span style="color:#8be9fd;font-style:italic">}</span>;
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, dashed]</span> coordinates <span style="color:#8be9fd;font-style:italic">{</span>(19.1,0) (19.1,0.009)<span style="color:#8be9fd;font-style:italic">}</span>;
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
-    
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[xshift=9cm, width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
-                 axis x line = bottom, axis y line=none, xtick=<span style="color:#ff79c6">\empty</span>, xmin=-1, xmax=7.5, ymin=0]
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[draw=none, smooth, fill=red!50]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/f<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>10<span style="color:#8be9fd;font-style:italic">_</span>lower<span style="color:#8be9fd;font-style:italic">_</span>tail.csv<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, dashed]</span> coordinates <span style="color:#8be9fd;font-style:italic">{</span>(0.3,0) (0.3,0.4)<span style="color:#8be9fd;font-style:italic">}</span>;
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[draw=none, smooth, fill=red!50]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/f<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>10<span style="color:#8be9fd;font-style:italic">_</span>upper<span style="color:#8be9fd;font-style:italic">_</span>tail.csv<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, dashed]</span> coordinates <span style="color:#8be9fd;font-style:italic">{</span>(3.7,0) (3.7,0.023)<span style="color:#8be9fd;font-style:italic">}</span>;
-        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[smooth, very thick]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/f<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>10.csv<span style="color:#8be9fd;font-style:italic">}</span>;
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
-    
-    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (1,0.15);
-    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (3.35,0.15);
-    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (4.9,0.15);
-    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (7.25,0.15);
-    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (9.65,0.15);
-    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (11.5,0.05) node [pos=0, anchor=north] <span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\color</span><span style="color:#8be9fd;font-style:italic">{</span>red!50<span style="color:#8be9fd;font-style:italic">}</span> rejection region<span style="color:#8be9fd;font-style:italic">}</span>;
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
-    
-    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>itemize<span style="color:#8be9fd;font-style:italic">}</span>
-        <span style="color:#ff79c6">\item</span> <span style="color:#ff79c6">\small</span> <span style="color:#ff79c6">\textcolor</span><span style="color:#8be9fd;font-style:italic">{</span>darkred<span style="color:#8be9fd;font-style:italic">}{</span>Sampling distribution of the difference/ratio of the sample proportion/mean/variance<span style="color:#8be9fd;font-style:italic">}</span>
-        <span style="color:#ff79c6">\item</span> <span style="color:#ff79c6">\small</span> <span style="color:#ff79c6">\textbf</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\alert</span><span style="color:#8be9fd;font-style:italic">{</span>Logic:<span style="color:#8be9fd;font-style:italic">}}</span> if <span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">H_</span><span style="color:#bd93f9">0</span><span style="color:#f1fa8c">$</span> were true, we would expect the majority of the test statistics (<span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">z,t,</span><span style="color:#8be9fd;font-style:italic">\chi</span><span style="color:#8be9fd;font-style:italic">^</span><span style="color:#bd93f9">2</span><span style="color:#8be9fd;font-style:italic">,F</span><span style="color:#f1fa8c">$</span>) falling into <span style="color:#ff79c6">\alert</span><span style="color:#8be9fd;font-style:italic">{</span>the middle area<span style="color:#8be9fd;font-style:italic">}</span> of the corresponding distribution. Therefore, the probability that the test statistic falls into <span style="color:#ff79c6">\alert</span><span style="color:#8be9fd;font-style:italic">{</span>the rejection regions<span style="color:#8be9fd;font-style:italic">}</span> is small. If we observe that, we reject <span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">H_</span><span style="color:#bd93f9">0</span><span style="color:#f1fa8c">$</span>.
-    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>itemize<span style="color:#8be9fd;font-style:italic">}</span>
-<span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
-</code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tex" data-lang="tex"><span style="display:flex;"><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}{</span>Foundation<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\vspace</span><span style="color:#8be9fd;font-style:italic">{</span>10pt<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
+</span></span><span style="display:flex;"><span>                 axis x line = bottom, axis y line=none, xtick=<span style="color:#ff79c6">\empty</span>, xmin=-4.2, xmax=4.2, ymin=0,ymax=0.42]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span> [draw=none, smooth, domain=-4:-1.96, samples=100, fill=red!50] <span style="color:#8be9fd;font-style:italic">{</span>gauss(0,1)<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span> [very thick, dashed] coordinates <span style="color:#8be9fd;font-style:italic">{</span>(-1.96,0) (-1.96,0.058)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span> [draw=none, smooth, domain=1.96:4, samples=100, fill=red!50] <span style="color:#8be9fd;font-style:italic">{</span>gauss(0,1)<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span> [very thick, dashed] coordinates <span style="color:#8be9fd;font-style:italic">{</span>(1.96,0) (1.96,0.058)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span> [very thick, smooth, domain=-4:4, samples=100] <span style="color:#8be9fd;font-style:italic">{</span>gauss(0,1)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[xshift=4.5cm, width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
+</span></span><span style="display:flex;"><span>                 axis x line = bottom, axis y line=none, xtick=<span style="color:#ff79c6">\empty</span>, ymin=0, ymax=0.12, xmin=-1, xmax=33]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span> [draw=none, smooth, fill=red!50] table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/chi<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>lower.csv<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[draw=none, very thick, fill=red!70]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/chi<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>upper.csv<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, smooth]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/chi<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9.csv<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, dashed]</span> coordinates <span style="color:#8be9fd;font-style:italic">{</span>(2.7,0) (2.7,0.032)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, dashed]</span> coordinates <span style="color:#8be9fd;font-style:italic">{</span>(19.1,0) (19.1,0.009)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>[xshift=9cm, width=6cm, height=5cm, axis on top, axis line style=very thick, tick style=very thick,
+</span></span><span style="display:flex;"><span>                 axis x line = bottom, axis y line=none, xtick=<span style="color:#ff79c6">\empty</span>, xmin=-1, xmax=7.5, ymin=0]
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[draw=none, smooth, fill=red!50]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/f<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>10<span style="color:#8be9fd;font-style:italic">_</span>lower<span style="color:#8be9fd;font-style:italic">_</span>tail.csv<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, dashed]</span> coordinates <span style="color:#8be9fd;font-style:italic">{</span>(0.3,0) (0.3,0.4)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[draw=none, smooth, fill=red!50]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/f<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>10<span style="color:#8be9fd;font-style:italic">_</span>upper<span style="color:#8be9fd;font-style:italic">_</span>tail.csv<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#ff79c6">\closedcycle</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[very thick, dashed]</span> coordinates <span style="color:#8be9fd;font-style:italic">{</span>(3.7,0) (3.7,0.023)<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\addplot</span><span style="color:#50fa7b">[smooth, very thick]</span> table [x=xs, y=ys, col sep=comma] <span style="color:#8be9fd;font-style:italic">{</span>../data/f<span style="color:#8be9fd;font-style:italic">_</span>df<span style="color:#8be9fd;font-style:italic">_</span>9<span style="color:#8be9fd;font-style:italic">_</span>10.csv<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>axis<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (1,0.15);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (3.35,0.15);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (4.9,0.15);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (7.25,0.15);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (9.65,0.15);
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\draw</span><span style="color:#50fa7b">[-&gt;, thick, &gt;={Triangle[scale=0.5]</span><span style="color:#8be9fd;font-style:italic">}</span>, gray, dashed] (6.5,-0.5) -- (11.5,0.05) node [pos=0, anchor=north] <span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\color</span><span style="color:#8be9fd;font-style:italic">{</span>red!50<span style="color:#8be9fd;font-style:italic">}</span> rejection region<span style="color:#8be9fd;font-style:italic">}</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tikzpicture<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>itemize<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\item</span> <span style="color:#ff79c6">\small</span> <span style="color:#ff79c6">\textcolor</span><span style="color:#8be9fd;font-style:italic">{</span>darkred<span style="color:#8be9fd;font-style:italic">}{</span>Sampling distribution of the difference/ratio of the sample proportion/mean/variance<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">\item</span> <span style="color:#ff79c6">\small</span> <span style="color:#ff79c6">\textbf</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\alert</span><span style="color:#8be9fd;font-style:italic">{</span>Logic:<span style="color:#8be9fd;font-style:italic">}}</span> if <span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">H_</span><span style="color:#bd93f9">0</span><span style="color:#f1fa8c">$</span> were true, we would expect the majority of the test statistics (<span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">z,t,</span><span style="color:#8be9fd;font-style:italic">\chi</span><span style="color:#8be9fd;font-style:italic">^</span><span style="color:#bd93f9">2</span><span style="color:#8be9fd;font-style:italic">,F</span><span style="color:#f1fa8c">$</span>) falling into <span style="color:#ff79c6">\alert</span><span style="color:#8be9fd;font-style:italic">{</span>the middle area<span style="color:#8be9fd;font-style:italic">}</span> of the corresponding distribution. Therefore, the probability that the test statistic falls into <span style="color:#ff79c6">\alert</span><span style="color:#8be9fd;font-style:italic">{</span>the rejection regions<span style="color:#8be9fd;font-style:italic">}</span> is small. If we observe that, we reject <span style="color:#f1fa8c">$</span><span style="color:#8be9fd;font-style:italic">H_</span><span style="color:#bd93f9">0</span><span style="color:#f1fa8c">$</span>.
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>itemize<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>frame<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p>Output:</p>
 <p><img src="/images/project-learning-latex/xshift_yshift.png" alt=""></p>
 
         </p>

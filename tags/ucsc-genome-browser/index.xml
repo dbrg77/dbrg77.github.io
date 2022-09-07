@@ -35,7 +35,7 @@
 1. Go to the UCSC genome browser.
 2. Go to the table browser: Tools –&amp;gt; Table Browser.
 3. Choose the following options:
- clade: Mammal
+clade: Mammal
 genome: Human
 assembly: Dec. 2013 (GRCh38/hg38)
 group: Genes and Genes Predictions</description>

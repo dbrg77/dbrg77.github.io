@@ -23,7 +23,7 @@
     
     <title>Getting Index Reads From SRA</title>
     <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
-    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, bioinformatics, fastq, illumina-sequencing, sratools, sequencing library'>
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, bioinformatics, fastq, illumina-sequencing, sratools, sequencing library, single cell genomics'>
 
     <meta property="og:url" content="https://dbrg77.github.io/posts/2022-07-26-getting-index-reads-from-sra/">
     <meta property="og:type" content="website">
@@ -194,6 +194,8 @@
         
             <li class="post-tag"><a href="https://dbrg77.github.io/tags/sequencing-library">sequencing library</a></li>
         
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/single-cell-genomics">single cell genomics</a></li>
+        
         </ul>
     </div>
 
@@ -240,38 +242,38 @@ spots read      : 20,027,825
 reads read      : 40,055,650
 reads written   : 40,055,650
 </code></pre><p>Sadly, only two files <code>SRR1947692_1.fastq</code> and <code>SRR1947692_2.fastq</code> were generated, each with 20,027,825 reads. This is kind of expected, because in the early days of single cell genomics, it was a common pratice to put cell barcodes into the fastq heeader, and not to inlcude them as separate fastq files. Now let&rsquo;s just look at the fastq header:</p>
-<pre tabindex="0"><code>$ awk 'NR%4==1' SRR1947692_1.fastq | head
+<pre tabindex="0"><code>$ awk &#39;NR%4==1&#39; SRR1947692_1.fastq | head
 @SRR1947692.1 SHEN-MISEQ02:1:1101:15311:1341 length=51
 @SRR1947692.2 SHEN-MISEQ02:1:1101:16462:1350 length=51
 @SRR1947692.3 SHEN-MISEQ02:1:1101:16204:1351 length=51
 @SRR1947692.4 SHEN-MISEQ02:1:1101:16257:1355 length=51
 @SRR1947692.5 SHEN-MISEQ02:1:1101:15016:1376 length=51
 </code></pre><p>Oh well &hellip; not so useful, right? Then, I saw this documentation from the <a href="https://baigal628.github.io/MAESTRO_documentation/sci_atac.html"><strong>MAESTRO website</strong></a>, where they used the following command to get the fastq files with proper headers:</p>
-<pre tabindex="0"><code>fastq-dump --split-files --origfmt --defline-seq '@rd.$si:$sg:$sn' SRR1947692
+<pre tabindex="0"><code>fastq-dump --split-files --origfmt --defline-seq &#39;@rd.$si:$sg:$sn&#39; SRR1947692
 </code></pre><p>It seems you could preserve the fastq header information in its originally submitted format with the <code>--origfmt</code> option, and use <code>--defline-seq</code> to specify the exact format. The <code>$sg</code> is the <code>spot-group</code>, which often contains the index information. Then, I think I can just use <code>fasterq-dump</code> for faster processing. Since I knew that there are no technical reads in this case, so I did not include that flag. However, I got an error message:</p>
-<pre tabindex="0"><code>$ fasterq-dump --split-files --origfmt --defline-seq '@rd.$si:$sg:$sn' SRR1947692
-unrecognized option: '--origfmt'
+<pre tabindex="0"><code>$ fasterq-dump --split-files --origfmt --defline-seq &#39;@rd.$si:$sg:$sn&#39; SRR1947692
+unrecognized option: &#39;--origfmt&#39;
 </code></pre><p>It turns out that the option <code>--origfmt</code> <a href="https://github.com/ncbi/sra-tools/issues/233"><strong>is not supported anymore</strong></a> in <code>fasterq-dump</code>. Let&rsquo;s remove it to see what happens:</p>
-<pre tabindex="0"><code>$ fasterq-dump --split-files --defline-seq '@rd.$si:$sg:$sn' SRR1947692
-unrecognized option: '--defline-seq'
+<pre tabindex="0"><code>$ fasterq-dump --split-files --defline-seq &#39;@rd.$si:$sg:$sn&#39; SRR1947692
+unrecognized option: &#39;--defline-seq&#39;
 </code></pre><p>That was just brilliant &hellip; By invoking the <code>fasterq-dump</code> help message, we know that we should use <code>--seq-defline</code> instead:</p>
-<pre tabindex="0"><code>$ fasterq-dump --split-files --seq-defline '@rd.$si:$sg:$sn' SRR1947692
+<pre tabindex="0"><code>$ fasterq-dump --split-files --seq-defline &#39;@rd.$si:$sg:$sn&#39; SRR1947692
 spots read      : 20,027,825
 reads read      : 40,055,650
 reads written   : 40,055,650
 
-$ awk 'NR%4==1' SRR1947692_1.fastq | head -5
+$ awk &#39;NR%4==1&#39; SRR1947692_1.fastq | head -5
 @rd.1::SHEN-MISEQ02:1:1101:15311:1341
 @rd.2::SHEN-MISEQ02:1:1101:16462:1350
 @rd.3::SHEN-MISEQ02:1:1101:16204:1351
 @rd.4::SHEN-MISEQ02:1:1101:16257:1355
 @rd.5::SHEN-MISEQ02:1:1101:15016:1376
 </code></pre><p>Oh, it seems without the <code>--origfmt</code>, <code>$sg</code> will not be written in the output (Note there is no content between the first and second colons in the header). I should have just used the exact the same command in the MAESTRO website:</p>
-<pre tabindex="0"><code>$ fastq-dump --split-files --origfmt --defline-seq '@rd.$si:$sg:$sn' SRR1947692
+<pre tabindex="0"><code>$ fastq-dump --split-files --origfmt --defline-seq &#39;@rd.$si:$sg:$sn&#39; SRR1947692
 Read 20027825 spots for SRR1947692
 Written 20027825 spots for SRR1947692
 
-$ awk 'NR%4==1' SRR1947692_1.fastq | head -5
+$ awk &#39;NR%4==1&#39; SRR1947692_1.fastq | head -5
 @rd.1:TCTCCCGCCGAGGCTGACTGCATAAGGCGAAT:SHEN-MISEQ02:1:1101:15311:1341
 @rd.2:CGCGTTCCAGGCCGTACCTGCATAAGGCGACG:SHEN-MISEQ02:1:1101:16462:1350
 @rd.3:GAGATTCCCGTACTAGAAGGAGTATATAGCCT:SHEN-MISEQ02:1:1101:16204:1351
@@ -279,11 +281,11 @@ $ awk 'NR%4==1' SRR1947692_1.fastq | head -5
 @rd.5:ATTACTCGAAGAGGCACGAGTAGACAGGACGT:SHEN-MISEQ02:1:1101:15016:1376
 </code></pre><p>Ha, I&rsquo;m so happy &hellip; You see the 32-bp DNA sequences between the first and the second colons in the fastq header? Those are the cell barcodes, each of which is a combination of <code>Tn5-T5</code> (8 bp), <code>Tn5-T7</code> (8 bp), <code>Nextera i5</code> (8 bp) and <code>Nextera i7</code> (8 bp). Check <a href="https://teichlab.github.io/scg_lib_structs/methods_html/sci-ATAC-seq.html"><strong>this page</strong></a> for more information.</p>
 <p>Finally, for the data that DO have technical reads available like SNARE-seq, what if you want both the technical reads and the <code>$sg</code> information? Well &hellip; I&rsquo;m afraid that you cannot use <code>fasterq-dump</code>. You have to do this in a slower way using <code>fastq-dump</code>. The following command will give you three fastq files, with the sample index in the fastq header.</p>
-<pre tabindex="0"><code>$ fastq-dump --split-files --origfmt --defline-seq '@rd.$si:$sg:$sn' SRR9672090
+<pre tabindex="0"><code>$ fastq-dump --split-files --origfmt --defline-seq &#39;@rd.$si:$sg:$sn&#39; SRR9672090
 Read 124642473 spots for SRR9672090
 Written 124642473 spots for SRR9672090
 
-$ awk 'NR%4==1' SRR9672090_3.fastq | head -5
+$ awk &#39;NR%4==1&#39; SRR9672090_3.fastq | head -5
 @rd.1:TATCCTCT:D00611:697:CD0V6ANXX:5:2301:1176:2478
 @rd.2:TATCCTCT:D00611:697:CD0V6ANXX:5:2301:1480:2408
 @rd.3:TATCCTAT:D00611:697:CD0V6ANXX:5:2301:1361:2447

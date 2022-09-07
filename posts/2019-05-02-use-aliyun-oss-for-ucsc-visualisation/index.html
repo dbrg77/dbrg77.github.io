@@ -218,7 +218,7 @@
 <p>Now in your local machine, open up your <code>Terminal</code> and download the right binary from <a href="https://help.aliyun.com/document_detail/50452.html?spm=a2c4g.11186623.6.1382.fe817e90clvugi">this page</a>. Start configure your OSS storage by type:</p>
 <pre tabindex="0"><code>ossutil64 config
 </code></pre><p>Just input the information required, and here is mine:</p>
-<pre tabindex="0"><code>For the following settings, carriage return means skip the configuration. Please try &quot;help config&quot; to see the meaning of the settings
+<pre tabindex="0"><code>For the following settings, carriage return means skip the configuration. Please try &#34;help config&#34; to see the meaning of the settings
 Please enter endpoint:https://oss-cn-shenzhen.aliyuncs.com
 Please enter accessKeyID:your_access_key_id
 Please enter accessKeySecret:your_access_key_secret
@@ -236,13 +236,13 @@ https://oss-cn-hongkong.aliyuncs.com
 
 and a few more in other countries.
 </code></pre><p>Okay, just like Amazon S3, you need to create a bucket and put your files into the bucket. For example, I created a bucket called <code>myatacbucket</code> by (Note: only lowercase letters, numbers and <code>-</code> are allowed to name a bucket):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ossutil64 mb oss://myatacbucket --acl<span style="color:#ff79c6">=</span>public-read --storage-class Standard
-</code></pre></div><p>This creates a bucket called <code>myatacbucket</code> that can be read by public. Okay, now locate the bigWig file in your local machine, and transfer it to the bucket:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ossutil64 cp my_bigwig.bw oss://myatacbucket
-</code></pre></div><p>Now, to get an URL so that UCSC can reach it. You go to your OSS console, and do <code>your bucket name --&gt; File Management --&gt; Tick your files --&gt; Export URL</code>, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ossutil64 mb oss://myatacbucket --acl<span style="color:#ff79c6">=</span>public-read --storage-class Standard
+</span></span></code></pre></div><p>This creates a bucket called <code>myatacbucket</code> that can be read by public. Okay, now locate the bigWig file in your local machine, and transfer it to the bucket:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ossutil64 cp my_bigwig.bw oss://myatacbucket
+</span></span></code></pre></div><p>Now, to get an URL so that UCSC can reach it. You go to your OSS console, and do <code>your bucket name --&gt; File Management --&gt; Tick your files --&gt; Export URL</code>, like this:</p>
 <p><img src="/images/000/oss_url.png" alt=""></p>
 <p>So, using the above example, my URL will be:</p>
-<pre tabindex="0"><code>http://myatacbucket.oss-cn-shenzhen.aliyuncs.com/my_bigwig.bw
+<pre tabindex="0"><code>https://myatacbucket.oss-cn-shenzhen.aliyuncs.com/my_bigwig.bw
 </code></pre><p>Go to UCSC (recommend the Asia mirror if you are in China: <a href="https://genome-asia.ucsc.edu">https://genome-asia.ucsc.edu</a>), and put your URL there like usual (the following text should be in one single line):</p>
 <pre tabindex="0"><code>track type=bigWig name=atac_seq description=the_best_atac_seq_ever_pileup
 bigDataUrl=https://myatacbucket.oss-cn-shenzhen.aliyuncs.com/my_bigwig.bw

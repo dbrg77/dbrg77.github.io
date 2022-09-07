@@ -3,7 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://dbrg77.github.io/tags/bioinformatics/</loc>
-    <lastmod>2022-07-26T10:07:27+08:00</lastmod>
+    <lastmod>2022-09-06T22:35:53+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/illumina-sequencing/</loc>
+    <lastmod>2022-09-06T22:35:53+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/</loc>
+    <lastmod>2022-09-06T22:35:53+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/posts/</loc>
+    <lastmod>2022-09-06T22:35:53+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/sequencing-library/</loc>
+    <lastmod>2022-09-06T22:35:53+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/posts/2022-09-06-single-cell-data-preprocessing/</loc>
+    <lastmod>2022-09-06T22:35:53+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/single-cell-genomics/</loc>
+    <lastmod>2022-09-06T22:35:53+08:00</lastmod>
+  </url><url>
+    <loc>https://dbrg77.github.io/tags/</loc>
+    <lastmod>2022-09-06T22:35:53+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/tags/fastq/</loc>
     <lastmod>2022-07-26T10:07:27+08:00</lastmod>
@@ -11,22 +32,7 @@
     <loc>https://dbrg77.github.io/posts/2022-07-26-getting-index-reads-from-sra/</loc>
     <lastmod>2022-07-26T10:07:27+08:00</lastmod>
   </url><url>
-    <loc>https://dbrg77.github.io/tags/illumina-sequencing/</loc>
-    <lastmod>2022-07-26T10:07:27+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/</loc>
-    <lastmod>2022-07-26T10:07:27+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/posts/</loc>
-    <lastmod>2022-07-26T10:07:27+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/tags/sequencing-library/</loc>
-    <lastmod>2022-07-26T10:07:27+08:00</lastmod>
-  </url><url>
     <loc>https://dbrg77.github.io/tags/sratools/</loc>
-    <lastmod>2022-07-26T10:07:27+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/tags/</loc>
     <lastmod>2022-07-26T10:07:27+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/tags/beamer/</loc>
@@ -38,7 +44,7 @@
     <loc>https://dbrg77.github.io/tags/matplotlib/</loc>
     <lastmod>2022-03-02T10:49:27+08:00</lastmod>
   </url><url>
-    <loc>https://dbrg77.github.io/posts/2022-03-02-matplotlib-with-the-beamer-metropolis-style/</loc>
+    <loc>https://dbrg77.github.io/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/</loc>
     <lastmod>2022-03-02T10:49:27+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/tags/metropolis/</loc>
@@ -105,9 +111,6 @@
     <lastmod>2018-10-23T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/posts/2018-07-13-project-scg-lib-structs/</loc>
-    <lastmod>2018-07-13T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://dbrg77.github.io/tags/single-cell-genomics/</loc>
     <lastmod>2018-07-13T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://dbrg77.github.io/posts/2018-07-02-setting-up-public-links-for-ucsc-visualisation/</loc>

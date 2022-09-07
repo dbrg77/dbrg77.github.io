@@ -6,13 +6,40 @@
     <description>Recent content in Tags on Not A Rocket Scientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 26 Jul 2022 10:07:27 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Sep 2022 22:35:53 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>bioinformatics</title>
       <link>https://dbrg77.github.io/tags/bioinformatics/</link>
-      <pubDate>Tue, 26 Jul 2022 10:07:27 +0800</pubDate>
+      <pubDate>Tue, 06 Sep 2022 22:35:53 +0800</pubDate>
       
       <guid>https://dbrg77.github.io/tags/bioinformatics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>illumina sequencing</title>
+      <link>https://dbrg77.github.io/tags/illumina-sequencing/</link>
+      <pubDate>Tue, 06 Sep 2022 22:35:53 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/illumina-sequencing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sequencing library</title>
+      <link>https://dbrg77.github.io/tags/sequencing-library/</link>
+      <pubDate>Tue, 06 Sep 2022 22:35:53 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/sequencing-library/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>single cell genomics</title>
+      <link>https://dbrg77.github.io/tags/single-cell-genomics/</link>
+      <pubDate>Tue, 06 Sep 2022 22:35:53 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/tags/single-cell-genomics/</guid>
       <description></description>
     </item>
     
@@ -22,24 +49,6 @@
       <pubDate>Tue, 26 Jul 2022 10:07:27 +0800</pubDate>
       
       <guid>https://dbrg77.github.io/tags/fastq/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>illumina sequencing</title>
-      <link>https://dbrg77.github.io/tags/illumina-sequencing/</link>
-      <pubDate>Tue, 26 Jul 2022 10:07:27 +0800</pubDate>
-      
-      <guid>https://dbrg77.github.io/tags/illumina-sequencing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sequencing library</title>
-      <link>https://dbrg77.github.io/tags/sequencing-library/</link>
-      <pubDate>Tue, 26 Jul 2022 10:07:27 +0800</pubDate>
-      
-      <guid>https://dbrg77.github.io/tags/sequencing-library/</guid>
       <description></description>
     </item>
     
@@ -211,15 +220,6 @@
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0800</pubDate>
       
       <guid>https://dbrg77.github.io/tags/cuttag/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>single cell genomics</title>
-      <link>https://dbrg77.github.io/tags/single-cell-genomics/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0800</pubDate>
-      
-      <guid>https://dbrg77.github.io/tags/single-cell-genomics/</guid>
       <description></description>
     </item>
     

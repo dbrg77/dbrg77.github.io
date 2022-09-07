@@ -6,7 +6,16 @@
     <description>Recent content in bioinformatics on Not A Rocket Scientist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 26 Jul 2022 10:07:27 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Sep 2022 22:35:53 +0800</lastBuildDate><atom:link href="https://dbrg77.github.io/tags/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Single Cell Data Preprocessing</title>
+      <link>https://dbrg77.github.io/posts/2022-09-06-single-cell-data-preprocessing/</link>
+      <pubDate>Tue, 06 Sep 2022 22:35:53 +0800</pubDate>
+      
+      <guid>https://dbrg77.github.io/posts/2022-09-06-single-cell-data-preprocessing/</guid>
+      <description>When I started my PhD back in 2009, the next generation sequencing (NGS) technologies had already been out there for a while. They were in the process of being adapted by many labs. My impression back then was that it was difficult to learn how exactly those methods worked. There were many reasons for that, and one of them was the need of the commercial kits for the library preparation. As a beginner, you kind of knew roughly what the kit was doing: end repair, A tailing, ligate the adapters to the fragments etc.</description>
+    </item>
+    
     <item>
       <title>Getting Index Reads From SRA</title>
       <link>https://dbrg77.github.io/posts/2022-07-26-getting-index-reads-from-sra/</link>
@@ -82,7 +91,7 @@ One common QC for the data is to plot the fragment size density of your librarie
 1. Go to the UCSC genome browser.
 2. Go to the table browser: Tools –&amp;gt; Table Browser.
 3. Choose the following options:
- clade: Mammal
+clade: Mammal
 genome: Human
 assembly: Dec. 2013 (GRCh38/hg38)
 group: Genes and Genes Predictions</description>
