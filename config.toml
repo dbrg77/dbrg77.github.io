@@ -95,7 +95,7 @@ pygmentsStyle = "onedark"
       weight = 7
 
 [caches]
-  [caches.images]
+  [[caches.images]]
     dir = ':cacheDir/images'
 
 [minify]
