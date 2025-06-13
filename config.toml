@@ -1,4 +1,4 @@
-baseURL = "https://dbrg77.github.io"
+baseURL = "https://notarocketscientist.xyz/"
 title = "Not A Rocket Scientist"
 theme = "gokarna"
 languageCode = "en-gb"
@@ -95,5 +95,5 @@ pygmentsStyle = "onedark"
       weight = 7
 
 [caches]
-  [caches.images]
+  [[caches.images]]
     dir = ':cacheDir/images'
