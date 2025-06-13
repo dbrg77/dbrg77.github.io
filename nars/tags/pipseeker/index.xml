@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pipseeker on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/pipseeker/</link>
+    <description>Recent content in pipseeker on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 11 Jun 2024 09:00:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/pipseeker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PIPseq again - PIPseeker$^{\textmd{TM}}$ Barcode Translation</title>
+      <link>https://notarocketscientist.xyz/posts/2024-06-11-pipseq-again-pipseeker-barcode-translation/</link>
+      <pubDate>Tue, 11 Jun 2024 09:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2024-06-11-pipseq-again-pipseeker-barcode-translation/</guid>
+      <description>In one of the post where we figured out the library structure of the PIPseq$^{\textmd{TM}}$ V3 chemistry last year, we left a cliffhanger about how the PIPseeker$^{\textmd{TM}}$ software from FluentBio performed the barcode &amp;ldquo;translation&amp;rdquo;. During the translation, an original cell barcode that consists of four parts of &amp;ldquo;sub-barcodes&amp;rdquo; (8 bp + 6 bp + 6 bp + 8 bp) got mapped to a 16-bp barcode.&#xA;The V3 data Using the species mixing data from the V3 chemistry mentioned in the previous post, we would end up with the following files in our working directory if we finished all procedures described in the previous post:</description>
+    </item>
+  </channel>
+</rss>

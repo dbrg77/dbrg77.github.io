@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bioinformatics on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/bioinformatics/</link>
+    <description>Recent content in bioinformatics on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 17 May 2024 15:07:53 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/bioinformatics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ChIP Primer Design</title>
+      <link>https://notarocketscientist.xyz/posts/2024-05-17-chip-primer-design/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2024-05-17-chip-primer-design/</guid>
+      <description>When we study the functions of a gene of interest (GOI), it is common to use a combination of loss-of-function and gain-of-function assays in a study. In the era of genomics, we often use RNA-seq experiments to find out the affected genes when the level of the GOI is reduced, e.g. siRNA, shRNA &amp;amp; degron, or elevated e.g. over-expression. If the GOI is a transcription factor (TF), a special type of proteins that can specifically interact with DNA to regulate transcription, the natural question to ask is whether those affected genes are regulated directly by the TF.</description>
+    </item>
+    <item>
+      <title>How Difficult Is It To Start Your Single-cell Analysis As A Beginner</title>
+      <link>https://notarocketscientist.xyz/posts/2024-01-18-how-difficult-is-it-to-start-your-single-cell-analysis-as-a-beginner/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2024-01-18-how-difficult-is-it-to-start-your-single-cell-analysis-as-a-beginner/</guid>
+      <description>The title for this post is &amp;ldquo;How Difficult Is It To Start Your Single-cell Analysis As A Beginner&amp;rdquo;. However, once I finished writing the post, the majority of the content is actually about &amp;ldquo;Seurat and OSCA Installation On Freshly Installed Ubuntu/Debian/Fedora&amp;rdquo;. Oh well &amp;hellip; If you do not have time, just go to the final Summary section to see the final results.&#xA;Introduction When I started my NGS analysis during my PhD, which was more than 10 years ago, one of the most difficult things was software installation.</description>
+    </item>
+    <item>
+      <title>The _alt Chromosomes In The Reference Genome</title>
+      <link>https://notarocketscientist.xyz/posts/2024-01-05-the-alt-chromosomes-in-the-reference-genome/</link>
+      <pubDate>Fri, 05 Jan 2024 15:07:53 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2024-01-05-the-alt-chromosomes-in-the-reference-genome/</guid>
+      <description>Early this week, I was re-organising my bookmarks in the browser and I came across this post by Heng Li published more than 6 years ago. It reminded me one of the problem I faced ~10 years ago when I first started using the GRCh38/hg38 version of the human reference genome for RNA-seq analysis. Let&amp;rsquo;s have a look what the problem was.&#xA;Now if we go to the UCSC genome browser to download the reference genome data, we see that there are a couple of options:</description>
+    </item>
+    <item>
+      <title>The -O (--overlap) Option of Cutadapt</title>
+      <link>https://notarocketscientist.xyz/posts/2023-12-10-the-o-option-in-cutadapt/</link>
+      <pubDate>Mon, 11 Dec 2023 15:07:53 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2023-12-10-the-o-option-in-cutadapt/</guid>
+      <description>In recent years, I noticed one problem about the ATAC-seq/scATAC-seq experiments we did in the lab. Specifically, it is related to the ATAC-seq insert size, or fragment length, plotting. The distribution of the fragment length in an ATAC-seq experiment is an important quality control metric. Since the transposase Tn5 can only go to those nucleosome-free regions, the lengths of the fragments after Tn5 transposition often exhibit a nucleosomal ladder pattern, like shown in this post where I described how to draw the plot by looking at the 9th column of the aligned SAM/BAM file.</description>
+    </item>
+    <item>
+      <title>Single Cell Data Preprocessing</title>
+      <link>https://notarocketscientist.xyz/posts/2022-09-06-single-cell-data-preprocessing/</link>
+      <pubDate>Tue, 06 Sep 2022 22:35:53 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2022-09-06-single-cell-data-preprocessing/</guid>
+      <description>When I started my PhD back in 2009, the next generation sequencing (NGS) technologies had already been out there for a while. They were in the process of being adapted by many labs. My impression back then was that it was difficult to learn how exactly those methods worked. There were many reasons for that, and one of them was the need of the commercial kits for the library preparation. As a beginner, you kind of knew roughly what the kit was doing: end repair, A tailing, ligate the adapters to the fragments etc.</description>
+    </item>
+    <item>
+      <title>Getting Index Reads From SRA</title>
+      <link>https://notarocketscientist.xyz/posts/2022-07-26-getting-index-reads-from-sra/</link>
+      <pubDate>Tue, 26 Jul 2022 10:07:27 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2022-07-26-getting-index-reads-from-sra/</guid>
+      <description>A few month ago, I ranted about the FastQ files submission for data produced by complex genomic protocols. The main reason of the rant is that we tried to get some single cell data from SRA, and we really needed the cell barcodes for the data preprocessing and analysis. However, the cell barcodes are stored in the indexing reads where it seems impossible to get from the .sra file. Recently, I finally found a way of getting those information &amp;hellip; well &amp;hellip; at least for some studies.</description>
+    </item>
+    <item>
+      <title>About FastQ Files Submission</title>
+      <link>https://notarocketscientist.xyz/posts/2022-02-27-about-fastq-files-submission/</link>
+      <pubDate>Sun, 27 Feb 2022 10:07:27 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2022-02-27-about-fastq-files-submission/</guid>
+      <description>This post collects my thoughts about fastq files accumlated over the years, specifically focusing on what should be included during a submission. It is not about the format of fastq files. If you are not sure about the format, you can check the Wikipedia page and this excellent paper by Cock et al. that contains very deteiled information and the history about the fastq file.&#xA;Let&amp;rsquo;s first look at what you will get from a typical Illumina sequencing experiment.</description>
+    </item>
+    <item>
+      <title>ATAC-seq Peak Calling With MACS2</title>
+      <link>https://notarocketscientist.xyz/posts/2020-12-09-atac-seq-peak-calling-with-macs2/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2020-12-09-atac-seq-peak-calling-with-macs2/</guid>
+      <description>Although ATAC-seq has been extensively used in the functional genomics field to study chromatin accessibility, it is still under debate how we should perform peak calling to identify oepn chromatin regions. MACS2 is a very popular peak caller for ChIP-seq, and it has been used for ATAC-seq as well. How should we perform ATAC-seq peak calling using MACS2? That is a recurring question. If you pay attention to the details in those publications that uses ATAC-seq, you might notice that some people uses the --shift -100 --extsize 200 flags during MACS2 peak calling.</description>
+    </item>
+    <item>
+      <title>Benford&#39;s Law and RNA-seq</title>
+      <link>https://notarocketscientist.xyz/posts/2020-02-27-benfords-law-and-rna-seq/</link>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2020-02-27-benfords-law-and-rna-seq/</guid>
+      <description>More than two years ago, I started to watch videos from the YouTube channel Numberphile. I came across Benford&amp;rsquo;s Law, and I was amazed when I saw it on this video. Basically, Benford&amp;rsquo;s Law is an observation about the relative frequency distribution of the first digits from real-world data sets, where the data span multiple orders of magnitude. Intuitively, we expect them to be uniformly distributed so that each digit (from 1 to 9) has a relative frequency around 1/9.</description>
+    </item>
+    <item>
+      <title>Use Aliyun OSS For UCSC Visualisation In China Mainland</title>
+      <link>https://notarocketscientist.xyz/posts/2019-05-02-use-aliyun-oss-for-ucsc-visualisation/</link>
+      <pubDate>Thu, 02 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2019-05-02-use-aliyun-oss-for-ucsc-visualisation/</guid>
+      <description>You always need to repeat some basic tasks that you did in the past when you relocate to a new place. For some of them, you need to find alternative ways of achieving the same goals. For example, finding a way of visualising bigWig signal files. This is very important for the assessment of the data quality. I hate to say it, but it is often true that the most efficient way of telling whether an experiment works or not is the least scientific way, which is by visual inspection.</description>
+    </item>
+    <item>
+      <title>Set Up Public Links For UCSC Genome Browser Visualisation At The WTSI</title>
+      <link>https://notarocketscientist.xyz/posts/2018-07-02-setting-up-public-links-for-ucsc-visualisation/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2018-07-02-setting-up-public-links-for-ucsc-visualisation/</guid>
+      <description>The best way of visualising sequencing reads pileup/coverage data (very useful for ChIP-seq, DNase-seq &amp;amp; ATAC-seq) is to get the pileup/coverage files in bigWig format, and visualise the signal as custom tracks using UCSC genome browser - the best genome browser, period! The bigWig files are often large, especially when you have high coverage experiments. Therefore, you need a place to host your files, and they need to be in a place where UCSC genome browser can reach.</description>
+    </item>
+    <item>
+      <title>ATAC-seq Insert Size Plotting</title>
+      <link>https://notarocketscientist.xyz/posts/2017-02-10-atac-seq-insert-size-plotting/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2017-02-10-atac-seq-insert-size-plotting/</guid>
+      <description>ATAC-seq is THE simplest genomic protocol to profile open chromatin regions in the genome. The original publication (Nature Methods 10, 1213-1218) has been cited 441 times at this moment of writing (1,073 times at this moment of re-posting). It has become almost a routine for a lab that is interested in transcriptional regulation.&#xA;One common QC for the data is to plot the fragment size density of your libraries. The successful construction of a ATAC library requires a proper pair of Tn5 transposase cutting events at the ends of DNA.</description>
+    </item>
+    <item>
+      <title>Getting RefSeq gene TSS from UCSC</title>
+      <link>https://notarocketscientist.xyz/posts/2016-11-09-getting-refseq-gene-tss-from-ucsc/</link>
+      <pubDate>Wed, 09 Nov 2016 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2016-11-09-getting-refseq-gene-tss-from-ucsc/</guid>
+      <description>As a practice of using the unix command lines, let&amp;rsquo;s get the transcription start site (TSS) coordinates of all hg38 RefSeq genes from the UCSC genome browser, and change it to a proper bed format:&#xA;1. Go to the UCSC genome browser.&#xA;2. Go to the table browser: Tools –&amp;gt; Table Browser.&#xA;3. Choose the following options:&#xA;clade: Mammal&#xA;genome: Human&#xA;assembly: Dec. 2013 (GRCh38/hg38)&#xA;group: Genes and Genes Predictions</description>
+    </item>
+    <item>
+      <title>Common Bioinformatics Tasks With UNIX Commands</title>
+      <link>https://notarocketscientist.xyz/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/</guid>
+      <description>awk 1. Give names to each peak in a 3-column bed file:&#xA;$ cat Oct4_union_peaks.bed chr1 3062833 3063056 chr1 3343519 3343843 chr1 3482630 3483324 chr1 3549654 3549895 chr1 3648929 3649295 $ awk &amp;#39;BEGIN{OFS=&amp;#34;\t&amp;#34;}{print $1,$2,$3,&amp;#34;Oct4_union_peak_&amp;#34; NR}&amp;#39; Oct4_union_peaks.bed chr1 3062833 3063056 Oct4_union_peak_1 chr1 3343519 3343843 Oct4_union_peak_2 chr1 3482630 3483324 Oct4_union_peak_3 chr1 3549654 3549895 Oct4_union_peak_4 chr1 3648929 3649295 Oct4_union_peak_5 2. Print the number of fileds for each line:&#xA;awk &amp;#39;{print NF}&amp;#39; some_file.txt 3. Print the last column of a text file:</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Drawing Vector Graphics For Publication Figures</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, latex, tikz, ipe, publication, figures'>
+
+    <meta property="og:url" content="https://notarocketscientist.xyz/posts/2024-02-14-drawing-vector-graphics-for-publication-figures/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Drawing Vector Graphics For Publication Figures">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Drawing Vector Graphics For Publication Figures">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://notarocketscientist.xyz/posts/2024-02-14-drawing-vector-graphics-for-publication-figures/">
+    <meta property="twitter:url" content="https://notarocketscientist.xyz/posts/2024-02-14-drawing-vector-graphics-for-publication-figures/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://notarocketscientist.xyz/posts/2024-02-14-drawing-vector-graphics-for-publication-figures/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://notarocketscientist.xyz">
+                <img src="https://notarocketscientist.xyz/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://notarocketscientist.xyz">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Drawing Vector Graphics For Publication Figures</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            February 14, 2024
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/latex">latex</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/tikz">tikz</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/ipe">ipe</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/publication">publication</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/figures">figures</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>To generate figures for publications, I often use <a href="https://matplotlib.org"><strong>matplotlib</strong></a> and <a href="https://seaborn.pydata.org"><strong>seaborn</strong></a> to prepare plots and save them in PDF format. Then I use <strong>PowerPoint</strong> to arrange and organise them into a full figure. Like this one shown below:</p>
+<p><img src="/images/2024-02-14/figure_examples.png" alt=""></p>
+<p>Those panels (a - d) were individually generated using <strong>matplotlib</strong> (except the genome browser track), saved as PDFs and imported into one slide in <strong>PowerPoint</strong>. The size of the slide can be set to conform to the requirements of the journal, but <strong>A4 size</strong> generally works in almost all cases. Labels can be added manually in the <strong>PowerPoint</strong> using a desired font. Once I&rsquo;m satisfied, the whole slide can be exported to a PDF, which serves as a figure. We can do this for every figure. In this way, it is easy and straightforward to generate publication-ready figures and they are still in vector format and all the elements can be edited by other programs like <a href="https://inkscape.org"><strong>Inkscape</strong></a> or <strong>Illustrator</strong>.</p>
+<p>The above routines are enough to produce 90% of my figures, especially for data-related plots which can be easily generated by <strong>matplotlib</strong> + <strong>seaborn</strong>. However, there are still things that we need to draw by ourselves, such as schematic views of experiments, like this one shown below:</p>
+<p><img src="/images/2024-02-14/schematic_examples.png" alt=""></p>
+<p>which was drawn using <strong>PowerPoint</strong>, and that was what I usually did. It is okay. It does the job pretty decently for simple things. For example, the following are all drawn in <strong>PowerPoint</strong> using its built-in lines and shapes:</p>
+<p><img src="/images/2024-02-14/ppt_examples.png" alt=""></p>
+<p>That&rsquo;s about it. Anything a bit more complicated is painful to draw, especially when you want to <strong>connect</strong>, <strong>align</strong> and <strong>snap</strong> different lines, arcs and curves together. Later on, I came across <a href="https://www.biorender.com"><strong>BioRender</strong></a>, which really helped the drawing. The final results are beautiful. Nowadays many people are using it, and I’m kind of seeing the same type of drawings in different papers over and over again! On top of that, the licence becomes a bit complicated if we publish in open-access journals. Therefore, I would like to avoid using it.</p>
+<p>Recently, I need to draw a schematic view of the droplet single-cell sequencing technology. There is this nice drawing in the <strong>BioRender</strong> library:</p>
+<figure><img src="/images/2024-02-14/drop_biorender.png" width="350px"/>
+</figure>
+
+<p>That&rsquo;s really beautiful and we used it in <strong>Figure 1a</strong> and <strong>Figure 2a</strong> from our <a href="https://www.nature.com/articles/s41592-022-01601-4"><strong>ISSAAC-seq paper</strong></a>. Now I want a change and make my drawing to be unique. For this purpose, many people would use <strong>Inkscape</strong> or <strong>Illustrator</strong>, but I don&rsquo;t know how. Finally, I decided to use <a href="https://tikz.dev"><strong>TikZ</strong></a>, because &hellip; it can generate vector graphics, so why not?</p>
+<p>To start with the prototype, I looked at the microfluidics device of <a href="https://www.nature.com/articles/nprot.2016.154"><strong>inDrop</strong></a> from the supplementary movie in their Nature Protocols publication. Then I draw the outlines in papers with grids, like this:</p>
+<p><img src="/images/2024-02-14/indrop_handdrawn.png" alt=""></p>
+<p>I also marked by red the <strong>vertexes</strong>, or &ldquo;connecting points&rdquo;, where two different lines or curves intersect. Since the drawing is in a paper with grids, I roughly know the coordinates of those vertexes. Then I connected those vertexes using lines by <strong>TikZ</strong>. The curved lines were drawn by simply using different values of <code>in=</code> and <code>out=</code> options, and let <strong>TikZ</strong> take care of how the curve should be drawn. It turned out that the default <strong>TikZ</strong> handled this pretty well:</p>
+<p><img src="/images/2024-02-14/indrop_tikz.png" alt=""></p>
+<p>Then I draw some big and small circles to represent hydrogel beads and cells, respectively. On top of that, I used the <a href="https://ctan.org/pkg/pst-barcode"><strong>pst-barcode</strong></a> package to generate barcodes inside the droplet. This is the final result:</p>
+<p><img src="/images/2024-02-14/indrop_tikz_final.png" alt=""></p>
+<p>The code to generate this figure is in this GitHub repository: <a href="https://github.com/dbrg77/TikZ_and_PGFPlots_draw"><strong>TikZ And PGFPlots Draw</strong></a>. There are some other drawing, and I&rsquo;m planning to add more.</p>
+<p>After I posted the drawing on <a href="https://twitter.com/XiChenUoM/status/1755067671366807902">Twitter</a>, <a href="https://twitter.com/fvderop"><strong>Florian</strong></a> recommended <a href="https://ipe.otfried.org"><strong>Ipe</strong></a>, which is a simple and versatile drawing editor to generate vector graphics in PDF format. After watching these <a href="https://youtube.com/playlist?list=PL_qF9szDFJe3GLH1gtYmOGvfeR-RiA1uY&amp;si=PehKX5P54wpgUHEH">three short videos</a>, I became a fan! To get my hands on it and learn the basics, I re-create the droplet figure using <strong>Ipe</strong>:</p>
+<p><img src="/images/2024-02-14/indrop_ipe.png" alt=""></p>
+<p>The ways <strong>Ipe</strong> handles snapping and path joining are really nice. It is more flexible in terms of creating shapes, so that I could create irregular shapes to represent cells. For <strong>TikZ</strong>, I could draw stuff more systematically, especially with the help of additional $\LaTeX{}$ packages. I guess I will use both in the future.</p>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

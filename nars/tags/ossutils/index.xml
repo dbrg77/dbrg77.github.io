@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ossutils on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/ossutils/</link>
+    <description>Recent content in ossutils on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 02 May 2019 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/ossutils/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Use Aliyun OSS For UCSC Visualisation In China Mainland</title>
+      <link>https://notarocketscientist.xyz/posts/2019-05-02-use-aliyun-oss-for-ucsc-visualisation/</link>
+      <pubDate>Thu, 02 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2019-05-02-use-aliyun-oss-for-ucsc-visualisation/</guid>
+      <description>You always need to repeat some basic tasks that you did in the past when you relocate to a new place. For some of them, you need to find alternative ways of achieving the same goals. For example, finding a way of visualising bigWig signal files. This is very important for the assessment of the data quality. I hate to say it, but it is often true that the most efficient way of telling whether an experiment works or not is the least scientific way, which is by visual inspection.</description>
+    </item>
+  </channel>
+</rss>

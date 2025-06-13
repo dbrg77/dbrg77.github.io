@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>seqspec on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/seqspec/</link>
+    <description>Recent content in seqspec on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 02 Jul 2023 00:30:00 +0800</lastBuildDate>
+    <atom:link href="https://dbrg77.github.io/tags/seqspec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PIPseq$^{\textmd{TM}}$ V4 Update</title>
+      <link>https://dbrg77.github.io/posts/2023-07-02-pip-seq-v4-update/</link>
+      <pubDate>Sun, 02 Jul 2023 00:30:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2023-07-02-pip-seq-v4-update/</guid>
+      <description>NOTE: this post is just a slightly more detailed version of this Twitter thread.&#xA;Not very long after I wrote the series about guessing the library layout of PIP-seq, the raw data (FASTQ files) for the V4 chemistry were made available from the FluentBio website, which is really nice.&#xA;Now let&amp;rsquo;s have a look at what has been changed. The experimental procedures seem to remain the same. What about the library layout and barcodes?</description>
+    </item>
+    <item>
+      <title>Guessing Library Structures (4) - PIP-seq V1prototype</title>
+      <link>https://dbrg77.github.io/posts/2023-06-07-guessing-library-structures-4/</link>
+      <pubDate>Wed, 07 Jun 2023 00:30:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2023-06-07-guessing-library-structures-4/</guid>
+      <description>Portal Guessing Library Structures (1) - Background Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3 Guessing Library Structures (3) - PIP-seq V2 Guessing Library Structures (4) - PIP-seq V1prototype This is the fourth post, also the last, from a series where I use the recent PIP-seq data as an example to demonstrate the importance to use a common standard like seqspec to accompany sequencing reads submissions into public repositories.&#xA;The V1?</description>
+    </item>
+    <item>
+      <title>Guessing Library Structures (3) - PIP-seq V2</title>
+      <link>https://dbrg77.github.io/posts/2023-06-04-guessing-library-structures-3/</link>
+      <pubDate>Sun, 04 Jun 2023 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2023-06-04-guessing-library-structures-3/</guid>
+      <description>Portal Guessing Library Structures (1) - Background Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3 Guessing Library Structures (3) - PIP-seq V2 Guessing Library Structures (4) - PIP-seq V1prototype This is the third post from a series where I use the recent PIP-seq data as an example to demonstrate the importance to use a common standard like seqspec to accompany sequencing reads submissions into public repositories.&#xA;Some Notes In the previous post, we have figured out the library structure of many samples from the Clark2023 paper.</description>
+    </item>
+    <item>
+      <title>Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3</title>
+      <link>https://dbrg77.github.io/posts/2023-06-03-guessing-library-structures-2/</link>
+      <pubDate>Sat, 03 Jun 2023 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2023-06-03-guessing-library-structures-2/</guid>
+      <description>Portal Guessing Library Structures (1) - Background Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3 Guessing Library Structures (3) - PIP-seq V2 Guessing Library Structures (4) - PIP-seq V1prototype This is the second post from a series where I use the recent PIP-seq data as an example to demonstrate the importance to use a common standard like seqspec to accompany sequencing reads submissions into public repositories.&#xA;An Initial Look The PIP-seq method was originally put on bioRxiv on 13 June 2022.</description>
+    </item>
+    <item>
+      <title>Guessing Library Structures (1) - Background</title>
+      <link>https://dbrg77.github.io/posts/2023-05-28-guessing-library-structures-1/</link>
+      <pubDate>Sun, 28 May 2023 14:46:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2023-05-28-guessing-library-structures-1/</guid>
+      <description>Portal Guessing Library Structures (1) - Background Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3 Guessing Library Structures (3) - PIP-seq V2 Guessing Library Structures (4) - PIP-seq V1prototype This is the first post from a series where I use the recent PIP-seq data as an example to demonstrate the importance to use a common standard like seqspec to accompany sequencing reads submissions into public repositories.&#xA;What&amp;rsquo;s The Problem? There are many interesting questions we can ask, but to what extent can we investigate and do research on them?</description>
+    </item>
+  </channel>
+</rss>

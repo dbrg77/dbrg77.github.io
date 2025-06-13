@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Matplotlib With The Beamer Metropolis Style</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, matplotlib, latex, beamer, metropolis'>
+
+    <meta property="og:url" content="https://notarocketscientist.xyz/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Matplotlib With The Beamer Metropolis Style">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Matplotlib With The Beamer Metropolis Style">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://notarocketscientist.xyz/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/">
+    <meta property="twitter:url" content="https://notarocketscientist.xyz/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://notarocketscientist.xyz/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://notarocketscientist.xyz">
+                <img src="https://notarocketscientist.xyz/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://notarocketscientist.xyz">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Matplotlib With The Beamer Metropolis Style</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            March 2, 2022
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/matplotlib">matplotlib</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/latex">latex</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/beamer">beamer</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/metropolis">metropolis</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Ever since I came across the <a href="https://github.com/matze/mtheme">metropolis</a> theme of <a href="https://ctan.org/pkg/beamer">Beamer</a> two years ago, I always used that theme to prepare presentation and lecture slides whenever possible. I really like the design. The style is hard to resist. One problem with it or with beamer in general is that plotting is difficult and limited. I know that <a href="https://ctan.org/pkg/pgfplots">pgfplots</a> is very powerful, and you can do some pretty <a href="https://texample.net/tikz/examples/all/">complicated plots</a> with it. I used it for routine basic plotting in Beamer, such as the box/scatter plot, the bar chart, the histogram. However, I&rsquo;m not very proficient at it. For some plots with really large data files, it is better just use <a href="https://matplotlib.org">matplotlib</a>. However, when I do that, I have another problem shown below:</p>
+<p><img src="/images/2022-03-02/example_of_the_problem.png" alt=""></p>
+<p>The style of the plots are not consistent with the general theme. I set my Beamer background colour to be <code>#FEFBF1</code>, which makes my eyes feel comfortable. The white background of the image from matplotlib is not good in this case. This is a easy fix. I could just set <code>mpl.rcParams['figure.facecolor'] = 'none'</code>, which makes the figure have transparent background at the same time preservses the axes grey colour. However, the style still does not fit due to the typeface and other small things. Then I found <a href="https://jwalton.info/Matplotlib-metropolis-beamer/">a very nice post</a> from <a href="https://jwalton.info/about/">Jack</a>. It seems I&rsquo;m not the only person who want a metropolis style for matplotlib. Anyway, the solution from that post is to use <a href="https://ctan.org/tex-archive/fonts/fira?lang=en">the LaTeX package FiraSans</a> and put your preamble into <code>mpl.rcParams['text.latex.preamble']</code>. Using the <code>metropolis.mplstyle</code> from the post, I&rsquo;m one step closer to what I want.</p>
+<p>The first problem is that matplotlib gives errors when using the <code>metropolis.mplstyle</code>. It turns out I need to remove the comma in the <code>text.latex.preamble</code>, like this:</p>
+<pre tabindex="0"><code>text.latex.preamble: \usepackage[T1]{fontenc} \usepackage[lf]{FiraSans} \usepackage{sfmath}
+</code></pre><p>The output:</p>
+<p><img src="/images/2022-03-02/fira_preamble.png" alt=""></p>
+<p>Looks much better but still not exactly what I want. My problem is the default math font in the metropolis theme, which is in a <code>sans-serif</code> style, that produces letters and numbers like shown above. This is what <code>x</code> and <code>y</code> look like in another plot if I just use the default metropolis theme:</p>
+<figure><img src="/images/2022-03-02/date2.png" width="500"/>
+</figure>
+
+<p>What I really want is the original latex math font, the <a href="https://ctan.org/tex-archive/fonts/lm-math?lang=en">Latin Modern Math</a>, that displays <code>x</code> and <code>y</code> as $x$ and $y$. In Beamer, I use <code>\usefonttheme[onlymath]{serif}</code> to solve the problem, but it resulted in an error when putting that into <code>mpl.rcParams['text.latex.preamble']</code>. I&rsquo;m not very proficient in <code>latex</code>, so it is difficult for me to debug. After fiddling around a bit, the solution is as simple as removing <code>\usepackage{sfmath}</code> 😂!</p>
+<p>Now I almost got what I want. Once the <code>usepackage{sfmath}</code> is removed, this is what the slide looks like:</p>
+<p><img src="/images/2022-03-02/fira_preamble_no_math.png" alt=""></p>
+<p>One last problem is the strokes of the generated math writing from matplotlib are too thin. It is good for regular reading, but for presentation, bold fonts would be great. One solution is that I could use the <a href="https://ctan.org/pkg/amsmath?lang=en">amsmath package</a> and use the <code>\boldsymbol</code> that comes with it to control the font weight. I&rsquo;m pretty sure I want all of them to be bold, so a simpler solution is to just use <code>\boldmath</code> in <code>mpl.rcParams['text.latex.preamble']</code>.</p>
+<p>The final look is like this:</p>
+<p><img src="/images/2022-03-02/the_solution.png" alt=""></p>
+<p>Other plots are like this:</p>
+<p><figure><img src="/images/2022-03-02/date3.png" width="500"/>
+</figure>
+
+<figure><img src="/images/2022-03-02/boxplot_gene_expression.png" width="500"/>
+</figure>
+</p>
+<p>Eventually, here is the <code>metropolis.mplstyle</code> that works for me:</p>
+<pre tabindex="0"><code># Matplotlib style file to create plots that integrate nicely
+# with the metropolis beamer template
+
+# Colours pulled from beamermetropolis.sty
+# Background colour in beamermetropolis.sty is as black!2
+# not very useful for matplotlib. Approximate as FAFAFA
+
+axes.axisbelow: True
+axes.edgecolor: 23373B
+axes.facecolor: EAEAF2
+axes.grid: False
+axes.labelcolor: 23373B
+axes.labelsize: 22
+axes.linewidth: 1.5
+
+# Set up colour cycle from metropolis
+axes.prop_cycle: cycler(&#39;color&#39;, [&#39;4C72B0&#39;, &#39;EB811B&#39;, &#39;14B03D&#39;, &#39;604c38&#39;])
+
+# Default size of single figure spanning textwidth of thesis
+figure.figsize: 4.2519699737097, 2.627861962896592
+figure.titlesize: 22
+figure.facecolor: none
+
+figure.dpi: 100
+
+font.family: sans-serif
+font.size: 20
+
+grid.color: white
+grid.linestyle: -
+grid.linewidth: 1
+
+image.cmap: Greys
+
+legend.fontsize: 18
+legend.frameon: False
+legend.numpoints: 1
+legend.scatterpoints: 1
+
+lines.antialiased: True
+lines.linewidth: 1.25
+lines.markeredgewidth: 0
+lines.markersize: 7
+lines.solid_capstyle: round
+
+patch.facecolor: 4C72B0
+patch.linewidth: .3
+
+savefig.facecolor: none
+savefig.format: pdf
+
+text.usetex: True
+text.latex.preamble: \usepackage[T1]{fontenc} \usepackage[lf]{FiraSans} \boldmath
+text.color: 23373B
+
+xtick.color: 23373B
+xtick.labelsize: 20
+xtick.direction: out
+xtick.major.pad: 10
+xtick.major.size: 5
+xtick.major.width: 1.5
+xtick.minor.size: 0
+xtick.minor.width: .5
+
+ytick.color: 23373B
+ytick.labelsize: 20
+ytick.direction: out
+ytick.major.pad: 10
+ytick.major.size: 5
+ytick.major.width: 1.5
+ytick.minor.size: 0
+ytick.minor.width: .5
+</code></pre>
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

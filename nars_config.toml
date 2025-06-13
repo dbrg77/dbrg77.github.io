@@ -1,0 +1,96 @@
+baseURL = "https://notarocketscientist.xyz"
+title = "Not A Rocket Scientist"
+theme = "gokarna"
+languageCode = "en-gb"
+defaultContentLanguage = "en-gb"
+enableEmoji = true
+enableRobotsTXT = true
+publishDir = "nars"
+
+# Choose one of emacs, trac or perldoc
+pygmentsStyle = "onedark"
+
+# quarto
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params]
+  footer = "Not A Rocket Scientist"
+  description = "Genomics | Bioinformatics | Epigenetics"
+  avatarURL = "/images/profile_avatar.png"
+  avatarSize = "size-l"
+  customHeadHTML = """
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  """
+  socialIcons = [
+    {name = "twitter", url = "https://twitter.com/XiChenUoM"},
+    {name = "bluesky", url = "https://bsky.app/profile/nixche.bsky.social"},
+    {name = "github", url = "https://github.com/dbrg77"},
+    {name = "orcid", url = "https://orcid.org/0000-0003-2648-3146"},
+    {name = "googlescholar", url = "https://scholar.google.com/citations?user=FZAhYsAAAAAJ&hl=en"},
+    {name = "gmail", url = "mailto:xi.chen.xc1@gmail.com"}
+  ]
+  showPostsOnHomePage = "recent"
+  metaKeywords = ["blog", "gokarna", "hugo", "data science", "biology", "genomics"]
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    pre = "<span data-feather='home'></span>"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "user"
+    pre = "<span data-feather='user'></span>"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "list"
+    pre = "<span data-feather='list'></span>"
+    name = "Posts"
+    url = "/posts/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "square"
+    pre = "<span data-feather='square'></span>"
+    name = "Projects"
+    url = "/projects/"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "tag"
+    pre = "<span data-feather='tag'></span>"
+    name = "Tags"
+    url = "/tags/"
+    weight = 5
+
+  [[menu.main]]
+      identifier = "bar-chart-2"
+      pre = "<span data-feather='bar-chart-2'></span>"
+      url = "https://dbrg77.github.io/SUSTech-BIO210"
+      weight = 6
+
+  [[menu.main]]
+      identifier = "smile"
+      pre = "<span data-feather='smile'></span>"
+      url = "https://github.com/Teichlab/scg_lib_structs"
+      weight = 7

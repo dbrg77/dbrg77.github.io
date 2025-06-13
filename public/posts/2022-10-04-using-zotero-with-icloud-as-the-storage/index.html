@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Using Zotero With iCloud As The Storage</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, reference manager, zotero, icloud, paperpile, papers, writing'>
+
+    <meta property="og:url" content="https://dbrg77.github.io/posts/2022-10-04-using-zotero-with-icloud-as-the-storage/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Using Zotero With iCloud As The Storage">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Using Zotero With iCloud As The Storage">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2022-10-04-using-zotero-with-icloud-as-the-storage/">
+    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2022-10-04-using-zotero-with-icloud-as-the-storage/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://dbrg77.github.io/posts/2022-10-04-using-zotero-with-icloud-as-the-storage/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://dbrg77.github.io">
+                <img src="https://dbrg77.github.io/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://dbrg77.github.io">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Using Zotero With iCloud As The Storage</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            October 4, 2022
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/reference-manager">reference manager</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/zotero">zotero</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/icloud">icloud</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/paperpile">paperpile</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/papers">papers</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/writing">writing</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>I used to use <a href="https://paperpile.com"><strong>Paperpile</strong></a> and <a href="https://docs.google.com"><strong>Google Doc</strong></a> for writing scientific papers and managing the literature PDFs. The process was very smooth. I did not really have the habit of saving PDFs locally, because I did not need to. In 2019, I relocated to my current place, and accessing Google Doc has been a pain ever since. Even if I managed to use Google Doc, the speed was pathetic and the connection was intermittent. The internet situation at my current university is pretty bad. To show you an example:</p>
+<figure><img src="/images/2022-10-04/dl_speed.png" width="600px"/>
+</figure>
+
+<p>Sometimes, not always, it takes minutes to open a ~10 MB PDFs in my browser. For some journals it takes &gt;10 minutes. I&rsquo;m not exaggerating, and it happens more often than I can tolerate. Occasionally, I cannot even open the journal website. It would be nice to have an offline version of Paperpile. <a href="https://forum.paperpile.com/t/add-support-for-offline-mode/26"><strong>After 8 years of the initial feature request</strong></a>, it may happen in the near future, but not now.</p>
+<p>Then I tried <a href="https://www.papersapp.com"><strong>Papers</strong></a>, because some of my friends recommended it. It had a nice look, and you could also save PDFs locally. However, without the access to Google Doc, I had to use Microsoft Word to write and use the Papers Word add-in <a href="https://www.papersapp.com/smartcite-for-word/"><strong>SmartCite</strong></a>. In order to insert citations, I needed to sign in to their server with my account, and it was the same internet problem all over again. The Papers desktop app does support local PDFs, but it is difficult to manage with multiple computers. In addition, there were also many other minor problems that I found annoying. For example, this <a href="https://support.papersapp.com/support/discussions/topics/30000001673"><strong>issue with doubled last names</strong></a> is still not resolved at this time of writing (4th October 2022).</p>
+<p>What I really need is a reference manager that has an offline mode, meaning that I can write and insert citations without internet connections, and at the same time offers a simple and straightforward way of synchronising reference data and PDFs across different computers. It turns out that <a href="https://www.zotero.org"><strong>Zotero</strong></a> is the perfect choice here. I did come across Zotero a long long time ago, and the user experience was not great back then. The current version (<em>Zotero 6</em>) seems to be much better than I remembered.</p>
+<p>Basically, inserting citations offline is the default in Zotero. I just need to figure out how to synchronise the reference metadata (<em>i.e.</em> data syncing) and PDFs (<em>i.e.</em> file syncing) across different computers. The metadata is pretty small, so I&rsquo;m okay with using the Zotero online storage for that even the connection is slow. The PDFs take a lot of space, and only 300 MB are available for free users. I need to find a cloud storage service that is fast and stable in my area. It turns out that iCloud is pretty good. I&rsquo;m already a daily user, so it would be great if I could use iCloud as the PDFs storage. Some just put the entire Zotero data folder on the cloud, but it was <a href="https://www.zotero.org/support/kb/data_directory_in_cloud_storage_folder"><strong>strongly discouraged</strong></a>. Therefore, the idea is to keep the metadata synced via the Zotero server, but keep PDFs on iCould. It turns out to be relative easy if we symlink the <code>storage</code> directory under the Zotero data folder. Linked files also work, but I found that concept a bit confusing.</p>
+<p>First, we need to perform some initial setup in one computer, say <em>Computer 0</em>. Install Zotero, and sign in with your Zotero account in the <code>Sync</code> tab under Zotero <code>Preferences</code>. Uncheck the <code>File Syncing</code> options like this:</p>
+<p><img src="/images/2022-10-04/zotero_sync.png" alt=""></p>
+<p>Then, create a folder called <code>zotero_storage</code> under the iCloud directory. Now go to the default Zotero data folder. If we did not change anything during installation, the Zotero data folder should be in your home directory: <code>/Users/&lt;username&gt;/Zotero</code>. There may or may not be a <code>storage</code> directory inside that folder. All our local PDFs are supposed to be there. If we just did a fresh install, the <code>storage</code> directory should not be there. We could simply created a symlink called <code>storage</code>, pointing to the <code>zotero_storage</code> folder we just created under iCloud. To this end, open the terminal and do this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># this is done in Computer 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> /Users/&lt;username&gt;/Zotero
+</span></span><span style="display:flex;"><span>ln -s /Users/&lt;username&gt;/Library/Mobile<span style="color:#98c379">\ </span>Documents/com~apple~CloudDocs/zotero_storage storage
+</span></span></code></pre></div><p>After that, our Zotero data folder should look like this:</p>
+<p><img src="/images/2022-10-04/zotero_data_folder.png" alt=""></p>
+<p>Note the small black arrow at the bottom left corner of the <code>storage</code> directory, meaning it is a link.</p>
+<p>If we already have Zotero in this computer, the <code>storage</code> directory is probably already in your Zotero data folder. Move all the content inside it to the <code>zotero_storage</code> folder under iCloud. Then delete the empty <code>storage</code> folder, and create a symlink called <code>storage</code>, pointing to the <code>zotero_storage</code> folder under iCloud. This can be achieved by opening the terminal and do:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># this is done in Computer 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> /Users/&lt;username&gt;/Zotero
+</span></span><span style="display:flex;"><span>rmdir storage
+</span></span><span style="display:flex;"><span>ln -s /Users/&lt;username&gt;/Library/Mobile<span style="color:#98c379">\ </span>Documents/com~apple~CloudDocs/zotero_storage storage
+</span></span></code></pre></div><p>Now, you could add new PDFs to the reference as stored files, and Zotero will by default put those PDFs under <code>/Users/&lt;username&gt;/Zotero/storage</code>, which points to <code>/Users/&lt;username&gt;/Library/Mobile\ Documents/com~apple~CloudDocs/zotero_storage</code>. This effectively puts all files under our iCloud storage.</p>
+<p>All the above steps should be done in <em>Computer 0</em>.</p>
+<p>After that, we could set up Zotero in other computers we need to use. In the new computers where you have your Apple ID signed in and iCloud working, do a fresh install of Zotero. Then, <strong>with the Zotero program closed</strong>, create a symlink in the same way as previous described:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># this is done in the new computers</span>
+</span></span><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> /Users/&lt;username&gt;/Zotero
+</span></span><span style="display:flex;"><span>ln -s /Users/&lt;username&gt;/Library/Mobile<span style="color:#98c379">\ </span>Documents/com~apple~CloudDocs/zotero_storage storage
+</span></span></code></pre></div><p>After that, open Zotero, sign in with your account, and turn off <code>File Syncing</code>, just like what we did in <em>Computer 0</em>. Then, everything should be in sync. The reference metadata is synced via the Zotero server, and the PDFs are located on iCloud, which could be accessed via Zotero in all computers.</p>
+<p>I have this set up with Mac computers and iCloud, but the same principle should hold, in theory, for Windows/Linux and other cloud storage service providers.</p>
+<p><em><strong>UPDATE 1 (2024):</strong></em> It is better to keep the <code>zotero_storage</code> folder in iCloud always available in all your computers by right clicking the folder and selecting <strong>Keep Downloaded</strong>, like this:</p>
+<p><img src="/images/2022-10-04/keep_dl.png" alt=""></p>
+<p>This solves the rare problem that Zotero may not be able to locate some PDF files in some computers.</p>
+<p><em><strong>UPDATE 2 (2025):</strong></em> For a Windows setup, check <a href="/posts/2025-02-08-work-syncing-across-different-oss/">this post</a>.</p>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

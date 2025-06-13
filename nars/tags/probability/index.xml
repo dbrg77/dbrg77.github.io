@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>probability on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/probability/</link>
+    <description>Recent content in probability on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 27 Jan 2023 00:10:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/probability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Did Gauss Derive The Normal Distribution</title>
+      <link>https://notarocketscientist.xyz/posts/2023-01-27-how-gauss-derived-the-normal-distribution/</link>
+      <pubDate>Fri, 27 Jan 2023 00:10:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2023-01-27-how-gauss-derived-the-normal-distribution/</guid>
+      <description>I first came across with the normal distribution when I was 17 years old in high school. The probability density function (PDF) is&#xA;$$f_{\boldsymbol{X}}(x) = \cfrac{1}{\sqrt{2\pi}\sigma}\,e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$&#xA;where $\mu$ and $\sigma$ are the population mean and standard deviation, respectively.&#xA;Like most people when they first came across this function, the derivation of the function was not really introduced. Soon after that, we started to use it to calculate probabilities and other things.</description>
+    </item>
+  </channel>
+</rss>

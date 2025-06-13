@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>samtools on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/samtools/</link>
+    <description>Recent content in samtools on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 10 Feb 2017 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/samtools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ATAC-seq Insert Size Plotting</title>
+      <link>https://notarocketscientist.xyz/posts/2017-02-10-atac-seq-insert-size-plotting/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2017-02-10-atac-seq-insert-size-plotting/</guid>
+      <description>ATAC-seq is THE simplest genomic protocol to profile open chromatin regions in the genome. The original publication (Nature Methods 10, 1213-1218) has been cited 441 times at this moment of writing (1,073 times at this moment of re-posting). It has become almost a routine for a lab that is interested in transcriptional regulation.&#xA;One common QC for the data is to plot the fragment size density of your libraries. The successful construction of a ATAC library requires a proper pair of Tn5 transposase cutting events at the ends of DNA.</description>
+    </item>
+  </channel>
+</rss>

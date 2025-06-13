@@ -1,0 +1,8 @@
+<!-- <head>
+    <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}/css/admonition.css">
+</head> -->
+
+<div class="admonition tip">
+    <div class="title">{{ .Get "title" | default "Tip" }}</div>
+    <div class="content">{{ .Inner | markdownify }}</div>
+</div>

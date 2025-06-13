@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>peak calling on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/peak-calling/</link>
+    <description>Recent content in peak calling on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 09 Dec 2020 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/peak-calling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ATAC-seq Peak Calling With MACS2</title>
+      <link>https://notarocketscientist.xyz/posts/2020-12-09-atac-seq-peak-calling-with-macs2/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2020-12-09-atac-seq-peak-calling-with-macs2/</guid>
+      <description>Although ATAC-seq has been extensively used in the functional genomics field to study chromatin accessibility, it is still under debate how we should perform peak calling to identify oepn chromatin regions. MACS2 is a very popular peak caller for ChIP-seq, and it has been used for ATAC-seq as well. How should we perform ATAC-seq peak calling using MACS2? That is a recurring question. If you pay attention to the details in those publications that uses ATAC-seq, you might notice that some people uses the --shift -100 --extsize 200 flags during MACS2 peak calling.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>chromap on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/chromap/</link>
+    <description>Recent content in chromap on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 23 Jul 2024 09:00:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/chromap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding The Chromap Summary File</title>
+      <link>https://notarocketscientist.xyz/posts/2024-07-23-understanding-the-chromap-summary-file/</link>
+      <pubDate>Tue, 23 Jul 2024 09:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2024-07-23-understanding-the-chromap-summary-file/</guid>
+      <description>Background When talking about scATAC-seq data preprocessing, I guess the first method that most people choose is Cell Ranger ATAC. The 10x Genomics Single Cell ATAC kit is probably the most widely used commercial method for doing scATAC-seq, and Cell Ranger ATAC provides a very convenient way of converting the raw sequencing reads to some sort of count matrix for downstream in-depth analyses. The problems with Cell Ranger ATAC are that:</description>
+    </item>
+  </channel>
+</rss>

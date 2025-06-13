@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>How Difficult Is It To Start Your Single-cell Analysis As A Beginner</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, bioinformatics, preprocessing, single cell genomics, unix, software installation, seurat, scanpy, r, python, bioconductor'>
+
+    <meta property="og:url" content="https://notarocketscientist.xyz/posts/2024-01-18-how-difficult-is-it-to-start-your-single-cell-analysis-as-a-beginner/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="How Difficult Is It To Start Your Single-cell Analysis As A Beginner">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How Difficult Is It To Start Your Single-cell Analysis As A Beginner">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://notarocketscientist.xyz/posts/2024-01-18-how-difficult-is-it-to-start-your-single-cell-analysis-as-a-beginner/">
+    <meta property="twitter:url" content="https://notarocketscientist.xyz/posts/2024-01-18-how-difficult-is-it-to-start-your-single-cell-analysis-as-a-beginner/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://notarocketscientist.xyz/posts/2024-01-18-how-difficult-is-it-to-start-your-single-cell-analysis-as-a-beginner/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://notarocketscientist.xyz">
+                <img src="https://notarocketscientist.xyz/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://notarocketscientist.xyz">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>How Difficult Is It To Start Your Single-cell Analysis As A Beginner</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            January 26, 2024
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/bioinformatics">bioinformatics</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/preprocessing">preprocessing</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/single-cell-genomics">single cell genomics</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/unix">unix</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/genomics">genomics</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/software-installation">software installation</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/seurat">seurat</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/scanpy">scanpy</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/r">r</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/python">python</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/bioconductor">bioconductor</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>The title for this post is &ldquo;<strong>How Difficult Is It To Start Your Single-cell Analysis As A Beginner</strong>&rdquo;. However, once I finished writing the post, the majority of the content is actually about &ldquo;<strong>Seurat and OSCA Installation On Freshly Installed Ubuntu/Debian/Fedora</strong>&rdquo;. Oh well &hellip; If you do not have time, just go to the final <a href="#summary"><strong>Summary</strong></a> section to see the final results.</p>
+<h2 id="introduction">Introduction</h2>
+<p>When I started my NGS analysis during my PhD, which was more than 10 years ago, one of the most difficult things was software installation. In many cases, you needed to do the following three magic steps:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./configure
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>make install
+</span></span></code></pre></div><p>If things went well, it meant we managed to install the intended software successfully. Congratulations! However, errors occurred &hellip; should I say &hellip; very often? It was definitely more often than I expected. For example, I&rsquo;m sure you&rsquo;ve got the &ldquo;Permission denied&rdquo; error at least once. Most of the time, it happens at the <code>make install</code> stage where the system tries to copy the compiled binaries to a default place, usually <code>/usr/local/bin</code> where we do not have the write permission as a normal user. Whenever this happens, we can manually copy the compiled binaries to a place that we have the write permission and add that directory to our <code>$PATH</code>. Alternatively, we could set the <code>prefix</code> during the <code>./configure</code> stage to change the default installation place. Or you can just use a machine where you have the admin right and do <code>sudo make install</code>. Anyway, it is an easy-to-solve error, and we could solve it once we do some basic search or read the installation guide (if any) that comes with the software.</p>
+<p>The tricky bit is when we encounter some errors during the <code>./configure</code> or <code>make</code> stage, especially the <code>make</code> stage. Very often, very long logs are printed to the terminal, which looks really intimidating if we are not used to working with the terminal. In this case, it is highly likely that some dependencies are missing in our system. Of course, we could copy and paste the error messages to Google and find potential solutions. However, we may not be able to find a solution eventually. That was the first problem, and it could be avoided by using <strong>precompiled binaries</strong> that were not always available.</p>
+<p>Once we got some experience, we often needed some <strong>Python/R/Perl</strong> packages to do some exploratory and in-depth analyses. That was when we encountered the second problem. How should we do that? In this case, we need to install <strong>Python</strong> or <strong>R</strong> or <strong>Perl</strong> packages. Many years ago, in order to install <strong>Python</strong> packages, we might need to download the source code and do:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python setup.py install
+</span></span></code></pre></div><p>Not sure about <strong>R</strong> or <strong>Perl</strong> back in the days, but I suppose it was something similar. Again, errors could occur and it required some language-specific knowledge to understand the error messages and solve the problem.</p>
+<p>Now, in 2024, with all the package managers (<em>e.g.</em> <a href="https://docs.conda.io/en/latest/"><strong>conda</strong></a>) and detailed bioinformatics tutorials, software installation is often achieved by a simple command like <code>conda install &lt;package_name&gt;</code>. Therefore, it seems getting your hands on the analysis of your sequencing data should be easy nowadays. Or is it? Let&rsquo;s have a look.</p>
+<h2 id="setting-up-your-computing-environment-from-scratch">Setting Up Your Computing Environment From Scratch</h2>
+<p>Imagine we are new students that have some basic experience on the command line usage and just get a new computer workstation as our tool. Since we work on single-cell analysis, we would want to setup an environment from scratch for that purpose. In this case, what should we do? Well, first we need to install an operating system, of course. Some initial internet search would tell us to use the <strong>Linux</strong> operating system. There are way too many <a href="https://en.wikipedia.org/wiki/List_of_Linux_distributions">Linux distributions</a> that are not relevant for beginners. Many people recommend <a href="https://ubuntu.com"><strong>Ubuntu</strong></a> for beginners, so let&rsquo;s just use that. Let&rsquo;s also include <a href="https://www.debian.org"><strong>Debian</strong></a> and <a href="https://fedoraproject.org"><strong>Fedora</strong></a> as well which are also popular.</p>
+<p>The next thing is to decide what flavour of analysis pipeline we would like to learn and use. If we were to analyse single-cell genomics data, we probably already started reading literatures. If we have already read a few papers, I&rsquo;m sure we have come across <a href="https://scanpy.readthedocs.io/en/latest/index.html"><strong>Scanpy</strong></a> or <a href="https://satijalab.org/seurat/"><strong>Seurat</strong></a>. In addition, we may also see <a href="https://bioconductor.org/books/release/OSCA/"><strong>Orchestrating Single-Cell Analysis with Bioconductor (OSCA)</strong></a>. All of them have very good documentations and are widely used in the community. It is a good start if we follow their tutorials. Let&rsquo;s just try all of them, because why not?</p>
+<p>Let me use the free credits given by <a href="https://cloud.google.com">Google Cloud Platform (GCP)</a> to simulate this situation.</p>
+<h3 id="install-the-operating-system">Install The Operating System</h3>
+<p>Here, I created a VM instance using the <strong>E2 series</strong>, with 4 CPU and 32 GB memory. For the operating system, there are multiple different versions of <strong>Ubuntu</strong>. Let&rsquo;s just use the latest Long Term Support (LTS) version, which is <code>22.04 LTS</code> at this time of writing. The basic setup is shown below:</p>
+<p><img src="/images/2024-01-23/gcp_e2.png" alt=""></p>
+<h3 id="ubuntu--scanpy">Ubuntu + Scanpy</h3>
+<p>Once we started the VM instance, we could treat that as our workstation with freshly installed <strong>Ubuntu 22.04 LTS</strong>. Now let&rsquo;s try <a href="https://scanpy-tutorials.readthedocs.io/en/latest/"><strong>Scanpy</strong></a>. We went to the installation page <a href="https://scanpy.readthedocs.io/en/latest/installation.html">here</a> and saw that they recommended installing <a href="https://docs.conda.io/projects/miniconda/en/latest/">Miniconda</a> so that we could use the <strong>conda</strong> package manager to install the dependencies required by <strong>Scanpy</strong>.</p>
+<p>So we headed to the <a href="https://docs.conda.io/projects/miniconda/en/latest/">Miniconda</a> webpage, downloaded the Linux installer to our VM and ran the installer file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+</span></span><span style="display:flex;"><span>$ chmod +x Miniconda3-latest-Linux-x86_64.sh
+</span></span><span style="display:flex;"><span>$ ./Miniconda3-latest-Linux-x86_64.sh
+</span></span></code></pre></div><p>We just followed the instructions on the screen and answered &ldquo;yes&rdquo; to the final question: &ldquo;Do you wish to update your shell profile to automatically initialize conda?&rdquo;</p>
+<p>After the <strong>Miniconda</strong> installation, we exited and logged in again. Everything was ready to go.</p>
+<p>Then we went back to the <a href="https://scanpy.readthedocs.io/en/latest/installation.html">Scanpy installation page</a> and followed the instructions to first install the dependencies by:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ conda install -c conda-forge scanpy python-igraph leidenalg
+</span></span></code></pre></div><p>Then we installed <strong>Scanpy</strong> by:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pip install scanpy
+</span></span></code></pre></div><p>Everything went smoothly, and the whole process only took a few minutes. We were able to follow the tutorial to start our single-cell analysis using <strong>Scanpy</strong>.</p>
+<h3 id="ubuntu--seurat-v5">Ubuntu + Seurat V5</h3>
+<p>Now let&rsquo;s try <strong>Seurat</strong> using the same procedures, starting with a fresh VM. First, we headed to the <a href="https://satijalab.org/seurat/articles/install_v5">installation page of Seurat</a>. Then we were told that we needed <strong>R</strong> version 4.0 or greater. Let&rsquo;s do that by simply following the instructions from the official <a href="https://www.r-project.org"><strong>R</strong> website</a>. The installation page for <strong>Ubuntu</strong> told us the following, which I copied and pasted here:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># update indices</span>
+</span></span><span style="display:flex;"><span>sudo apt update -qq
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install two helper packages we need</span>
+</span></span><span style="display:flex;"><span>sudo apt install --no-install-recommends software-properties-common dirmngr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># add the signing key (by Michael Rutter) for these repos</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc </span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># Fingerprint: E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
+</span></span><span style="display:flex;"><span>wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># add the R 4.0 repo from CRAN -- adjust &#39;focal&#39; to &#39;groovy&#39; or &#39;bionic&#39; as needed</span>
+</span></span><span style="display:flex;"><span>sudo add-apt-repository <span style="color:#98c379">&#34;deb https://cloud.r-project.org/bin/linux/ubuntu </span><span style="color:#c678dd">$(</span>lsb_release -cs<span style="color:#c678dd">)</span><span style="color:#98c379">-cran40/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install R and its dependencies</span>
+</span></span><span style="display:flex;"><span>sudo apt install --no-install-recommends r-base
+</span></span></code></pre></div><p>We ran the above commands one-by-one in that order, and they should run smoothly without any errors. Once this was done, we could start <strong>R</strong>. To avoid the &ldquo;Permission denied&rdquo; issue, we just ran it with <code>sudo</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo R
+</span></span></code></pre></div><p>Then we should see the following message:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#e06c75">R</span> <span style="color:#e06c75">version</span> <span style="color:#d19a66">4.3.2</span> (<span style="color:#d19a66">2023-10-31</span>) <span style="color:#56b6c2">--</span> <span style="color:#98c379">&#34;Eye Holes&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#61afef;font-weight:bold">Copyright </span>(<span style="color:#e06c75">C</span>) <span style="color:#d19a66">2023</span> <span style="color:#e06c75">The</span> <span style="color:#e06c75">R</span> <span style="color:#e06c75">Foundation</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">Statistical</span> <span style="color:#e06c75">Computing</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Platform</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">x86_64</span><span style="color:#56b6c2">-</span><span style="color:#e06c75">pc</span><span style="color:#56b6c2">-</span><span style="color:#e06c75">linux</span><span style="color:#56b6c2">-</span><span style="color:#61afef;font-weight:bold">gnu </span>(<span style="color:#d19a66">64</span><span style="color:#56b6c2">-</span><span style="color:#e06c75">bit</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">R</span> <span style="color:#e06c75">is</span> <span style="color:#e06c75">free</span> <span style="color:#e06c75">software</span> <span style="color:#e06c75">and</span> <span style="color:#e06c75">comes</span> <span style="color:#e06c75">with</span> <span style="color:#e06c75">ABSOLUTELY</span> <span style="color:#e06c75">NO</span> <span style="color:#e06c75">WARRANTY.</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">You</span> <span style="color:#e06c75">are</span> <span style="color:#e06c75">welcome</span> <span style="color:#e06c75">to</span> <span style="color:#e06c75">redistribute</span> <span style="color:#e06c75">it</span> <span style="color:#e06c75">under</span> <span style="color:#e06c75">certain</span> <span style="color:#e06c75">conditions.</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Type</span> <span style="color:#98c379">&#39;license()&#39;</span> <span style="color:#e06c75">or</span> <span style="color:#98c379">&#39;licence()&#39;</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">distribution</span> <span style="color:#e06c75">details.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">R</span> <span style="color:#e06c75">is</span> <span style="color:#e06c75">a</span> <span style="color:#e06c75">collaborative</span> <span style="color:#e06c75">project</span> <span style="color:#e06c75">with</span> <span style="color:#e06c75">many</span> <span style="color:#e06c75">contributors.</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Type</span> <span style="color:#98c379">&#39;contributors()&#39;</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">more</span> <span style="color:#e06c75">information</span> <span style="color:#e06c75">and</span>
+</span></span><span style="display:flex;"><span><span style="color:#98c379">&#39;citation()&#39;</span> <span style="color:#e06c75">on</span> <span style="color:#e06c75">how</span> <span style="color:#e06c75">to</span> <span style="color:#e06c75">cite</span> <span style="color:#e06c75">R</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">R</span> <span style="color:#e06c75">packages</span> <span style="color:#c678dd">in</span> <span style="color:#e06c75">publications.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Type</span> <span style="color:#98c379">&#39;demo()&#39;</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">some</span> <span style="color:#e06c75">demos</span>, <span style="color:#98c379">&#39;help()&#39;</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">on</span><span style="color:#56b6c2">-</span><span style="color:#e06c75">line</span> <span style="color:#e06c75">help</span>, <span style="color:#e06c75">or</span>
+</span></span><span style="display:flex;"><span><span style="color:#98c379">&#39;help.start()&#39;</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">an</span> <span style="color:#e06c75">HTML</span> <span style="color:#e06c75">browser</span> <span style="color:#e06c75">interface</span> <span style="color:#e06c75">to</span> <span style="color:#e06c75">help.</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">Type</span> <span style="color:#98c379">&#39;q()&#39;</span> <span style="color:#e06c75">to</span> <span style="color:#e06c75">quit</span> <span style="color:#e06c75">R.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">&gt;</span>
+</span></span></code></pre></div><p>That meant we had successfully installed <strong>R</strong> version <code>4.3.2</code>.</p>
+<p>Inside <strong>R</strong>, we followed the instruction to install the latest <strong>Seurat</strong> which was <code>V5</code>. The instructions told us to pull it from <a href="https://cran.r-project.org/package=Seurat"><strong>CRAN</strong></a>. We just do the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#56b6c2">&gt;</span> <span style="color:#61afef;font-weight:bold">install.packages</span>(<span style="color:#98c379">&#39;Seurat&#39;</span>)
+</span></span></code></pre></div><p>Then an intimidating amount of compiling logs were printed on the screen. If we followed the text in action, we noticed a lot of lines starting with &ldquo;ERROR&rdquo;, but the text was flying so fast and it was difficult to catch them. Finally, we got many errors in the end, which I assumed (not sure) was a summary of all the errors printed previously. The error lines were too many, and they were all in the format of:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#56b6c2">&lt;</span><span style="color:#e06c75">package_name</span><span style="color:#56b6c2">&gt;</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#56b6c2">&lt;</span><span style="color:#e06c75">package_name</span><span style="color:#56b6c2">&gt;</span>’
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">*</span> <span style="color:#e06c75">removing</span> ‘<span style="color:#56b6c2">/</span><span style="color:#e06c75">usr</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">local</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">lib</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">R</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">site</span><span style="color:#56b6c2">-</span><span style="color:#e06c75">library</span><span style="color:#56b6c2">/&lt;</span><span style="color:#e06c75">package_name</span><span style="color:#56b6c2">&gt;</span>’
+</span></span></code></pre></div><p>The last line of the error in my case was:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">SeuratObject</span>’, ‘<span style="color:#e06c75">cowplot</span>’, ‘<span style="color:#e06c75">fastDummies</span>’, ‘<span style="color:#e06c75">future</span>’, ‘<span style="color:#e06c75">future.apply</span>’, ‘<span style="color:#e06c75">ggplot2</span>’, ‘<span style="color:#e06c75">ggrepel</span>’, ‘<span style="color:#e06c75">ggridges</span>’, ‘<span style="color:#e06c75">httr</span>’, ‘<span style="color:#e06c75">igraph</span>’, ‘<span style="color:#e06c75">irlba</span>’, ‘<span style="color:#e06c75">jsonlite</span>’, ‘<span style="color:#e06c75">leiden</span>’, ‘<span style="color:#e06c75">lifecycle</span>’, ‘<span style="color:#e06c75">lmtest</span>’, ‘<span style="color:#e06c75">matrixStats</span>’, ‘<span style="color:#e06c75">miniUI</span>’, ‘<span style="color:#e06c75">patchwork</span>’, ‘<span style="color:#e06c75">plotly</span>’, ‘<span style="color:#e06c75">png</span>’, ‘<span style="color:#e06c75">progressr</span>’, ‘<span style="color:#e06c75">purrr</span>’, ‘<span style="color:#e06c75">RANN</span>’, ‘<span style="color:#e06c75">Rcpp</span>’, ‘<span style="color:#e06c75">RcppAnnoy</span>’, ‘<span style="color:#e06c75">RcppHNSW</span>’, ‘<span style="color:#e06c75">reticulate</span>’, ‘<span style="color:#e06c75">rlang</span>’, ‘<span style="color:#e06c75">ROCR</span>’, ‘<span style="color:#e06c75">RSpectra</span>’, ‘<span style="color:#e06c75">Rtsne</span>’, ‘<span style="color:#e06c75">scales</span>’, ‘<span style="color:#e06c75">scattermore</span>’, ‘<span style="color:#e06c75">sctransform</span>’, ‘<span style="color:#e06c75">shiny</span>’, ‘<span style="color:#e06c75">spatstat.explore</span>’, ‘<span style="color:#e06c75">spatstat.geom</span>’, ‘<span style="color:#e06c75">tibble</span>’, ‘<span style="color:#e06c75">uwot</span>’, ‘<span style="color:#e06c75">RcppEigen</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">Seurat</span>’
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">*</span> <span style="color:#e06c75">removing</span> ‘<span style="color:#56b6c2">/</span><span style="color:#e06c75">usr</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">local</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">lib</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">R</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">site</span><span style="color:#56b6c2">-</span><span style="color:#e06c75">library</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">Seurat</span>’
+</span></span></code></pre></div><p>This was really annoying, because we had just followed the exact steps but got so many errors. We did not know where to start. Therefore, I Googled &ldquo;install seurat v5 ubuntu&rdquo; and got the following thread in <strong>GitHub</strong></p>
+<p><a href="https://github.com/satijalab/seurat/issues/1183">https://github.com/satijalab/seurat/issues/1183</a></p>
+<p>It seems there are a lot of dependencies missing in a freshly installed <strong>Ubuntu</strong>. You see, there is a difference. <strong>Seurat</strong> is dependent on some &ldquo;stuff&rdquo; in the operating system AND some packages in <strong>R</strong>. The latter should be handled automatically (I assume) by the <code>install.packages</code> command inside <strong>R</strong>. However, the former, that is the missing dependencies in the operating system <strong>Ubuntu</strong>, need to be handled by ourselves. Now let&rsquo;s follow the instructions provided by <a href="https://github.com/satijalab/seurat/issues/1183#issuecomment-472153514">@wyattmcdonnell</a>, which is basically install the missing dependencies in the <strong>Ubuntu</strong> operating system. Since we already had <strong>R</strong>, we just need to install the dependencies, and note that installing some packages would automatically get others. Therefore, we just did the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt update
+</span></span><span style="display:flex;"><span>$ sudo apt upgrade
+</span></span><span style="display:flex;"><span>$ sudo apt install libcurl4-openssl-dev
+</span></span><span style="display:flex;"><span>$ sudo apt install libhdf5-dev
+</span></span><span style="display:flex;"><span>$ sudo apt install h5utils
+</span></span></code></pre></div><p>Once we installed all the above dependencies, we tried to install <strong>Seurat</strong> again and then we got many errors again &hellip; Going back through the long logs, I noticed one particular error among the wall of text:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sh: 1: make: not found
+</span></span></code></pre></div><p>That was the time when we realised that some very basic programs, like <code>make</code>, <code>gcc</code> and <code>g++</code>, to compile software were actually missing in the freshly installed <strong>Ubuntu</strong>. Let&rsquo;s install all of them together by install the bundle <code>build-essential</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install build-essential
+</span></span></code></pre></div><p>Okay, once again, we tried to install <strong>Seurat</strong> after that. And once again, we got errors after more than 30 minutes of compiling logs. Going back through the logs, I noticed another error:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sh: 1: gfortran: not found
+</span></span></code></pre></div><p>Okay, fine. Let&rsquo;s install the missing package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install gfortran
+</span></span></code></pre></div><p>Once <code>gfortran</code> was installed, we tried to install <strong>Seurat</strong> again. Based on our previous experience, we paid attention to and looked closely at the logs ON THE FLY!!! Unsurprisingly, errors occurred again. This time, we managed to capture all of them since we were looking at them in real time. There were three of them:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/ld: cannot find -llapack: No such file or directory
+</span></span><span style="display:flex;"><span>/usr/bin/ld: cannot find -lblas: No such file or directory
+</span></span><span style="display:flex;"><span>/bin/bash: line 1: libpng-config: <span style="color:#e5c07b">command</span> not found
+</span></span></code></pre></div><p>Then we looked for help via Google. <a href="https://stackoverflow.com/questions/74355081/install-r-package-error-compilation-failed-in-ubuntu-18-04">This post</a> told us that we needed to do the following to get <code>lapack</code> and <code>blas</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install libblas-dev
+</span></span><span style="display:flex;"><span>$ sudo apt install liblapack-dev
+</span></span></code></pre></div><p>and <a href="https://askubuntu.com/questions/508934/how-to-install-libpng-and-zlib">this post</a> told us that we needed to do the following to get <code>libpng-config</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install libpng-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># seems installing libpng-dev will automatically getting zlib1g, so the following is not exactly needed</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install zlib1g-dev 
+</span></span></code></pre></div><p>After all of those were installed, for one last time, we tried to install <strong>Seurat</strong> and finally it was successfully installed. In total, it took us hours to get to this point.</p>
+<h3 id="ubuntu--osca">Ubuntu + OSCA</h3>
+<p>Okay, what about <strong>OSCA</strong> then? With the previous experience, we actually could take some actions to make the troubleshooting a bit easier for us. To simulate the fresh start, we used a new VM instance with the same configuration. Then we installed <strong>R</strong> following the instructions on the official <strong>R</strong> website.</p>
+<p>Once <strong>R</strong> installation was done, we could head to the <a href="https://bioconductor.org/books/3.18/OSCA.intro/installation.html"><strong>OSCA installation page</strong></a>. We were told to use the following two commands to install <code>OSCA.intro</code>, which contains all packages needed for the tutorial:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#61afef;font-weight:bold">install.packages</span>(<span style="color:#98c379">&#34;BiocManager&#34;</span>)     <span style="color:#7f848e"># install bioconductor</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">BiocManager</span><span style="color:#56b6c2">::</span><span style="color:#61afef;font-weight:bold">install</span>(<span style="color:#98c379">&#34;OSCA.intro&#34;</span>)  <span style="color:#7f848e"># install osca.intro</span>
+</span></span></code></pre></div><p>The installation of <strong>Bioconductor</strong> went smoothly without any problem. Then we were ready to install <code>OSCA.intro</code> using <strong>Bioconductor</strong>. Based on our previous experience, we knew that there would be an enormous amount of logs printed to the screen, and the errors would be buried into the text. Therefore, to make errors a bit easier to track, we first created a file called <code>install.r</code>. The content of the file is as simple as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#e06c75">BiocManager</span><span style="color:#56b6c2">::</span><span style="color:#61afef;font-weight:bold">install</span>(<span style="color:#98c379">&#34;OSCA.intro&#34;</span>)
+</span></span></code></pre></div><p>Then we performed the installation using the following way from our terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo Rscript install.r <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    1&gt; osca_install_fresh.stdout <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    2&gt; osca_install_fresh.stderr
+</span></span></code></pre></div><p>Of course, it failed. Let&rsquo;s find out the errors from thousands of lines from the <code>stderr</code> file. Since we already had some experience, we roughly knew what an error looked like. We could do this by:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ grep -i <span style="color:#98c379">&#39;error&#39;</span> osca_install_fresh.stderr
+</span></span><span style="display:flex;"><span>$ grep <span style="color:#98c379">&#39;No such file or directory&#39;</span> osca_install_fresh.stderr
+</span></span><span style="display:flex;"><span>$ grep <span style="color:#98c379">&#39;sh:&#39;</span> osca_install_fresh.stderr
+</span></span></code></pre></div><p>When we looked for the keyword &rsquo;error&rsquo;, we saw similar error messages like those in <strong>Seurat</strong>. They were in the following format:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#56b6c2">&lt;</span><span style="color:#e06c75">package_name</span><span style="color:#56b6c2">&gt;</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#56b6c2">&lt;</span><span style="color:#e06c75">package_name</span><span style="color:#56b6c2">&gt;</span>’
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">*</span> <span style="color:#e06c75">removing</span> ‘<span style="color:#56b6c2">/</span><span style="color:#e06c75">usr</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">local</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">lib</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">R</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">site</span><span style="color:#56b6c2">-</span><span style="color:#e06c75">library</span><span style="color:#56b6c2">/&lt;</span><span style="color:#e06c75">package_name</span><span style="color:#56b6c2">&gt;</span>’
+</span></span></code></pre></div><p>In addition, there were also errors like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#e06c75">Error</span> <span style="color:#c678dd">in</span> <span style="color:#61afef;font-weight:bold">system</span>(<span style="color:#61afef;font-weight:bold">paste</span>(<span style="color:#e06c75">MAKE</span>, <span style="color:#61afef;font-weight:bold">p1</span>(<span style="color:#61afef;font-weight:bold">paste</span>(<span style="color:#98c379">&#34;-f&#34;</span>, <span style="color:#61afef;font-weight:bold">shQuote</span>(<span style="color:#e06c75">makefiles</span>))), <span style="color:#98c379">&#34;compilers&#34;</span>),  <span style="color:#56b6c2">:</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">error</span> <span style="color:#c678dd">in</span> <span style="color:#e06c75">running</span> <span style="color:#e06c75">command</span>
+</span></span></code></pre></div><p>The 2nd <code>grep</code> command returned nothing. I guess we had not reached that stage yet. The 3rd <code>grep</code> command gave us:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sh: 1: make: not found
+</span></span></code></pre></div><p>We now know it is because <code>make</code> is not available in a freshly installed <strong>Ubuntu</strong>. Okay, let&rsquo;s solve it by:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install build-essential
+</span></span></code></pre></div><p>After that, we ran <code>install.r</code> again and captured the output into new log files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo Rscript install.r <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    1&gt; osca_install_after_build_essential.stdout <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    2&gt; osca_install_after_build_essential.stderr
+</span></span></code></pre></div><p>First, let me show you the amount of text produced by this round of installation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wc -l osca_install_after_build_esssential.std*
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">11143</span> osca_install_after_build_esssential.stderr
+</span></span><span style="display:flex;"><span>   <span style="color:#d19a66">2176</span> osca_install_after_build_esssential.stdout
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">13319</span> total
+</span></span></code></pre></div><p>Anyway, we used the same set of <code>grep</code> commands to locate the problems. Many of them were redundant, so I just listed a few (not all) seemingly non-redundant output here:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#7f848e"># output from the 1st grep</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">configure</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">error</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">Cannot</span> <span style="color:#e06c75">find</span> <span style="color:#e06c75">cairo.h</span><span style="color:#56b6c2">!</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">read.c</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">3</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">10</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">fatal</span> <span style="color:#e06c75">error</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">png.h</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">curl</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">configure</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">error</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">couldn</span><span style="color:#98c379">&#39;</span>t find zlib library.
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">Rhdf5lib</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">XML</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">RCurl</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">compilation</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">irlba</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">xml2</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">openssl</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">compilation</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">Rhtslib</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">compilation</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">RcppEigen</span>’
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># output from the 2nd grep</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">read.c</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">3</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">10</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">fatal</span> <span style="color:#e06c75">error</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">png.h</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">/</span><span style="color:#e06c75">usr</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">bin</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">ld</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">cannot</span> <span style="color:#e06c75">find</span> <span style="color:#56b6c2">-</span><span style="color:#e06c75">llapack</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">/</span><span style="color:#e06c75">usr</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">bin</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">ld</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">cannot</span> <span style="color:#e06c75">find</span> <span style="color:#56b6c2">-</span><span style="color:#e06c75">lblas</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">/</span><span style="color:#e06c75">usr</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">bin</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">ld</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">cannot</span> <span style="color:#e06c75">find</span> <span style="color:#56b6c2">-</span><span style="color:#e06c75">lgfortran</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># output from the 3rd grep</span>
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">/</span><span style="color:#e06c75">bin</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">bash</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">line</span> <span style="color:#d19a66">1</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">libpng</span><span style="color:#56b6c2">-</span><span style="color:#e06c75">config</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">command</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">found</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">sh</span><span style="color:#56b6c2">:</span> <span style="color:#d19a66">1</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">gfortran</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">found</span>
+</span></span><span style="display:flex;"><span><span style="color:#56b6c2">/</span><span style="color:#e06c75">bin</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">bash</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">line</span> <span style="color:#d19a66">1</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">gfortran</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">command</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">found</span>
+</span></span></code></pre></div><p>Apparently, we saw some familiar faces, and some other stuff that we did not know, such as <strong>Rhtslib</strong> and <strong>RcppEigen</strong> which were not problems in <strong>Seurat</strong> (well &hellip; maybe they were but we did not catch them due to the length of the log). It was not a big deal since those errors were not independent. Some were caused by others. We could start with what we knew and solve them step by step. When we solved the problems we were familiar with, some other errors might be solved at the same time. Based on the previous experience, we did the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># to solve the cairo issue</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install libcairo2-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># to solve the png issue (automatically installed during libcairo2-dev installation)</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install libpng-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># to solve curl, Rcurl, openssl issues:</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install libcurl4-openssl-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># to solve the zlib issue (automatically installed during libpng-dev installation)</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install zlib1g-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># to solve the Rhdf5lib issue</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install libhdf5-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># to solve the XML and xml2 issues</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install libxml2-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># to solve the irlba and -lblas issues:</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install libblas-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># to solve the -llapack issue</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install liblapack-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># to solve the gfortran issue</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install gfortran
+</span></span></code></pre></div><p>Okay, we next tried our luck after all those installations by running the script again:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo Rscript install.r <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    1&gt; osca_install_after_build_esssential_cairo.stdout <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    2&gt; osca_install_after_build_esssential_cairo.stderr
+</span></span></code></pre></div><p>This time, we had even longer logs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wc -l osca_install_after_build_esssential_cairo.std*
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">13663</span> osca_install_after_build_esssential_cairo.stderr
+</span></span><span style="display:flex;"><span>   <span style="color:#d19a66">2347</span> osca_install_after_build_esssential_cairo.stdout
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">16010</span> total
+</span></span></code></pre></div><p>There were still errors, but the good and promising thing was that the errors were much fewer than before. Using the same set of <code>grep</code> commands, we had:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#7f848e"># the 1st grep command (all output)</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">hts.c</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">46</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">10</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">fatal</span> <span style="color:#e06c75">error</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">lzma.h</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">make[1]</span><span style="color:#56b6c2">:</span> <span style="color:#56b6c2">***</span> <span style="color:#e06c75">[Makefile.Rhtslib</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">135</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">hts.o]</span> <span style="color:#e06c75">Error</span> <span style="color:#d19a66">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">make</span><span style="color:#56b6c2">:</span> <span style="color:#56b6c2">***</span> <span style="color:#e06c75">[Makevars.common</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">22</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">htslib]</span> <span style="color:#e06c75">Error</span> <span style="color:#d19a66">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">compilation</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">Rhtslib</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">textshaping</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">textshaping</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">ragg</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">Rhtslib</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">Rsamtools</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">ragg</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">ggrastr</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">Rsamtools</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">GenomicAlignments</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">Rsamtools</span>’, ‘<span style="color:#e06c75">GenomicAlignments</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">rtracklayer</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">rtracklayer</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">GenomicFeatures</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">ggrastr</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">scater</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">GenomicFeatures</span>’, ‘<span style="color:#e06c75">rtracklayer</span>’, ‘<span style="color:#e06c75">Rsamtools</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">ensembldb</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">ensembldb</span>’, ‘<span style="color:#e06c75">GenomicFeatures</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">scRNAseq</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">rtracklayer</span>’, ‘<span style="color:#e06c75">scater</span>’, ‘<span style="color:#e06c75">scRNAseq</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">OSCA.intro</span>’
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># the 2nd grep command (all ouput)</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">hts.c</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">46</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">10</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">fatal</span> <span style="color:#e06c75">error</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">lzma.h</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># no output from the 3rd grep command</span>
+</span></span></code></pre></div><p>The <code>lzma.h</code> issue was related to the <code>htslib</code> which many things were built upon. If we solve this, there is a chance we might solve all the problems. We Googled the error message and we <a href="https://askubuntu.com/questions/1075810/issue-installing-lzma-dev-on-18-04">found out that</a> we should do:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install liblzma-dev
+</span></span></code></pre></div><p>After that was done, we tried to install <strong>OSCA</strong> using the <strong>R</strong> script once again:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo Rscript install.r <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    1&gt; osca_install_after_build_esssential_cairo_lzma.stdout <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    2&gt; osca_install_after_build_esssential_cairo_lzma.stderr
+</span></span></code></pre></div><p>Unfortunately, errors still existed, but they were manageable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#7f848e"># 1st grep</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">textshaping</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">cram</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">cram_io.c</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">53</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">10</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">fatal</span> <span style="color:#e06c75">error</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">bzlib.h</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">make[1]</span><span style="color:#56b6c2">:</span> <span style="color:#56b6c2">***</span> <span style="color:#e06c75">[Makefile.Rhtslib</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">135</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">cram</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">cram_io.o]</span> <span style="color:#e06c75">Error</span> <span style="color:#d19a66">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">make</span><span style="color:#56b6c2">:</span> <span style="color:#56b6c2">***</span> <span style="color:#e06c75">[Makevars.common</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">22</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">htslib]</span> <span style="color:#e06c75">Error</span> <span style="color:#d19a66">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">compilation</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">Rhtslib</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">textshaping</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">ragg</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">Rhtslib</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">Rsamtools</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">Rsamtools</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">GenomicAlignments</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">ragg</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">ggrastr</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">Rsamtools</span>’, ‘<span style="color:#e06c75">GenomicAlignments</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">rtracklayer</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">ggrastr</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">scater</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">rtracklayer</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">GenomicFeatures</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">GenomicFeatures</span>’, ‘<span style="color:#e06c75">rtracklayer</span>’, ‘<span style="color:#e06c75">Rsamtools</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">ensembldb</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">ensembldb</span>’, ‘<span style="color:#e06c75">GenomicFeatures</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">scRNAseq</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependencies</span> ‘<span style="color:#e06c75">rtracklayer</span>’, ‘<span style="color:#e06c75">scater</span>’, ‘<span style="color:#e06c75">scRNAseq</span>’ <span style="color:#e06c75">are</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">OSCA.intro</span>’
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># 2nd grep</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">cram</span><span style="color:#56b6c2">/</span><span style="color:#e06c75">cram_io.c</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">53</span><span style="color:#56b6c2">:</span><span style="color:#d19a66">10</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">fatal</span> <span style="color:#e06c75">error</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">bzlib.h</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">No</span> <span style="color:#e06c75">such</span> <span style="color:#e06c75">file</span> <span style="color:#e06c75">or</span> <span style="color:#e06c75">directory</span>
+</span></span></code></pre></div><p>Not sure about others, but we Googled the <code>bzlib.h</code> issue and <a href="https://techoverflow.net/2022/04/07/how-to-fix-r-package-installation-fatal-error-bzlib-h-no-such-file-or-directory/">found out</a> we needed to install the following library:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install libbz2-dev
+</span></span></code></pre></div><p>We next did the whole iteration again and we only got the following errors:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">configuration</span> <span style="color:#e06c75">failed</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">textshaping</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">textshaping</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">ragg</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">ragg</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">ggrastr</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">ggrastr</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">scater</span>’
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ERROR</span><span style="color:#56b6c2">:</span> <span style="color:#e06c75">dependency</span> ‘<span style="color:#e06c75">scater</span>’ <span style="color:#e06c75">is</span> <span style="color:#e06c75">not</span> <span style="color:#e06c75">available</span> <span style="color:#c678dd">for</span> <span style="color:#e06c75">package</span> ‘<span style="color:#e06c75">OSCA.intro</span>’
+</span></span></code></pre></div><p>It seemed we had some issues about specific <strong>R</strong> packages, such as <code>textshaping</code> and <code>ragg</code>. We did some Googling and found out <a href="https://stackoverflow.com/questions/73300748/i-am-facing-error-while-installing-r-package-textshaping">this thread</a> and <a href="https://github.com/r-lib/ragg/issues/53">this thread</a>, telling us to do the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># for textshaping</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install libharfbuzz-dev
+</span></span><span style="display:flex;"><span>$ sudo apt install libfribidi-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># for ragg</span>
+</span></span><span style="display:flex;"><span>$ sudo apt install libtiff-dev
+</span></span></code></pre></div><p>After that, we did one last round of iteration. Finally, we successfully installed <strong>OSCA</strong> and we should be able to start with the tutorial.</p>
+<h3 id="seurat-or-osca-on-other-distributions">Seurat or OSCA On Other Distributions</h3>
+<p>Once we figured out how to install <strong>Seurat</strong> or <strong>OSCA</strong> on <strong>Ubuntu</strong>, we could use the exact same procedures to figure out how to install them on other popular distributions like <a href="https://www.debian.org"><strong>Debian</strong></a>, <a href="https://fedoraproject.org"><strong>Fedora</strong></a> or others. Here I summarised them altogether in the <strong>Summary</strong> section below.</p>
+<h2 id="summary">Summary</h2>
+<p>If you use <strong>Scanpy</strong>, you are pretty much good to go. Just follow the <strong>Scanpy tutorial</strong>, and you will not have any problem.</p>
+<p>If you use <strong>Seurat</strong> or <strong>OSCA</strong>, it depends on your operating system.</p>
+<h3 id="seurat-on-ubuntu-2204">Seurat on Ubuntu 22.04</h3>
+<p>You need to make sure the following dependencies in <strong>Ubuntu</strong> are installed via <code>apt</code> before you install <strong>Seurat</strong> inside <strong>R</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># install R</span>
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt upgrade
+</span></span><span style="display:flex;"><span>sudo apt install --no-install-recommends software-properties-common dirmngr
+</span></span><span style="display:flex;"><span>wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+</span></span><span style="display:flex;"><span>sudo add-apt-repository <span style="color:#98c379">&#34;deb https://cloud.r-project.org/bin/linux/ubuntu </span><span style="color:#c678dd">$(</span>lsb_release -cs<span style="color:#c678dd">)</span><span style="color:#98c379">-cran40/&#34;</span>
+</span></span><span style="display:flex;"><span>sudo apt install --no-install-recommends r-base
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install some useful programs</span>
+</span></span><span style="display:flex;"><span>sudo apt install build-essential
+</span></span><span style="display:flex;"><span>sudo apt install gfortran
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install the following packages one by one</span>
+</span></span><span style="display:flex;"><span>sudo apt install libcurl4-openssl-dev
+</span></span><span style="display:flex;"><span>sudo apt install libhdf5-dev
+</span></span><span style="display:flex;"><span>sudo apt install h5utils
+</span></span><span style="display:flex;"><span>sudo apt install libblas-dev
+</span></span><span style="display:flex;"><span>sudo apt install liblapack-dev
+</span></span><span style="display:flex;"><span>sudo apt install libpng-dev
+</span></span></code></pre></div><h3 id="osca-on-ubuntu-2204">OSCA on Ubuntu 22.04</h3>
+<p>You need to make sure the following dependencies in <strong>Ubuntu</strong> are installed via <code>apt</code> before you follow the tutorials:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># install R</span>
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt upgrade
+</span></span><span style="display:flex;"><span>sudo apt install --no-install-recommends software-properties-common dirmngr
+</span></span><span style="display:flex;"><span>wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+</span></span><span style="display:flex;"><span>sudo add-apt-repository <span style="color:#98c379">&#34;deb https://cloud.r-project.org/bin/linux/ubuntu </span><span style="color:#c678dd">$(</span>lsb_release -cs<span style="color:#c678dd">)</span><span style="color:#98c379">-cran40/&#34;</span>
+</span></span><span style="display:flex;"><span>sudo apt install --no-install-recommends r-base
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install some useful programs</span>
+</span></span><span style="display:flex;"><span>sudo apt install build-essential
+</span></span><span style="display:flex;"><span>sudo apt install gfortran
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install the following packages one by one</span>
+</span></span><span style="display:flex;"><span>sudo apt install libcairo2-dev
+</span></span><span style="display:flex;"><span>sudo apt install libcurl4-openssl-dev
+</span></span><span style="display:flex;"><span>sudo apt install libhdf5-dev
+</span></span><span style="display:flex;"><span>sudo apt install libxml2-dev
+</span></span><span style="display:flex;"><span>sudo apt install libblas-dev
+</span></span><span style="display:flex;"><span>sudo apt install liblapack-dev
+</span></span><span style="display:flex;"><span>sudo apt install liblzma-dev
+</span></span><span style="display:flex;"><span>sudo apt install libbz2-dev
+</span></span><span style="display:flex;"><span>sudo apt install libharfbuzz-dev
+</span></span><span style="display:flex;"><span>sudo apt install libfribidi-dev
+</span></span><span style="display:flex;"><span>sudo apt install libtiff-dev
+</span></span></code></pre></div><h3 id="seurat-on-debian-12">Seurat on Debian 12</h3>
+<p>You need to make sure the following dependencies in <strong>Debian</strong> are installed via <code>apt</code> before you install <strong>Seurat</strong> inside <strong>R</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># install R</span>
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt upgrade
+</span></span><span style="display:flex;"><span>sudo apt install r-base
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install the following packages one by one</span>
+</span></span><span style="display:flex;"><span>sudo apt install libcurl4-openssl-dev
+</span></span><span style="display:flex;"><span>sudo apt install libhdf5-dev
+</span></span><span style="display:flex;"><span>sudo apt install h5utils
+</span></span></code></pre></div><h3 id="osca-on-debian-12">OSCA on Debian 12</h3>
+<p>You need to make sure the following dependencies in <strong>Debian</strong> are installed via <code>apt</code> before you follow the tutorials:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># install R</span>
+</span></span><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt upgrade
+</span></span><span style="display:flex;"><span>sudo apt install r-base
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install the following packages one by one</span>
+</span></span><span style="display:flex;"><span>sudo apt install libcairo2-dev
+</span></span><span style="display:flex;"><span>sudo apt install libcurl4-openssl-dev
+</span></span><span style="display:flex;"><span>sudo apt install libhdf5-dev
+</span></span><span style="display:flex;"><span>sudo apt install libxml2-dev
+</span></span><span style="display:flex;"><span>sudo apt install libharfbuzz-dev
+</span></span><span style="display:flex;"><span>sudo apt install libfribidi-dev
+</span></span><span style="display:flex;"><span>sudo apt install libtiff-dev
+</span></span></code></pre></div><h3 id="seurat-on-fedora-38-38-202304131">Seurat on Fedora 38 38-20230413.1</h3>
+<p>You need to make sure the following dependencies in <strong>Fedora</strong> are installed via <code>yum</code> before you follow the tutorials:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># install R, answer yes to all prompts</span>
+</span></span><span style="display:flex;"><span>sudo yum install R
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install the following packages one by one</span>
+</span></span><span style="display:flex;"><span>sudo yum install libcurl-devel
+</span></span><span style="display:flex;"><span>sudo yum install openssl-devel
+</span></span></code></pre></div><h3 id="osca-on-fedora-38-38-202304131">OSCA on Fedora 38 38-20230413.1</h3>
+<p>You need to make sure the following dependencies in <strong>Fedora</strong> are installed via <code>yum</code> before you follow the tutorials:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># install R, answer yes to all prompts</span>
+</span></span><span style="display:flex;"><span>sudo yum install R
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># install the following packages one by one</span>
+</span></span><span style="display:flex;"><span>sudo yum install cairo-devel
+</span></span><span style="display:flex;"><span>sudo yum install libcurl-devel
+</span></span><span style="display:flex;"><span>sudo yum install openssl-devel
+</span></span><span style="display:flex;"><span>sudo yum install fribidi-devel
+</span></span><span style="display:flex;"><span>sudo yum install libtiff-devel
+</span></span><span style="display:flex;"><span>sudo yum install libjpeg-devel
+</span></span></code></pre></div>
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#setting-up-your-computing-environment-from-scratch">Setting Up Your Computing Environment From Scratch</a>
+      <ul>
+        <li><a href="#install-the-operating-system">Install The Operating System</a></li>
+        <li><a href="#ubuntu--scanpy">Ubuntu + Scanpy</a></li>
+        <li><a href="#ubuntu--seurat-v5">Ubuntu + Seurat V5</a></li>
+        <li><a href="#ubuntu--osca">Ubuntu + OSCA</a></li>
+        <li><a href="#seurat-or-osca-on-other-distributions">Seurat or OSCA On Other Distributions</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a>
+      <ul>
+        <li><a href="#seurat-on-ubuntu-2204">Seurat on Ubuntu 22.04</a></li>
+        <li><a href="#osca-on-ubuntu-2204">OSCA on Ubuntu 22.04</a></li>
+        <li><a href="#seurat-on-debian-12">Seurat on Debian 12</a></li>
+        <li><a href="#osca-on-debian-12">OSCA on Debian 12</a></li>
+        <li><a href="#seurat-on-fedora-38-38-202304131">Seurat on Fedora 38 38-20230413.1</a></li>
+        <li><a href="#osca-on-fedora-38-38-202304131">OSCA on Fedora 38 38-20230413.1</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

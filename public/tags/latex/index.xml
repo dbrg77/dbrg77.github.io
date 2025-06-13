@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>latex on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/latex/</link>
+    <description>Recent content in latex on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 08 Feb 2025 09:07:53 +0800</lastBuildDate>
+    <atom:link href="https://dbrg77.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Work Syncing Across Different Operating Systems</title>
+      <link>https://dbrg77.github.io/posts/2025-02-08-work-syncing-across-different-oss/</link>
+      <pubDate>Sat, 08 Feb 2025 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2025-02-08-work-syncing-across-different-oss/</guid>
+      <description>I haven&amp;rsquo;t really used Windows since 2012 when I switched from Windows 7 to Mac OS. In recent years, I occasionally found myself in a situation where I had to use Windows for certain admin-related stuff. On top of that, I recently came across GOG that prompted me to play some classic PC games from the old days. Therefore, I built a PC and installed Windows 11. The user experience of Windows 11 so far was not really great for me.</description>
+    </item>
+    <item>
+      <title>A Brief But Comprehensive Book About TikZ and PGFPLOTS</title>
+      <link>https://dbrg77.github.io/posts/2024-12-20-a-brief-but-comprehensive-book-about-tikz-and-pgfplots/</link>
+      <pubDate>Fri, 20 Dec 2024 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2024-12-20-a-brief-but-comprehensive-book-about-tikz-and-pgfplots/</guid>
+      <description>Earlier this year, I started a new GitHub repository called TikZ_and_PGFPLOTS_draw where I used TikZ and PGFPLOTS to draw vector graphics for scientific illustrations. Now I&amp;rsquo;m gradually learning and switching to Ipe and Inkscape for a more flexible and easier drawing experience. However, TikZ and PGFPLOTS are the two things that I use routinely, so I still want to practice my skills. Therefore, I have kept updating the repo whenever I want to draw some basic stuff.</description>
+    </item>
+    <item>
+      <title>Drawing Vector Graphics For Publication Figures</title>
+      <link>https://dbrg77.github.io/posts/2024-02-14-drawing-vector-graphics-for-publication-figures/</link>
+      <pubDate>Wed, 14 Feb 2024 16:01:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2024-02-14-drawing-vector-graphics-for-publication-figures/</guid>
+      <description>To generate figures for publications, I often use matplotlib and seaborn to prepare plots and save them in PDF format. Then I use PowerPoint to arrange and organise them into a full figure. Like this one shown below:&#xA;Those panels (a - d) were individually generated using matplotlib (except the genome browser track), saved as PDFs and imported into one slide in PowerPoint. The size of the slide can be set to conform to the requirements of the journal, but A4 size generally works in almost all cases.</description>
+    </item>
+    <item>
+      <title>3D Visualisation of The Residual Sum of Squares</title>
+      <link>https://dbrg77.github.io/posts/2023-07-10-3d-visualisation-of-the-residual-sum-of-squares/</link>
+      <pubDate>Mon, 10 Jul 2023 16:01:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2023-07-10-3d-visualisation-of-the-residual-sum-of-squares/</guid>
+      <description>I recently came across the video The Beauty of Linear Regression (How to Fit a Line to your Data) by Richard Behiel. The video is very inspiring! It illustrates the relationship between the residual sum of squares and the slope and intercept. The visualisation is intuitive and beautiful. I want to do a similar and simpler thing in the lecture slides for a course.&#xA;In the video, the residual sum of squares was shown as a heatmap and the arrows were used to represent the negative gradients.</description>
+    </item>
+    <item>
+      <title>Matplotlib With The Beamer Metropolis Style</title>
+      <link>https://dbrg77.github.io/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/</link>
+      <pubDate>Wed, 02 Mar 2022 10:49:27 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/</guid>
+      <description>Ever since I came across the metropolis theme of Beamer two years ago, I always used that theme to prepare presentation and lecture slides whenever possible. I really like the design. The style is hard to resist. One problem with it or with beamer in general is that plotting is difficult and limited. I know that pgfplots is very powerful, and you can do some pretty complicated plots with it. I used it for routine basic plotting in Beamer, such as the box/scatter plot, the bar chart, the histogram.</description>
+    </item>
+  </channel>
+</rss>

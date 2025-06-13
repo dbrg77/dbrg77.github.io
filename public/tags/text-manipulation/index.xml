@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>text manipulation on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/text-manipulation/</link>
+    <description>Recent content in text manipulation on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 10 Feb 2017 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://dbrg77.github.io/tags/text-manipulation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ATAC-seq Insert Size Plotting</title>
+      <link>https://dbrg77.github.io/posts/2017-02-10-atac-seq-insert-size-plotting/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2017-02-10-atac-seq-insert-size-plotting/</guid>
+      <description>ATAC-seq is THE simplest genomic protocol to profile open chromatin regions in the genome. The original publication (Nature Methods 10, 1213-1218) has been cited 441 times at this moment of writing (1,073 times at this moment of re-posting). It has become almost a routine for a lab that is interested in transcriptional regulation.&#xA;One common QC for the data is to plot the fragment size density of your libraries. The successful construction of a ATAC library requires a proper pair of Tn5 transposase cutting events at the ends of DNA.</description>
+    </item>
+    <item>
+      <title>Getting RefSeq gene TSS from UCSC</title>
+      <link>https://dbrg77.github.io/posts/2016-11-09-getting-refseq-gene-tss-from-ucsc/</link>
+      <pubDate>Wed, 09 Nov 2016 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2016-11-09-getting-refseq-gene-tss-from-ucsc/</guid>
+      <description>As a practice of using the unix command lines, let&amp;rsquo;s get the transcription start site (TSS) coordinates of all hg38 RefSeq genes from the UCSC genome browser, and change it to a proper bed format:&#xA;1. Go to the UCSC genome browser.&#xA;2. Go to the table browser: Tools –&amp;gt; Table Browser.&#xA;3. Choose the following options:&#xA;clade: Mammal&#xA;genome: Human&#xA;assembly: Dec. 2013 (GRCh38/hg38)&#xA;group: Genes and Genes Predictions</description>
+    </item>
+    <item>
+      <title>Common Bioinformatics Tasks With UNIX Commands</title>
+      <link>https://dbrg77.github.io/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/</guid>
+      <description>awk 1. Give names to each peak in a 3-column bed file:&#xA;$ cat Oct4_union_peaks.bed chr1 3062833 3063056 chr1 3343519 3343843 chr1 3482630 3483324 chr1 3549654 3549895 chr1 3648929 3649295 $ awk &amp;#39;BEGIN{OFS=&amp;#34;\t&amp;#34;}{print $1,$2,$3,&amp;#34;Oct4_union_peak_&amp;#34; NR}&amp;#39; Oct4_union_peaks.bed chr1 3062833 3063056 Oct4_union_peak_1 chr1 3343519 3343843 Oct4_union_peak_2 chr1 3482630 3483324 Oct4_union_peak_3 chr1 3549654 3549895 Oct4_union_peak_4 chr1 3648929 3649295 Oct4_union_peak_5 2. Print the number of fileds for each line:&#xA;awk &amp;#39;{print NF}&amp;#39; some_file.txt 3. Print the last column of a text file:</description>
+    </item>
+  </channel>
+</rss>

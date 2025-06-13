@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Running classic Windows game on modern MAC OS using wine</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, classic game, diablo 2, wine, Windows, Mac'>
+
+    <meta property="og:url" content="https://dbrg77.github.io/posts/2016-11-17-running-classic-windows-game-on-modern-mac-os-using-wine/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Running classic Windows game on modern MAC OS using wine">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Running classic Windows game on modern MAC OS using wine">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2016-11-17-running-classic-windows-game-on-modern-mac-os-using-wine/">
+    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2016-11-17-running-classic-windows-game-on-modern-mac-os-using-wine/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://dbrg77.github.io/posts/2016-11-17-running-classic-windows-game-on-modern-mac-os-using-wine/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://dbrg77.github.io">
+                <img src="https://dbrg77.github.io/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://dbrg77.github.io">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Running classic Windows game on modern MAC OS using wine</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            November 17, 2016
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/classic-game">classic game</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/diablo-2">diablo 2</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/wine">wine</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/windows">Windows</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/mac">Mac</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>It is relatively straightforward. All you need is <strong><a href="https://www.winehq.org/">wine</a></strong>, which is a free open source software that allows you to run Windows applications (*.exe files) on unix systems (Linux, Mac OSX etc).</p>
+<p>In this post, I’m going to use the classic game Diablo II as an example. The latest patch of Diablo II is 1.14d, which can function on modern Mac OS. However, the experience is very awful. The most annoying thing to me is that the mouse cursor freezes for ~0.5 seconds whenever you open your character screen or quest log screen.</p>
+<p>Eventually, I gave up on the Diablo II Mac client, and instead, using wine to run Windows client on Mac.</p>
+<p>To do this, you need to be familiar and comfortable with using command line (Terminal app).</p>
+<p>First, you need to install wine. This is an excellent post: <strong><a href="https://www.davidbaumgold.com/tutorials/wine-mac/">Installing Wine on Mac OS X</a></strong>. Then, get Diablo II and Diablo II LOD Windows client from Battle.net. After that, go to the client folder in Terminal, and type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wine Installer.exe
+</span></span></code></pre></div><p>From now on, everything is like Windows, just follow the instruction, and install the game in C:\Program Files. When you do that, the game is actually located at <code>~/.wine/drive_c/Program\ Files/Diablo\ II/</code>. If you want to play runeword mode, download the runeword mode patch from <strong><a href="http://www.chrisclarke.co.uk/D2stuff/PDFs/Mac%20Files/">here</a></strong>. Make sure, you download 1.13d RWM.zip.</p>
+<p>Unzip it, and put the folder (Runewords) into your Diablo II folder. Now, to play runeword mode, you need to go to the Runewords folder to run the game, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> ~/.wine/drive_c/Program<span style="color:#98c379">\ </span>Files/Diablo<span style="color:#98c379">\ </span>II/Runewords/
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>wine ../Game.exe -direct -txt
+</span></span></code></pre></div><p>If everything goes right, you should be able to play Diablo II. However, to this stage, the graphic is not very satisfying. One solution is to use Sven’s glide-wrapper. Go to download the latest <strong><a href="http://www.svenswrapper.de/english/downloads.html">glide-wrapper</a></strong>. Again, unzip it into your Diablo II folder.</p>
+<p>To configure the glide-wrapper, go to you Diablo II folder, and run glide-init.exe:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> ~/.wine/drive_c/Program<span style="color:#98c379">\ </span>Files/Diablo<span style="color:#98c379">\ </span>II/
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>wine glide-init.exe
+</span></span></code></pre></div><p>Then, the configuration window will pop up, and click “settings” at the left hand side, tick things like this:</p>
+<p><img src="/images/000/glide1.png" alt=""></p>
+<p>If you want to play window-mode, simply tick it. Then click “Extensions” at the left hand side, and tick the options like this (the following options work the best for me, but it might be dependent on machines):</p>
+<p><img src="/images/000/glide2.png" alt=""></p>
+<p>After that is done, simply click “Quit” at the left hand side.</p>
+<p>Now, to run the game with rune word mode and glide-wrapper, run the game like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e5c07b">cd</span> ~/.wine/drive_c/Program<span style="color:#98c379">\ </span>Files<span style="color:#98c379">\D</span>iablo<span style="color:#98c379">\ </span>II/Runewords/
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>wine ../Game.exe -direct -txt -3dfx
+</span></span></code></pre></div><p>In the game, check the graphic by typing <code>/fps</code> in the dialogue, then you should see that the top right corner shows <code>Video: Glide</code>, meaning it is working. If you still see <code>Video: DDraw</code>, the glide is not configured properly.</p>
+<p><img src="/images/000/screenshot011.jpg" alt=""></p>
+<p>Have fun!</p>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

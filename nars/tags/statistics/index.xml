@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>statistics on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/statistics/</link>
+    <description>Recent content in statistics on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 10 Jul 2023 16:01:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3D Visualisation of The Residual Sum of Squares</title>
+      <link>https://notarocketscientist.xyz/posts/2023-07-10-3d-visualisation-of-the-residual-sum-of-squares/</link>
+      <pubDate>Mon, 10 Jul 2023 16:01:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2023-07-10-3d-visualisation-of-the-residual-sum-of-squares/</guid>
+      <description>I recently came across the video The Beauty of Linear Regression (How to Fit a Line to your Data) by Richard Behiel. The video is very inspiring! It illustrates the relationship between the residual sum of squares and the slope and intercept. The visualisation is intuitive and beautiful. I want to do a similar and simpler thing in the lecture slides for a course.&#xA;In the video, the residual sum of squares was shown as a heatmap and the arrows were used to represent the negative gradients.</description>
+    </item>
+    <item>
+      <title>How Did Gauss Derive The Normal Distribution</title>
+      <link>https://notarocketscientist.xyz/posts/2023-01-27-how-gauss-derived-the-normal-distribution/</link>
+      <pubDate>Fri, 27 Jan 2023 00:10:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2023-01-27-how-gauss-derived-the-normal-distribution/</guid>
+      <description>I first came across with the normal distribution when I was 17 years old in high school. The probability density function (PDF) is&#xA;$$f_{\boldsymbol{X}}(x) = \cfrac{1}{\sqrt{2\pi}\sigma}\,e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$&#xA;where $\mu$ and $\sigma$ are the population mean and standard deviation, respectively.&#xA;Like most people when they first came across this function, the derivation of the function was not really introduced. Soon after that, we started to use it to calculate probabilities and other things.</description>
+    </item>
+    <item>
+      <title>Benford&#39;s Law and RNA-seq</title>
+      <link>https://notarocketscientist.xyz/posts/2020-02-27-benfords-law-and-rna-seq/</link>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2020-02-27-benfords-law-and-rna-seq/</guid>
+      <description>More than two years ago, I started to watch videos from the YouTube channel Numberphile. I came across Benford&amp;rsquo;s Law, and I was amazed when I saw it on this video. Basically, Benford&amp;rsquo;s Law is an observation about the relative frequency distribution of the first digits from real-world data sets, where the data span multiple orders of magnitude. Intuitively, we expect them to be uniformly distributed so that each digit (from 1 to 9) has a relative frequency around 1/9.</description>
+    </item>
+  </channel>
+</rss>

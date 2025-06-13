@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, single cell genomics, sequencing library, illumina sequencing, fluentbio, pipseq, seqspec'>
+
+    <meta property="og:url" content="https://dbrg77.github.io/posts/2023-06-03-guessing-library-structures-2/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2023-06-03-guessing-library-structures-2/">
+    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2023-06-03-guessing-library-structures-2/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://dbrg77.github.io/posts/2023-06-03-guessing-library-structures-2/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://dbrg77.github.io">
+                <img src="https://dbrg77.github.io/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://dbrg77.github.io">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            June 3, 2023
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/single-cell-genomics">single cell genomics</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/sequencing-library">sequencing library</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/illumina-sequencing">illumina sequencing</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/fluentbio">fluentbio</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/pipseq">pipseq</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/seqspec">seqspec</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            
+
+<div class="admonition note">
+    <div class="title">Portal</div>
+    <div class="content"><ul>
+<li><a href="/posts/2023-05-28-guessing-library-structures-1/">Guessing Library Structures (1) - Background</a></li>
+<li><a href="/posts/2023-06-03-guessing-library-structures-2/">Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3</a></li>
+<li><a href="/posts/2023-06-04-guessing-library-structures-3/">Guessing Library Structures (3) - PIP-seq V2</a></li>
+<li><a href="/posts/2023-06-07-guessing-library-structures-4/">Guessing Library Structures (4) - PIP-seq V1prototype</a></li>
+</ul>
+</div>
+</div>
+<p>This is the second post from a series where I use the recent <a href="https://www.nature.com/articles/s41587-023-01685-z">PIP-seq</a> data as an example to demonstrate the importance to use a common standard like <a href="https://www.biorxiv.org/content/10.1101/2023.03.17.533215v1"><em>seqspec</em></a> to accompany sequencing reads submissions into public repositories.</p>
+<h2 id="an-initial-look">An Initial Look</h2>
+<p>The PIP-seq method was originally put on <a href="https://www.biorxiv.org/content/10.1101/2022.06.10.495582v1"><strong>bioRxiv</strong></a> on 13 June 2022. It means the method was under development way ahead of that date. The final publication in <a href="https://www.nature.com/articles/s41587-023-01685-z">Nature Biotechnology</a> (Clark2023) is on 06 March 2023. If we consider the time between the start of the method development and the final publication, it is not surprising to see different versions of the method in the paper. This is indeed the case which we will demonstrate.</p>
+<p>Now we focused on figuring out the library structure and identify the meaning of each base. The <strong>method section</strong> is always a good starting point, and I copy-paste here:</p>
+<blockquote>
+<p>Synthesis of barcoded bead templates Prototype barcode bead fabrication proceeded according to previous reports $^{30}$. Briefly, a simple coflow microfluidic device was used to combine acrylamide premix (6% (wt/vol) acrylamide, 0.1% bis-acrylimide, 0.3% (wt/vol) ammonium persulfate, 0.1× Tris-buffered saline–EDTA (TBSET: 10 mM Tris-HCl (pH 8.0), 137 mM NaCl, 20 mM EDTA, 1.4 mM KCl and 0.1% (vol/vol) Triton X-100), 50 µM acrydited primer (/5Acryd/TTTTTTTAAGCAGTGGTATCAACGCAGAGTACGACTCCTC TTTCCCTACACGACGCTCTTCC ) with oil (HFE 7500, 3M Novec) containing 2% (wt/vol) surfactant (008-Fluoro-surfactant, Ran Technologies) and 0.4% (vol/vol) tetramethylethylenediamine). &hellip; &hellip; &hellip; The process was repeated to add four barcodes and a UMI with poly(T) (NNNNNNNNNNNNTTTTTTTTTTTTTTTTTTTV). Quality control steps were identical to previous reports $^{30}$.</p>
+</blockquote>
+<p><a href="https://doi.org/10.1038/s41598-021-90255-x">Reference 30</a> (Delley2021) is a paper about how to generate barcoded beads from the same lab. If you follow the instructions, you will see it is based on combinatorial barcoding using the split-pool strategy that is similar to how <a href="https://doi.org/10.1016/j.cell.2015.04.044">inDrop</a> generates the beads. The methods in the Clark2023 paper is not detailed enough for us to figure out the library structure. If we combined the sequences in the Clark2023 paper and the workflow in the Delley2021 paper, we might expect the library structure to be something like this:</p>
+<p><img src="/images/2023-06-03/guessing.png" alt=""></p>
+<p>Therefore, we would expect the read 1 should start with 0 - 3bp variable bases, followed by four sets of 8-bp barcodes with defined spacers in between and then 12-bp UMI. Is this correct? Let&rsquo;s have a look.</p>
+<h2 id="gse202919">GSE202919</h2>
+<p>Now let&rsquo;s go to <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE202919">GSE202919</a>, which has the data associated with the Clark2023 paper. We can simply try the first one (which turns out to be <strong>a really bad starting point</strong> if you read other posts from this series &hellip; anyway &hellip;):</p>
+<pre tabindex="0"><code>GSM6106784 Fresh 2000 cell H1975 with drug treatment
+</code></pre><p>which eventually points to <code>SRR19086119</code>, <code>SRR19086120</code>, <code>SRR19086121</code> and <code>SRR19086122</code>. Get the FASTQ files for the first one:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ fastq-dump --split-3 -A SRR19086119
+</span></span></code></pre></div><p>Then we use <code>grep</code> with regular expressions to see if we could see our expected structure. We only need to have a look at the first 1 million reads to get an idea:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zcat SRR19086119_1.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    head -1000000 | <span style="color:#98c379">\ </span>
+</span></span><span style="display:flex;"><span>    grep -P <span style="color:#98c379">&#39;^[ACGTN]{8,11}AACC[ACGTN]{8}ACAG[ACGTN]{8}CCTA[ACGTN]{20}T*&#39;</span>
+</span></span></code></pre></div><p>Nothing showed up. Maybe we are being too stringent. Let&rsquo;s <code>grep</code> the beginning part:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zcat SRR19086119_1.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    head -1000000 | <span style="color:#98c379">\ </span>
+</span></span><span style="display:flex;"><span>    grep -P <span style="color:#98c379">&#39;^[ACGTN]{8,11}AACC[ACGTN]{8}&#39;</span>
+</span></span></code></pre></div><p>Only 79 out of the 1 million reads have the match. Here are the top 5 mathes:</p>
+<p><img src="/images/2023-06-03/guessing2.png" alt=""></p>
+<p>and we can see that the sequences after the matching are not what we expect. We can also try a few other patterns, such as</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#98c379">&#39;[ACGTN]{8,11}AACC[ACGTN]{8}&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#98c379">&#39;AACC[ACGTN]{8}ACAG&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#98c379">&#39;[ACGTN]{8}ACAG[ACGTN]{8}CCTA&#39;</span>
+</span></span></code></pre></div><p>We can try a few, but nothing makes sense. Therefore, the sequences described in the Delley2021 paper is definitely not used here.</p>
+<p>In the Clark2023 paper, they mentioned they have a commercial company (<a href="https://www.fluentbio.com">Fluent BioSciences</a>) that provide the product now. They have their own preprocessing and analysis program: <a href="https://www.fluentbio.com/products/pipseeker-software-for-data-analysis/">PIPseeker$^{\textmd{TM}}$</a>. Maybe that will help, at least it may help us make educational guesses.</p>
+<p>Go to the page and download the software, which is just a large binary file (327 MB). Let&rsquo;s run the first step of the program on <code>SRR19086119</code>. Note that the software is not very flexible with file names, so we have to do some extra manipulation in advance:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># create a folder to hold the original fastq files</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># then create symlink with names similar to bcl2fastq</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ mkdir -p SRR19086119
+</span></span><span style="display:flex;"><span>$ ln -s ../SRR19086119_1.fastq.gz SRR19086119/SRR19086119_R1_001.fastq.gz
+</span></span><span style="display:flex;"><span>$ ln -s ../SRR19086119_2.fastq.gz SRR19086119/SRR19086119_R2_001.fastq.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># now your current directory looks like this</span>
+</span></span><span style="display:flex;"><span>$ tree .
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── SRR19086119_1.fastq.gz
+</span></span><span style="display:flex;"><span>├── SRR19086119_2.fastq.gz
+</span></span><span style="display:flex;"><span>└── SRR19086119
+</span></span><span style="display:flex;"><span>    ├── SRR19086119_R1_001.fastq.gz -&gt; ../SRR19086119_1.fastq.gz
+</span></span><span style="display:flex;"><span>    └── SRR19086119_R2_001.fastq.gz -&gt; ../SRR19086119_2.fastq.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## Check the manual and run pipseeker barcode</span>
+</span></span><span style="display:flex;"><span>pipseeker barcode <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --output-path ./barcode/ <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --skip-version-check <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --threads <span style="color:#d19a66">4</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --random-seed <span style="color:#d19a66">42</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --fastq ./SRR19086119/.    <span style="color:#7f848e"># note the trailing dot</span>
+</span></span></code></pre></div><p>Then the following error message was shown:</p>
+<pre tabindex="0"><code>2023-06-03_15-44-18   Running PIPseeker v02.01.04
+2023-06-03_15-44-18   Copyright (c) 2023 Fluent BioSciences. All rights reserved.
+2023-06-03_15-44-19   PIPseeker is up to date
+2023-06-03_15-44-20   Unable to automatically detect chemistry version. Please use --chemistry to choose from: v3, v4
+</code></pre><p>Then if the chemistry version <code>v3</code> or <code>v4</code> were explicitly stated, very very few barcodes were detected.</p>
+<p>After messing around with the second and the third samples of GSE202919, I gave up and decided to check the example data from the company&rsquo;s website instead.</p>
+<h2 id="the-fluentbio-example-data">The FluentBio Example Data</h2>
+<p>The rationale is that at least the example data on the website should be compatible with the software. Let&rsquo;s start with the smaller one: <a href="https://www.fluentbio.com/datasets/">the NIH3T3+HEK293T species mixing experiment with the T2 kit</a>. Extract the files and organise the directory like this and run under the first level directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># directory structure</span>
+</span></span><span style="display:flex;"><span>fluentbio
+</span></span><span style="display:flex;"><span>└── fastqs
+</span></span><span style="display:flex;"><span>    ├── RK20220802_FR_3_S3_L001_R1_001.fastq.gz
+</span></span><span style="display:flex;"><span>    ├── RK20220802_FR_3_S3_L001_R2_001.fastq.gz
+</span></span><span style="display:flex;"><span>    ├── RK20220802_FR_3_S3_L002_R1_001.fastq.gz
+</span></span><span style="display:flex;"><span>    └── RK20220802_FR_3_S3_L002_R2_001.fastq.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># run under fluentbio</span>
+</span></span><span style="display:flex;"><span>pipseeker barcode <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --output-path ./barcode/ <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --skip-version-check <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --threads <span style="color:#d19a66">4</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --random-seed <span style="color:#d19a66">42</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    --fastq ./fastqs/.
+</span></span></code></pre></div><p>After it is finished, some new files are produced and the directory looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fluentbio
+</span></span><span style="display:flex;"><span>├── barcode
+</span></span><span style="display:flex;"><span>│   ├── barcoded_fastqs
+</span></span><span style="display:flex;"><span>│   │   ├── barcoded_1_R1.fastq.gz
+</span></span><span style="display:flex;"><span>│   │   ├── barcoded_1_R2.fastq.gz
+</span></span><span style="display:flex;"><span>│   │   ├── barcoded_2_R1.fastq.gz
+</span></span><span style="display:flex;"><span>│   │   ├── barcoded_2_R2.fastq.gz
+</span></span><span style="display:flex;"><span>│   │   ├── barcoded_3_R1.fastq.gz
+</span></span><span style="display:flex;"><span>│   │   ├── barcoded_3_R2.fastq.gz
+</span></span><span style="display:flex;"><span>│   │   ├── barcoded_4_R1.fastq.gz
+</span></span><span style="display:flex;"><span>│   │   └── barcoded_4_R2.fastq.gz
+</span></span><span style="display:flex;"><span>│   ├── barcodes
+</span></span><span style="display:flex;"><span>│   │   ├── barcode_whitelist.txt
+</span></span><span style="display:flex;"><span>│   │   └── generated_barcode_read_info_table.csv
+</span></span><span style="display:flex;"><span>│   ├── logs
+</span></span><span style="display:flex;"><span>│   │   ├── pipseeker_2023-05-25_16-53-40.log
+</span></span><span style="display:flex;"><span>│   │   └── progress.log
+</span></span><span style="display:flex;"><span>│   ├── metrics
+</span></span><span style="display:flex;"><span>│   │   └── barcode_stats.json
+</span></span><span style="display:flex;"><span>│   └── run_config.json
+</span></span><span style="display:flex;"><span>└── fastqs
+</span></span><span style="display:flex;"><span>    ├── RK20220802_FR_3_S3_L001_R1_001.fastq.gz
+</span></span><span style="display:flex;"><span>    ├── RK20220802_FR_3_S3_L001_R2_001.fastq.gz
+</span></span><span style="display:flex;"><span>    ├── RK20220802_FR_3_S3_L002_R1_001.fastq.gz
+</span></span><span style="display:flex;"><span>    └── RK20220802_FR_3_S3_L002_R2_001.fastq.gz
+</span></span></code></pre></div><p>The <code>barcode/run_config.json</code> told us that the example data was using the <code>v3</code> chemistry. In the <code>barcode/barcoded_fastqs/</code> directory, we can see that the original Read 1 reads were split into four different files. Let&rsquo;s have a look:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ zcat barcode/barcoded_fastqs/barcoded_1_R1.fastq.gz | head -20
+</span></span><span style="display:flex;"><span>@VH00284:1:AAANWCCHV:1:1101:63733:1057 1:N:0:GGCCTCCT+AGAGGATA
+</span></span><span style="display:flex;"><span>AGGCCAAAACCCCCAAGCGGACCTGAGT
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>~~~~~~~~~~~~~~~~CCCCCCCCCCCC
+</span></span><span style="display:flex;"><span>@VH00284:1:AAANWCCHV:1:1101:63960:1057 1:N:0:GGCCTCCT+AGAGGATA
+</span></span><span style="display:flex;"><span>ACCAAACCAGGACCATTTTGAACTCAGG
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>~~~~~~~~~~~~~~~~C--CCCCCCCCC
+</span></span><span style="display:flex;"><span>@VH00284:1:AAANWCCHV:1:1101:64415:1057 1:N:0:GGACTCCT+AGAGGATA
+</span></span><span style="display:flex;"><span>ACGGACTGACAGATCCATAGCCGGCCGG
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>~~~~~~~~~~~~~~~~CC;;CCCCCCCC
+</span></span><span style="display:flex;"><span>@VH00284:1:AAANWCCHV:1:1101:64869:1057 1:N:0:GGACTCCT+AGAGGATA
+</span></span><span style="display:flex;"><span>CATCACATAACCCCAGTAACGAAGTCAT
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>~~~~~~~~~~~~~~~~CCC;;-CC;CC-
+</span></span><span style="display:flex;"><span>@VH00284:1:AAANWCCHV:1:1101:57503:1076 1:N:0:GGCCTCCT+AGAGGATA
+</span></span><span style="display:flex;"><span>ACCCCCTAATCTAATCTGTGACGTTCCC
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>~~~~~~~~~~~~~~~~CCC!CCCCCCCC
+</span></span></code></pre></div><p>Then how do those compare to the original reads? Let&rsquo;s have a look at a few of them, starting with the first one: <code>@VH00284:1:AAANWCCHV:1:1101:63733:1057</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ zcat fastqs/RK20220802_FR_3_S3_L001_R1_001.fastq.gz | grep -A <span style="color:#d19a66">3</span> <span style="color:#98c379">&#39;@VH00284:1:AAANWCCHV:1:1101:63733:1057&#39;</span>
+</span></span><span style="display:flex;"><span>@VH00284:1:AAANWCCHV:1:1101:63733:1057 1:N:0:GGCCTCCT+AGAGGATA
+</span></span><span style="display:flex;"><span>TTGGGTCCATGCAACACGAGTTGGTATCGAGTGGGAAGTGCGGACCTGAGT
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>C;C!CCCCCCCCCCC-;CCCC;CCCCCCCCCCCCCCC!CCCCCCCCCCCCC 
+</span></span></code></pre></div><p>It seems the last 12-bp of the original reads together with the quality strings are preserved, and the beginning bases of the reads are &ldquo;translated&rdquo; into a 16-bp sequence and the quality strings are ignored. If we check a few more reads, we can confirm our observation. Therefore, we now can guess that the last 12-bp of the original reads are <strong>UMI</strong>, and the everything before the UMI should contain the cell barcode information.</p>
+<p>Having messed around a bit, I failed to figure out how the &ldquo;translation&rdquo; works, so I decided to focus on the cell barcodes themselves. Checking the <code>barcode/barcodes/barcode_whitelist.txt</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ wc -l barcode/barcodes/barcode_whitelist.txt
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">232682</span> barcode/barcodes/barcode_whitelist.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ head barcode/barcodes/barcode_whitelist.txt
+</span></span><span style="display:flex;"><span>AAAAAAAAAACAATCC
+</span></span><span style="display:flex;"><span>AAAAAAAAAACCCCTC
+</span></span><span style="display:flex;"><span>AAAAAAAAAACGACAT
+</span></span><span style="display:flex;"><span>AAAAAAAAAATTAAAG
+</span></span><span style="display:flex;"><span>AAAAAAAAAATTAAGC
+</span></span><span style="display:flex;"><span>AAAAAAAAACACCATG
+</span></span><span style="display:flex;"><span>AAAAAAAAACAGACAT
+</span></span><span style="display:flex;"><span>AAAAAAAAACATATAC
+</span></span><span style="display:flex;"><span>AAAAAAAAACCGAGGC
+</span></span><span style="display:flex;"><span>AAAAAAAAACGACCAA
+</span></span></code></pre></div><p>Here, we have a total of 232,682 whitelist barcodes, each with 16 bp in length. If we assume the cell barcodes consist of combinations of a fixed set of barcodes, we should be able to see the pattern by checking unique sequences. Since the whitelist barcodes are 16 bp, it is natural for us to think they are two 8-bp combinations. Are they?</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cut -c 1-8 barcode/barcodes/barcode_whitelist.txt | sort -u | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">9216</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cut -c 9-16 barcode/barcodes/barcode_whitelist.txt | sort -u | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">9216</span>
+</span></span></code></pre></div><p>This means there are 9,216 unique sequences in the first 8 bp and 9,216 unique sequences in the last 8 bp, which seems to be too high as a per round barcode number. However, we notice that $9,216 = 96 \times 96$. Therefore, it is more likely that the 16-bp barcode consists of four parts, each with 96 unique 4-bp barcodes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cut -c 1-4 barcode/barcodes/barcode_whitelist.txt | sort -u | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">96</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cut -c 5-8 barcode/barcodes/barcode_whitelist.txt | sort -u | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">96</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cut -c 9-12 barcode/barcodes/barcode_whitelist.txt | sort -u | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">96</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cut -c 13-16 barcode/barcodes/barcode_whitelist.txt | sort -u | wc -l
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">96</span>
+</span></span></code></pre></div><p>That is indeed the case, and it was consistent with the method section of the Clark2023 paper. Now we are confident that the whitelist cell barcodes are the combinations of four sets of 4-bp &ldquo;translated&rdquo; barcodes, with 96 unique barcodes in each set. In order to achieve this experimentally, there must be some common sequences, a.k.a <strong>linkers</strong> or <strong>splints</strong> or whatever you call them, in between each set of the barcodes. If this is the case, <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> would tell us. Checking one of the R1 file, we have:</p>
+<p><img src="/images/2023-06-03/fluentbio_t2_fastqc.png" alt=""></p>
+<p>Now it is clear to us that the identify of each base in Read 1:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Base positions</th>
+<th style="text-align:center">Identity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1 - 8</td>
+<td style="text-align:center">barcode1 (8 bp)</td>
+</tr>
+<tr>
+<td style="text-align:center">9 - 11</td>
+<td style="text-align:center">ATG</td>
+</tr>
+<tr>
+<td style="text-align:center">12 - 17</td>
+<td style="text-align:center">barcode2 (6 bp)</td>
+</tr>
+<tr>
+<td style="text-align:center">18 - 20</td>
+<td style="text-align:center">GAG</td>
+</tr>
+<tr>
+<td style="text-align:center">21 - 26</td>
+<td style="text-align:center">barcode3 (6 bp)</td>
+</tr>
+<tr>
+<td style="text-align:center">27 - 31</td>
+<td style="text-align:center">TCGAG</td>
+</tr>
+<tr>
+<td style="text-align:center">32 - 39</td>
+<td style="text-align:center">barcode4 (8 bp)</td>
+</tr>
+<tr>
+<td style="text-align:center">40 - 51</td>
+<td style="text-align:center">UMI (12 bp)</td>
+</tr>
+</tbody>
+</table>
+<p>Based on our previous results, in the original reads before &ldquo;translation&rdquo;, there should be 96 unique 8-bp barcode1, 96 unique 6-bp barcode2, 96 unique 6-bp barcode3 and 96 unique 8-bp barcode4. The combination of them forms a cell barcode. Now let&rsquo;s find out the unique sequences in each set:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zcat fastqs/RK20220802_FR_3_S3_L001_R1_001.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    cut -c 1-8 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort -b -k1,1nr | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    less -N
+</span></span></code></pre></div><p>We see all unique 8-mers in the first 8 bp of Read 1, sorted by occurrences in descending order. You see, the occurrences of the top 96 8-mers are comparable, but there is a sudden drop (two orders of magnitude) from 96th to 97th 8-mers. It indicates that the top 96 8-mers are our whitelist, and the rest are probably mismatches due to sequencing and PCR errors <em>etc</em>. Here are the lines 94 - 98 of the output:</p>
+<div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">95
+</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">96
+</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">97
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">98
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#d19a66">437824</span> CTTCTACG
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">358593</span> GTCCTTGC
+</span></span><span style="display:flex; background-color:#3d4148"><span><span style="color:#d19a66">347479</span> TCTTTGAC
+</span></span><span style="display:flex; background-color:#3d4148"><span>  <span style="color:#d19a66">4090</span> AAAGTGGC
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">4013</span> CAACCATT</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>In the same way, we can use the above commands and change <code>cut -c 1-8</code> to <code>12-17</code>, <code>21-26</code> and <code>31-39</code> to check the other three barcodes, which yields similar results. Therefore, we can obtain the four sets of barcodes like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># get barcode1 (8 bp)</span>
+</span></span><span style="display:flex;"><span>zcat fastqs/RK20220802_FR_3_S3_L001_R1_001.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    cut -c 1-8 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort -b -k1,1nr | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    head -96 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;{print $2}&#39;</span> &gt; fb_v3_bc1.tsv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># get barcode2 (6 bp)</span>
+</span></span><span style="display:flex;"><span>zcat fastqs/RK20220802_FR_3_S3_L001_R1_001.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    cut -c 12-17 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort -b -k1,1nr | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    head -96 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;{print $2}&#39;</span> &gt; fb_v3_bc2.tsv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># get barcode3 (6 bp)</span>
+</span></span><span style="display:flex;"><span>zcat fastqs/RK20220802_FR_3_S3_L001_R1_001.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    cut -c 21-26 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort -b -k1,1nr | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    head -96 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;{print $2}&#39;</span> &gt; fb_v3_bc3.tsv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># get barcode4 (8 bp)</span>
+</span></span><span style="display:flex;"><span>zcat fastqs/RK20220802_FR_3_S3_L001_R1_001.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    cut -c 32-39 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort -b -k1,1nr | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    head -96 | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;{print $2}&#39;</span> &gt; fb_v3_bc4.tsv
+</span></span></code></pre></div><p>On top of that, by checking the <a href="https://www.fluentbio.com/resources/pipseq-t2-single-cell-rna-kit-user-guide/">manual</a> of the FluentBio kits, we finally figure out the library structure of PIPseq$^{\textmd{TM}}$ V3. The HTML representation is <a href="https://teichlab.github.io/scg_lib_structs/methods_html/PIP-seq.html">here</a>, and <strong>the <em>seqspec</em> specification</strong> is <a href="https://github.com/IGVF/seqspec/tree/main/specs/PIPseqV3">here</a>.</p>
+<h2 id="validation">Validation</h2>
+<p>Now we need to do some sanity check and validation. First, according to their manual, the Read 2 adapters are added via A-tailing and ligation. In this case, all Read 2 should start with <code>T</code>. Let&rsquo;s check:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zcat RK20220802_FR_3_S3_L001_R2_001.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    cut -c <span style="color:#d19a66">1</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">#### The output is</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">182181</span> A
+</span></span><span style="display:flex;"><span>   <span style="color:#d19a66">27462</span> C
+</span></span><span style="display:flex;"><span>   <span style="color:#d19a66">97214</span> G
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">62401662</span> T
+</span></span></code></pre></div><p>The result seems to be consistent with our expectation. In addition, <code>A</code> appears many more times than <code>C</code> and <code>G</code>. There might be a reason for that, but I will leave it for now.</p>
+<p>Next, we should do some more appropriate validation. We use <a href="https://github.com/alexdobin/STAR">STARsolo</a> to analyse the data. Since we know the library structure and whitelist, we can do this relatively easily:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>STAR --runThreadN <span style="color:#d19a66">8</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --genomeDir /data/bio-chenx/reference/others/hs_mm_mix/refdata-gex-GRCh38-and-mm10-2020-A/star_2.7.9a <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --readFilesCommand zcat <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outFileNamePrefix ./star_outs/RK20220802/ <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --readFilesIn fastqs/RK20220802_FR_3_S3_L001_R2_001.fastq.gz fastqs/RK20220802_FR_3_S3_L001_R1_001.fastq.gz <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloType CB_UMI_Complex <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBposition 0_0_0_7 0_11_0_16 0_20_0_25 0_31_0_38 <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloUMIposition 0_39_0_50 <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBwhitelist fb_v3_bc1.tsv fb_v3_bc2.tsv fb_v3_bc3.tsv fb_v3_bc4.tsv <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBmatchWLtype 1MM <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCellFilter EmptyDrops_CR <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outSAMattributes CB UB <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outSAMtype BAM SortedByCoordinate
+</span></span></code></pre></div><p>Once it is finished, you can check the summary:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ star_outs/RK20220802/Solo.out/Gene/Summary.csv
+</span></span><span style="display:flex;"><span>Number of Reads,62708519
+</span></span><span style="display:flex; background-color:#3d4148"><span>Reads With Valid Barcodes,0.973692
+</span></span><span style="display:flex;"><span>Sequencing Saturation,0.324326
+</span></span><span style="display:flex;"><span>Q30 Bases in CB+UMI,0.940079
+</span></span><span style="display:flex;"><span>Q30 Bases in RNA read,0.906632
+</span></span><span style="display:flex;"><span>Reads Mapped to Genome: Unique+Multiple,0.892956
+</span></span><span style="display:flex;"><span>Reads Mapped to Genome: Unique,0.640405
+</span></span><span style="display:flex;"><span>Reads Mapped to Gene: Unique+Multipe Gene,0.790096
+</span></span><span style="display:flex;"><span>Reads Mapped to Gene: Unique Gene,0.753377
+</span></span><span style="display:flex;"><span>Estimated Number of Cells,3736
+</span></span><span style="display:flex;"><span>Unique Reads in Cells Mapped to Gene,41294018
+</span></span><span style="display:flex;"><span>Fraction of Unique Reads in Cells,0.874074
+</span></span><span style="display:flex;"><span>Mean Reads per Cell,11053
+</span></span><span style="display:flex;"><span>Median Reads per Cell,10017
+</span></span><span style="display:flex;"><span>UMIs in Cells,27820058
+</span></span><span style="display:flex;"><span>Mean UMI per Cell,7446
+</span></span><span style="display:flex;"><span>Median UMI per Cell,6810
+</span></span><span style="display:flex;"><span>Mean Gene per Cell,1678
+</span></span><span style="display:flex;"><span>Median Gene per Cell,1667
+</span></span><span style="display:flex;"><span>Total Gene Detected,31436</span></span></code></pre></div>
+<p>We see that more than 97% of the barcodes are valid (in the whitelist), which is good. Since the whitelist is generated using the species mixing data, it is not surprising that they match. Now let&rsquo;s check <a href="https://www.fluentbio.com/datasets/">the PBMC data from a healthy individual using the T20 kit</a> as an independent validation. Download the FASTQ files into the <code>fastqs</code> directory. Then:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>STAR --runThreadN <span style="color:#d19a66">8</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --genomeDir /data/bio-chenx/reference/homo_sapiens/refdata-gex-GRCh38-2020-A/star_2.7.9a <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --readFilesCommand zcat <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outFileNamePrefix ./star_outs/PH20220718/ <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --readFilesIn fastqs/RK20220802_FR_3_S3_L001_R2_001.fastq.gz fastqs/RK20220802_FR_3_S3_L001_R1_001.fastq.gz <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloType CB_UMI_Complex <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBposition 0_0_0_7 0_11_0_16 0_20_0_25 0_31_0_38 <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloUMIposition 0_39_0_50 <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBwhitelist fb_v3_bc1.tsv fb_v3_bc2.tsv fb_v3_bc3.tsv fb_v3_bc4.tsv <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBmatchWLtype 1MM <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCellFilter EmptyDrops_CR <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outSAMattributes CB UB <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outSAMtype BAM SortedByCoordinate
+</span></span></code></pre></div><p>Again, check the result summary of the PBMC sample:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat star_outs/PH20220718/Solo.out/Gene/Summary.csv
+</span></span><span style="display:flex;"><span>Number of Reads,62708519
+</span></span><span style="display:flex; background-color:#3d4148"><span>Reads With Valid Barcodes,0.973816
+</span></span><span style="display:flex;"><span>Sequencing Saturation,0.316913
+</span></span><span style="display:flex;"><span>Q30 Bases in CB+UMI,0.940079
+</span></span><span style="display:flex;"><span>Q30 Bases in RNA read,0.906632
+</span></span><span style="display:flex;"><span>Reads Mapped to Genome: Unique+Multiple,0.588755
+</span></span><span style="display:flex;"><span>Reads Mapped to Genome: Unique,0.457185
+</span></span><span style="display:flex;"><span>Reads Mapped to Gene: Unique+Multipe Gene,0.464126
+</span></span><span style="display:flex;"><span>Reads Mapped to Gene: Unique Gene,0.457105
+</span></span><span style="display:flex;"><span>Estimated Number of Cells,2861
+</span></span><span style="display:flex;"><span>Unique Reads in Cells Mapped to Gene,23771638
+</span></span><span style="display:flex;"><span>Fraction of Unique Reads in Cells,0.829309
+</span></span><span style="display:flex;"><span>Mean Reads per Cell,8308
+</span></span><span style="display:flex;"><span>Median Reads per Cell,6598
+</span></span><span style="display:flex;"><span>UMIs in Cells,16151901
+</span></span><span style="display:flex;"><span>Mean UMI per Cell,5645
+</span></span><span style="display:flex;"><span>Median UMI per Cell,4564
+</span></span><span style="display:flex;"><span>Mean Gene per Cell,1191
+</span></span><span style="display:flex;"><span>Median Gene per Cell,1145
+</span></span><span style="display:flex;"><span>Total Gene Detected,17472</span></span></code></pre></div>
+<p>We still see more than 97% of the barcodes are valid. Then we realised that many samples from the Clark2023 paper were actually using the FluentBio kit, not the first few samples I mentioned earlier in this post. Take <code>SRR21853664</code> as an example, the FastQC results seems extremely similar:</p>
+<p><img src="/images/2023-06-03/pip-seq_srr21853664.png" alt=""></p>
+<p>We should be able to use the same <code>STAR</code> command and the same whitelist files to process the data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>STAR --runThreadN <span style="color:#d19a66">8</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --genomeDir /data/bio-chenx/reference/homo_sapiens/refdata-gex-GRCh38-2020-A/star_2.7.9a <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --readFilesCommand zcat <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outFileNamePrefix ./star_outs/SRR21853664/ <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --readFilesIn fastqs/SRR21853664_2.fastq.gz fastqs/SRR21853664_1.fastq.gz <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloType CB_UMI_Complex <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBposition 0_0_0_7 0_11_0_16 0_20_0_25 0_31_0_38 <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloUMIposition 0_39_0_50 <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloBarcodeReadLength <span style="color:#d19a66">0</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBwhitelist fb_v3_bc1.tsv fb_v3_bc2.tsv fb_v3_bc3.tsv fb_v3_bc4.tsv <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCBmatchWLtype 1MM <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --soloCellFilter EmptyDrops_CR <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outSAMattributes CB UB <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>     --outSAMtype BAM SortedByCoordinate
+</span></span></code></pre></div><p>Check the result summary of <code>SRR21853664</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat star_outs/SRR21853664/Solo.out/Gene/Summary.csv
+</span></span><span style="display:flex;"><span>Number of Reads,24696002
+</span></span><span style="display:flex; background-color:#3d4148"><span>Reads With Valid Barcodes,0.973371
+</span></span><span style="display:flex;"><span>Sequencing Saturation,0.78488
+</span></span><span style="display:flex;"><span>Q30 Bases in CB+UMI,0.955722
+</span></span><span style="display:flex;"><span>Q30 Bases in RNA read,0.942888
+</span></span><span style="display:flex;"><span>Reads Mapped to Genome: Unique+Multiple,0.703656
+</span></span><span style="display:flex;"><span>Reads Mapped to Genome: Unique,0.57576
+</span></span><span style="display:flex;"><span>Reads Mapped to Gene: Unique+Multipe Gene,0.6014
+</span></span><span style="display:flex;"><span>Reads Mapped to Gene: Unique Gene,0.59319
+</span></span><span style="display:flex;"><span>Estimated Number of Cells,2472
+</span></span><span style="display:flex;"><span>Unique Reads in Cells Mapped to Gene,8871000
+</span></span><span style="display:flex;"><span>Fraction of Unique Reads in Cells,0.605553
+</span></span><span style="display:flex;"><span>Mean Reads per Cell,3588
+</span></span><span style="display:flex;"><span>Median Reads per Cell,2702
+</span></span><span style="display:flex;"><span>UMIs in Cells,1754338
+</span></span><span style="display:flex;"><span>Mean UMI per Cell,709
+</span></span><span style="display:flex;"><span>Median UMI per Cell,560
+</span></span><span style="display:flex;"><span>Mean Gene per Cell,287
+</span></span><span style="display:flex;"><span>Median Gene per Cell,260
+</span></span><span style="display:flex;"><span>Total Gene Detected,13157</span></span></code></pre></div>
+<p>Things also checkout. We also tested <code>SRR19184609</code> and <code>SRR19184609</code>. We are sure there are other samples using the same version. We can also figure out how PIPseeker$^{\textmd{TM}}$ &ldquo;translates&rdquo; the original cell barcodes (8 + 6 + 6 + 8 bp) into their own format (4 + 4 + 4 + 4 bp) by comparing the <code>fb_v3_bc{1..4}.tsv</code> files with their output, but I will leave it for now.</p>
+<p>For other mysterious samples, we will continue in the next post.</p>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#an-initial-look">An Initial Look</a></li>
+    <li><a href="#gse202919">GSE202919</a></li>
+    <li><a href="#the-fluentbio-example-data">The FluentBio Example Data</a></li>
+    <li><a href="#validation">Validation</a></li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

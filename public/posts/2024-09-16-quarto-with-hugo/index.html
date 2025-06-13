@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Quarto With Hugo</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, quarto, python, notebook'>
+
+    <meta property="og:url" content="https://dbrg77.github.io/posts/2024-09-16-quarto-with-hugo/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Quarto With Hugo">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quarto With Hugo">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2024-09-16-quarto-with-hugo/">
+    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2024-09-16-quarto-with-hugo/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://dbrg77.github.io/posts/2024-09-16-quarto-with-hugo/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://dbrg77.github.io">
+                <img src="https://dbrg77.github.io/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://dbrg77.github.io">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Quarto With Hugo</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            September 16, 2024
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/hugo">hugo</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/quarto">quarto</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/python">python</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/notebook">notebook</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Very often, I need to write in a <a href="https://ipython.org/notebook.html">Jupyter/IPython Notebook</a>-like style, where output is immediately shown after a block of code. In the past, I just copy pasted the code block, saved the output plot as image files and displayed them using the <code>![](imagePath)</code> syntax in markdown or the figure shortcode of <a href="https://gohugo.io">Hugo</a>. However, it becomes tedious when there are many blocks of code and plots, obviously. I need a better option.</p>
+<p>An initial search gave me <a href="https://github.com/vlunot/nb2hugo">nb2hugo</a>. It seemed to do the job, but the tool is not actively maintained. There were also other issues with front matters and paths as described <a href="https://skeptric.com/jupyter-hugo-blog/">in this post</a>.</p>
+<p>Then I came across <a href="https://quarto.org">Quarto</a>, which is just perfect for writing Notebook-style post. It can build webiste on its own, just like <strong>Hugo</strong>. I was tempted to make the switch from Hugo to Quarto. I eventually did not, since I mostly write stuff in plain markdown and I really like the minimalism Hugo theme <a href="https://github.com/526avijitgupta/gokarna">Gokarna</a>. In addition, I&rsquo;m already used to using Hugo.</p>
+<p>It turns out that Quarto has a native support to produce Hugo post. The procedures are described <a href="https://quarto.org/docs/output-formats/hugo.html">here</a> from their official documentation. In this post, I just documented how I use Quarto to produce this post itself. If I just follow the steps from their officially documentation, it will not work. I still have to manully fix the front matter. On top of that, I have specific ways of doing things, so I eventually did not follow the exact steps from the documentation.</p>
+<p>To get started, I need to add the following lines to the hugo site configure file. In my case, it is <code>config.toml</code> at the site root directoy:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#e06c75">markup</span>.<span style="color:#e06c75">goldmark</span>.<span style="color:#e06c75">renderer</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">unsafe</span> = <span style="color:#e5c07b">true</span>
+</span></span></code></pre></div><p>The first line should be at the base level, that is, the same level as <code>baseURL</code>. For example, this is the top few lines of my <code>config.toml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#e06c75">baseURL</span> = <span style="color:#98c379">&#34;https://notarocketscientist.xyz&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">title</span> = <span style="color:#98c379">&#34;Not A Rocket Scientist&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">theme</span> = <span style="color:#98c379">&#34;gokarna&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">languageCode</span> = <span style="color:#98c379">&#34;en-gb&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">defaultContentLanguage</span> = <span style="color:#98c379">&#34;en-gb&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">enableEmoji</span> = <span style="color:#e5c07b">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">enableRobotsTXT</span> = <span style="color:#e5c07b">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">pygmentsStyle</span> = <span style="color:#98c379">&#34;onedark&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#e06c75">markup</span>.<span style="color:#e06c75">goldmark</span>.<span style="color:#e06c75">renderer</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">unsafe</span> = <span style="color:#e5c07b">true</span>
+</span></span></code></pre></div><p>After that, I was ready to write this post. In this case, I created a file called <code>index.qmd</code> in a place that is completely outside my hugo website directory, such as <code>Documents/work_in_progress</code>. In the file <code>index.qmd</code>, add the following lines as the front matter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#e06c75">---</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">title</span>: <span style="color:#98c379">&#34;Quarto With Hugo&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">format</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">html</span>:                <span style="color:#7f848e"># Not really needed for this post</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">code-fold</span>: <span style="color:#e5c07b">false</span>   <span style="color:#7f848e"># Not really needed for this post</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">hugo-md</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">code-fold</span>: <span style="color:#e5c07b">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">editor</span>:                <span style="color:#7f848e"># Not really needed for this post</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">render-on-save</span>: <span style="color:#e5c07b">true</span> <span style="color:#7f848e"># Not really needed for this post</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">jupyter</span>: python3
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">---</span>
+</span></span></code></pre></div><p>Note that those four lines with comments are not really needed for this post. When I write, I usually use <a href="https://github.com/microsoft/vscode">VS Code</a> and I would like to preview the rendered content at the side. Those four lines are needed for the live preview.</p>
+<p>Once I put the front matter like that, I can continue to write stuff as usual. For me, I just treat the <code>qmd</code> format as the regular markdown with added syntaxes and functionalities for computational code and output rendering. The <a href="https://quarto.org/docs/get-started/hello/vscode.html">quick tutorial</a> from the Quarto website is a good starting point to grasp the idea.</p>
+<p>When I finished writing, I went to the place where the file <code>index.qmd</code> was located in Terminal, e.g. <code>Documents/work_in_progress</code>, and rendered the file by typing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>quarto render index.qmd
+</span></span></code></pre></div><p>It should finish without any problem. Some new stuff would be produced, including <code>index.md</code>, <code>index.html</code> and a directory called <code>index_files</code> that contains some other directories and files. The structure was like this:</p>
+<p><img src="finder_screenshot.png" alt=""></p>
+<p>The newly generated file <code>index.md</code> was the Hugo-compatible markdown file &hellip; almost &hellip; At this stage, the front matter in the <code>index.md</code> was exactly the same as that in <code>index.qmd</code>, which cannot be recognised by Hugo. In order for Hugo to build the post from the <code>index.md</code> file, I manually changed the front matter in the <code>index.md</code> file to the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#e06c75">---</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">title</span>: <span style="color:#98c379">&#34;Quarto With Hugo&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">date</span>: 2024-09-16T09:00:00<span style="color:#d19a66">+08</span>:<span style="color:#d19a66">00</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">tags</span>: [<span style="color:#98c379">&#39;hugo&#39;</span>, <span style="color:#98c379">&#39;quarto&#39;</span>, <span style="color:#98c379">&#39;python&#39;</span>, <span style="color:#98c379">&#39;notebook&#39;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">draft</span>: <span style="color:#e5c07b">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">type</span>: post
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">---</span>
+</span></span></code></pre></div><p>Okay, it was almost ready at that stage. I headed to where I usually write posts, which is <code>content/posts/</code>. Normally, I would just create a markdown file under <code>content/posts/</code>, like this:</p>
+<p><img src="hugo_content_screenshot.png" alt=""></p>
+<p>However, I needed to do a slightly different style in this case. Here I used the <a href="https://gohugo.io/content-management/page-bundles/">Page Bundles</a> feature of Hugo. I created a directory under <code>content/posts/</code> called <code>2024-09-16-quarto-with-hugo</code>, sitting at the same level with all my other <code>.md</code> post files. Then I went to <code>Documents/work_in_progress</code>, copy the <code>index.md</code> and <code>index_files/figure-markdown_strict</code> into <code>content/posts/2024-09-16-quarto-with-hugo/</code>, like this:</p>
+<p><img src="hugo_content_screenshot2.png" alt=""></p>
+<p>After that, everything was ready, and I could use the usual <code>hugo server</code> command to preview and <code>hugo</code> to publish. You can find the raw files <code>index.qmd</code> and <code>index.md</code> to generate this post from <a href="https://github.com/dbrg77/quarto_hugo_demo">here</a>.</p>
+<p>The following content is just used for testing.</p>
+<p>For a demonstration of a line plot on a polar axis, see <a href="#fig-polar" class="quarto-xref">Figure 1</a>. This is with the <code>code-fold: false</code> setting.</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">numpy</span> <span style="color:#c678dd">as</span> <span style="color:#e06c75">np</span>
+</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">matplotlib.pyplot</span> <span style="color:#c678dd">as</span> <span style="color:#e06c75">plt</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">r</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">np</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">arange</span>(<span style="color:#d19a66">0</span>, <span style="color:#d19a66">2</span>, <span style="color:#d19a66">0.01</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">theta</span> <span style="color:#56b6c2">=</span> <span style="color:#d19a66">2</span> <span style="color:#56b6c2">*</span> <span style="color:#e06c75">np</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">pi</span> <span style="color:#56b6c2">*</span> <span style="color:#e06c75">r</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">fig</span>, <span style="color:#e06c75">ax</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">plt</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">subplots</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e06c75">subplot_kw</span> <span style="color:#56b6c2">=</span> {<span style="color:#98c379">&#39;projection&#39;</span>: <span style="color:#98c379">&#39;polar&#39;</span>} 
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ax</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">plot</span>(<span style="color:#e06c75">theta</span>, <span style="color:#e06c75">r</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ax</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">set_rticks</span>([<span style="color:#d19a66">0.5</span>, <span style="color:#d19a66">1</span>, <span style="color:#d19a66">1.5</span>, <span style="color:#d19a66">2</span>])
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">ax</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">grid</span>(<span style="color:#e5c07b">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">plt</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">show</span>()
+</span></span></code></pre></div><p><img src="index_files/figure-markdown_strict/fig-polar-output-1.png"
+id="fig-polar" alt="Figure 1: A line plot on a polar axis" /></p>
+<p>Another demonstration of <a href="https://seaborn.pydata.org/examples/kde_ridgeplot.html">ridge plot</a> from the <a href="https://seaborn.pydata.org/index.html">seaborn</a> package. This is with the <code>code-fold: true</code> setting, and the following codes are directly copied from <a href="https://seaborn.pydata.org/examples/kde_ridgeplot.html">the seaborn gallery</a>. Based on the output, it seems I should have turned off the warnings.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">numpy</span> <span style="color:#c678dd">as</span> <span style="color:#e06c75">np</span>
+</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">pandas</span> <span style="color:#c678dd">as</span> <span style="color:#e06c75">pd</span>
+</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">seaborn</span> <span style="color:#c678dd">as</span> <span style="color:#e06c75">sns</span>
+</span></span><span style="display:flex;"><span><span style="color:#c678dd">import</span> <span style="color:#e06c75">matplotlib.pyplot</span> <span style="color:#c678dd">as</span> <span style="color:#e06c75">plt</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">sns</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">set_theme</span>(<span style="color:#e06c75">style</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;white&#34;</span>, <span style="color:#e06c75">rc</span><span style="color:#56b6c2">=</span>{<span style="color:#98c379">&#34;axes.facecolor&#34;</span>: (<span style="color:#d19a66">0</span>, <span style="color:#d19a66">0</span>, <span style="color:#d19a66">0</span>, <span style="color:#d19a66">0</span>)})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># Create the data</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">rs</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">np</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">random</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">RandomState</span>(<span style="color:#d19a66">1979</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">x</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">rs</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">randn</span>(<span style="color:#d19a66">500</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">np</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">tile</span>(<span style="color:#e5c07b">list</span>(<span style="color:#98c379">&#34;ABCDEFGHIJ&#34;</span>), <span style="color:#d19a66">50</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">df</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">pd</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">DataFrame</span>(<span style="color:#e5c07b">dict</span>(<span style="color:#e06c75">x</span><span style="color:#56b6c2">=</span><span style="color:#e06c75">x</span>, <span style="color:#e06c75">g</span><span style="color:#56b6c2">=</span><span style="color:#e06c75">g</span>))
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">m</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">df</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">map</span>(<span style="color:#e5c07b">ord</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">df</span>[<span style="color:#98c379">&#34;x&#34;</span>] <span style="color:#56b6c2">+=</span> <span style="color:#e06c75">m</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># Initialize the FacetGrid object</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">pal</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">sns</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">cubehelix_palette</span>(<span style="color:#d19a66">10</span>, <span style="color:#e06c75">rot</span><span style="color:#56b6c2">=-</span><span style="color:#d19a66">.25</span>, <span style="color:#e06c75">light</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">.7</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">sns</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">FacetGrid</span>(<span style="color:#e06c75">df</span>, <span style="color:#e06c75">row</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;g&#34;</span>, <span style="color:#e06c75">hue</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;g&#34;</span>, <span style="color:#e06c75">aspect</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">15</span>, <span style="color:#e06c75">height</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">.5</span>, <span style="color:#e06c75">palette</span><span style="color:#56b6c2">=</span><span style="color:#e06c75">pal</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># Draw the densities in a few steps</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">map</span>(<span style="color:#e06c75">sns</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">kdeplot</span>, <span style="color:#98c379">&#34;x&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e06c75">bw_adjust</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">.5</span>, <span style="color:#e06c75">clip_on</span><span style="color:#56b6c2">=</span><span style="color:#e5c07b">False</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e06c75">fill</span><span style="color:#56b6c2">=</span><span style="color:#e5c07b">True</span>, <span style="color:#e06c75">alpha</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">1</span>, <span style="color:#e06c75">linewidth</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">1.5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">map</span>(<span style="color:#e06c75">sns</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">kdeplot</span>, <span style="color:#98c379">&#34;x&#34;</span>, <span style="color:#e06c75">clip_on</span><span style="color:#56b6c2">=</span><span style="color:#e5c07b">False</span>, <span style="color:#e06c75">color</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;w&#34;</span>, <span style="color:#e06c75">lw</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">2</span>, <span style="color:#e06c75">bw_adjust</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">.5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># passing color=None to refline() uses the hue mapping</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">refline</span>(<span style="color:#e06c75">y</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">0</span>, <span style="color:#e06c75">linewidth</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">2</span>, <span style="color:#e06c75">linestyle</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;-&#34;</span>, <span style="color:#e06c75">color</span><span style="color:#56b6c2">=</span><span style="color:#e5c07b">None</span>, <span style="color:#e06c75">clip_on</span><span style="color:#56b6c2">=</span><span style="color:#e5c07b">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># Define and use a simple function to label the plot in axes coordinates</span>
+</span></span><span style="display:flex;"><span><span style="color:#c678dd">def</span> <span style="color:#61afef;font-weight:bold">label</span>(<span style="color:#e06c75">x</span>, <span style="color:#e06c75">color</span>, <span style="color:#e06c75">label</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">ax</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">plt</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">gca</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#e06c75">ax</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">text</span>(<span style="color:#d19a66">0</span>, <span style="color:#d19a66">.2</span>, <span style="color:#e06c75">label</span>, <span style="color:#e06c75">fontweight</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;bold&#34;</span>, <span style="color:#e06c75">color</span><span style="color:#56b6c2">=</span><span style="color:#e06c75">color</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e06c75">ha</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;left&#34;</span>, <span style="color:#e06c75">va</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;center&#34;</span>, <span style="color:#e06c75">transform</span><span style="color:#56b6c2">=</span><span style="color:#e06c75">ax</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">transAxes</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">map</span>(<span style="color:#e06c75">label</span>, <span style="color:#98c379">&#34;x&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># Set the subplots to overlap</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">figure</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">subplots_adjust</span>(<span style="color:#e06c75">hspace</span><span style="color:#56b6c2">=-</span><span style="color:#d19a66">.25</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># Remove axes details that don&#39;t play well with overlap</span>
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">set_titles</span>(<span style="color:#98c379">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">set</span>(<span style="color:#e06c75">yticks</span><span style="color:#56b6c2">=</span>[], <span style="color:#e06c75">ylabel</span><span style="color:#56b6c2">=</span><span style="color:#98c379">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e06c75">g</span><span style="color:#56b6c2">.</span><span style="color:#e06c75">despine</span>(<span style="color:#e06c75">bottom</span><span style="color:#56b6c2">=</span><span style="color:#e5c07b">True</span>, <span style="color:#e06c75">left</span><span style="color:#56b6c2">=</span><span style="color:#e5c07b">True</span>)
+</span></span></code></pre></div></details>
+<pre><code>/Users/xichen/miniconda3/envs/scs/lib/python3.11/site-packages/seaborn/axisgrid.py:123: UserWarning: Tight layout not applied. tight_layout cannot make Axes height small enough to accommodate all Axes decorations.
+  self._figure.tight_layout(*args, **kwargs)
+/Users/xichen/miniconda3/envs/scs/lib/python3.11/site-packages/seaborn/axisgrid.py:123: UserWarning: Tight layout not applied. tight_layout cannot make Axes height small enough to accommodate all Axes decorations.
+  self._figure.tight_layout(*args, **kwargs)
+/Users/xichen/miniconda3/envs/scs/lib/python3.11/site-packages/seaborn/axisgrid.py:123: UserWarning: Tight layout not applied. tight_layout cannot make Axes height small enough to accommodate all Axes decorations.
+  self._figure.tight_layout(*args, **kwargs)
+/Users/xichen/miniconda3/envs/scs/lib/python3.11/site-packages/seaborn/axisgrid.py:123: UserWarning: Tight layout not applied. tight_layout cannot make Axes height small enough to accommodate all Axes decorations.
+  self._figure.tight_layout(*args, **kwargs)
+/Users/xichen/miniconda3/envs/scs/lib/python3.11/site-packages/seaborn/axisgrid.py:123: UserWarning: Tight layout not applied. tight_layout cannot make Axes height small enough to accommodate all Axes decorations.
+  self._figure.tight_layout(*args, **kwargs)
+</code></pre>
+<p><img src="index_files/figure-markdown_strict/fig-seaborn-output-2.png"
+id="fig-seaborn" alt="Figure 2: Overlapping densities (ridge plot)" /></p>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

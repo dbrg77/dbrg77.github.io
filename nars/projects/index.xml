@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/projects/</link>
+    <description>Recent content in Projects on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <atom:link href="https://notarocketscientist.xyz/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Latex And Beamer Snippets</title>
+      <link>https://notarocketscientist.xyz/projects/learning-latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://notarocketscientist.xyz/projects/learning-latex/</guid>
+      <description>In 2012, when I was at the final stage of my PhD to write a thesis, I put &amp;ldquo;learning LaTeX&amp;rdquo; on my to-do list. Early 2021, I finally remove the item from the list. I read the Learn LaTeX in 30 minutes article from Overleaf, and then immediately started using it. When I encountered some problems along the way, I just Google them. This way of learning is not very systematic, but it does the job.</description>
+    </item>
+  </channel>
+</rss>

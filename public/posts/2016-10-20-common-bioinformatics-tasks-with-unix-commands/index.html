@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Common Bioinformatics Tasks With UNIX Commands</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, bioinformatics, unix, text manipulation'>
+
+    <meta property="og:url" content="https://dbrg77.github.io/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Common Bioinformatics Tasks With UNIX Commands">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Common Bioinformatics Tasks With UNIX Commands">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/">
+    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://dbrg77.github.io/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://dbrg77.github.io">
+                <img src="https://dbrg77.github.io/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://dbrg77.github.io">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Common Bioinformatics Tasks With UNIX Commands</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            October 20, 2016
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/bioinformatics">bioinformatics</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/unix">unix</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/text-manipulation">text manipulation</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h3 id="awk">awk</h3>
+<p><strong>1. Give names to each peak in a 3-column bed file:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat Oct4_union_peaks.bed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3062833</span> <span style="color:#d19a66">3063056</span>
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3343519</span> <span style="color:#d19a66">3343843</span>
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3482630</span> <span style="color:#d19a66">3483324</span>
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3549654</span> <span style="color:#d19a66">3549895</span>
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3648929</span> <span style="color:#d19a66">3649295</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ awk <span style="color:#98c379">&#39;BEGIN{OFS=&#34;\t&#34;}{print $1,$2,$3,&#34;Oct4_union_peak_&#34; NR}&#39;</span> Oct4_union_peaks.bed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3062833</span> <span style="color:#d19a66">3063056</span> Oct4_union_peak_1
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3343519</span> <span style="color:#d19a66">3343843</span> Oct4_union_peak_2
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3482630</span> <span style="color:#d19a66">3483324</span> Oct4_union_peak_3
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3549654</span> <span style="color:#d19a66">3549895</span> Oct4_union_peak_4
+</span></span><span style="display:flex;"><span>chr1 <span style="color:#d19a66">3648929</span> <span style="color:#d19a66">3649295</span> Oct4_union_peak_5
+</span></span></code></pre></div><p><strong>2. Print the number of fileds for each line:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;{print NF}&#39;</span> some_file.txt
+</span></span></code></pre></div><p><strong>3. Print the last column of a text file:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;{print $NF}&#39;</span> some_file.txt
+</span></span></code></pre></div><p><strong>4. In a <a href="https://genome.ucsc.edu/FAQ/FAQformat#format12">narrowPeak format</a> file, Get all peaks that have more than 5 fold enrichment:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;$7&gt;5&#39;</span> Oct4_peaks.narrowPeak
+</span></span></code></pre></div><p><strong>5. In a tab-delimited file, output the lines where the 3rd column is less than the 2nd column:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># in a normal bed file, this should output nothing as the 3rd column is alway larger than the 2nd column</span>
+</span></span><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;$3&lt;$2&#39;</span> Oct4_peaks.bed
+</span></span></code></pre></div><p><strong>6. Only output the read names, the DNA sequences or the quality strings of a fastq file:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># output read names</span>
+</span></span><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;NR%4==1&#39;</span> Oct4_ChIP.fastq
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># output DNA sequence</span>
+</span></span><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;NR%4==2&#39;</span> Oct4_ChIP.fastq
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># output quality strings</span>
+</span></span><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;NR%4==0&#39;</span> Oct4_ChIP.fastq
+</span></span></code></pre></div><p><strong>7. Add a “chr” at the beginning of a bed file coordinates (useful to convert non mitochondrial Ensembl coordinates to UCSC coordinates):</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;{print &#34;chr&#34; $0}&#39;</span> Oct4_peaks_ensembl.bed
+</span></span></code></pre></div><p><strong>8. Calculate the length of each region in a bed file and add the length to the end of each region:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;BEGIN{OFS=&#34;\t&#34;}{print $0, $3-$2}&#39;</span> Oct4_peaks.bed
+</span></span></code></pre></div><p><strong>9. Get the summit point (highest pileup) from a narrowPeak file and output as a 4-column bed file:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># simply output the summit point</span>
+</span></span><span style="display:flex;"><span>awk <span style="color:#98c379">&#39;BEGIN{OFS=&#34;\t&#34;}{print $1,$2+$10,$2+$10+1,$4}&#39;</span> Oct4_peaks.narrowPeak
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># output the summit point sorted by fold enrichment (highest to lowest)</span>
+</span></span><span style="display:flex;"><span>sort -k7,7nr Oct4_peaks.narrowPeak | awk <span style="color:#98c379">&#39;BEGIN{OFS=&#34;\t&#34;}{print $1,$2+$10,$2+$10+1,$4}&#39;</span>
+</span></span></code></pre></div><h3 id="grep">grep</h3>
+<p><strong>1. Output the record names from a fasta file:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep <span style="color:#98c379">&#39;&gt;&#39;</span> your_fasta.fa
+</span></span></code></pre></div><p><strong>2. Display one line before the match and two lines after the match (-A and -B options):</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep <span style="color:#98c379">&#39;AAGCAGTGGTATCAACGCAGAGTACAT&#39;</span> -A <span style="color:#d19a66">2</span> -B <span style="color:#d19a66">1</span> input.fastq
+</span></span></code></pre></div><p><strong>3. Only display the matching strings, not the entire line (-o option):</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># search for the P7 end of adapter sequence of a Nextera library</span>
+</span></span><span style="display:flex;"><span>grep -o -P <span style="color:#98c379">&#39;CCGAGCCCACGAGAC[ACGT]{8}ATCTCGTATGCCGTCTTCTGCTTG&#39;</span> *.fastq
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># if you want to suppress output file name, use &#39;-h&#39; as well</span>
+</span></span><span style="display:flex;"><span>grep -oh -P <span style="color:#98c379">&#39;CCGAGCCCACGAGAC[ACGT]{8}ATCTCGTATGCCGTCTTCTGCTTG&#39;</span> *.fastq
+</span></span></code></pre></div><h3 id="cut">cut</h3>
+<p><strong>1. Extract the 1st, 2nd, 4-8th, 10th and following columns from a tab-delimited file (default):</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cut -f 1,2,4-8,10- input.txt
+</span></span></code></pre></div><p><strong>2. Extract the 4-8th columns of a comma-delimited file:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cut -f 4-8 -d, input.txt
+</span></span></code></pre></div><p><strong>3. Extract the last column and use &lsquo;/&rsquo; as a delimiter:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat input.txt | rev | cut -f <span style="color:#d19a66">1</span> -d/ | rev
+</span></span></code></pre></div><h3 id="xargs">xargs</h3>
+<p><strong>1. Kill all pending jobs in LSF:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bjobs | grep <span style="color:#98c379">&#39;PEND&#39;</span> | awk <span style="color:#98c379">&#39;{print $1}&#39;</span> | xargs bkill
+</span></span></code></pre></div><p><strong>2. Remove all .sh files that have the word &lsquo;foo&rsquo; in them:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -w <span style="color:#98c379">&#39;foo&#39;</span> *.sh | cut -f <span style="color:#d19a66">1</span> -d <span style="color:#98c379">&#39;:&#39;</span> | sort -u | xargs rm
+</span></span></code></pre></div>
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

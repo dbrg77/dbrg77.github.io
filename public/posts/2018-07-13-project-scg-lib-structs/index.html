@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Project scg_lib_structs</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, single cell genomics, sequencing library, illumina sequencing'>
+
+    <meta property="og:url" content="https://dbrg77.github.io/posts/2018-07-13-project-scg-lib-structs/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Project scg_lib_structs">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Project scg_lib_structs">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2018-07-13-project-scg-lib-structs/">
+    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2018-07-13-project-scg-lib-structs/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://dbrg77.github.io/posts/2018-07-13-project-scg-lib-structs/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://dbrg77.github.io">
+                <img src="https://dbrg77.github.io/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://dbrg77.github.io">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Project scg_lib_structs</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            July 13, 2018
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/single-cell-genomics">single cell genomics</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/sequencing-library">sequencing library</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/illumina-sequencing">illumina sequencing</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Being able to perform genomic studies on the material obtained from single cells is just awesome. In 2009, <a href="https://www.nature.com/articles/nmeth.1315"><strong>Tang</strong> <em><strong>et al</strong></em>.</a> presented the first study of mRNA-seq from single cells (scRNA-seq). Two years later, <a href="https://www.nature.com/articles/nature09807"><strong>Navin</strong> <em><strong>et al</strong></em>.</a> successfully sequenced the genome of single cells. Ever since then, the field of single cell genomics is rapidly evolving and has proved to be powerful in many aspects of biology.</p>
+<p>Many methods (mainly for scRNA-seq) are invented along the way, which is a good thing. However, I&rsquo;m a bit bombarded and lost in those methods. Many of them are full of technical jargons and it is not straightforward to figure out how they actually work and what the differences are among those methods. To help understand how a method works, people tend to present some schematic views of how the sequencing library is generated using their method. For example, this is a very nice summary of 8 different scRNA-seq methods taken from a recent review by <a href="https://academic.oup.com/bfg/advance-article/doi/10.1093/bfgp/ely009/4951519"><strong>Ziegenhain</strong> <em><strong>et al</strong></em>.</a>:</p>
+<p><img src="/images/000/schematic_view_of_libraries.png" alt=""></p>
+<p>It is very clear and very helpful, but my main problem with this kind of schematic view is that it often omits many important details and does not help with troubleshooting. From my own experience, when I try a new scRNA-seq method, most likely I will fail in the first few attempts. After getting the sequencing data, I often use <code>grep</code> to have a look at the sequences from the fastq files, and <code>grep</code> is pretty good for troubleshooting genomic experiments. However, I still have a few things that I need to figure out:</p>
+<ul>
+<li>What are the adapter sequences to <code>grep</code>? i.e. the grey bar in the figure above.</li>
+<li>Since DNA is double stranded, should I <code>grep</code> the adapter sequences as they are, or should I do the reverse complement?</li>
+<li>Since paired end sequencing is often used, should I <code>grep</code> in Read 1 or Read 2?</li>
+<li>Reads often contain partial adapters, should I <code>grep</code> 5&rsquo;- or 3&rsquo;-end of the adapters or the reads?</li>
+</ul>
+<p>The answers to those questions are not obvious by just looking at the schematic view of the library generation. What really helps is to draw from scratch the actual DNA sequences from the fist step (often reverse transcription) to the final library construction step (often PCR amplification). Supplementary Figure S1 from the <a href="https://www.biorxiv.org/content/early/2014/03/05/003236"><strong>SCRB-seq</strong></a> paper and the <a href="https://support.10xgenomics.com/single-cell-gene-expression/library-prep/doc/technical-note-assay-scheme-and-configuration-of-chromium-single-cell-3-v2-libraries"><strong>Technical Note from 10x Genomics</strong></a> are very good examples.</p>
+<p>Therefore, to help myself understand all of the methods and future troubleshooting, I start the project <code>scg_lib_structs</code> (that stands for &ldquo;Single Cell Genomics Library Structures&rdquo;), an on-paper library preparation done by myself. Today, I have finally finished it (well &hellip; for now &hellip; will continue once new methods are invented), and it mostly contains scRNA-seq methods. My main aim is to create something simple and straightforward to see. To that end, I need the following requirements:</p>
+<ul>
+<li>Coloured text support for easy reading</li>
+<li>Flexible and custom spacing for sequence alignment</li>
+<li>Easily accessible</li>
+</ul>
+<p>After messing around a bit, it seems the <code>&lt;pre&gt;&lt;/pre&gt;</code> tag from HTML fitted those requirements. Therefore, I decided to use HTML to write a webpage for each method with a plain text editor. It is kind of stupid, since I have to manually align the sequence, which involves heavy pressing of the <kbd>Space</kbd> and <kbd>⌫</kbd> buttons (you will see what I mean if you open the HTMLs with a text editor), but I don&rsquo;t know any other way of doing this.</p>
+<p>There are a lot of repetitions during generating those pages, because the basic chemistry among them are not that different. We recently wrote a review which summarised the main differences of different scRNA-seq methods. You can check all the text boxes and Figure 2 from <a href="https://www.annualreviews.org/doi/10.1146/annurev-biodatasci-080917-013452"><strong>our review</strong></a>. Not all methods were included in the review, since some are not published when we started to write the review. The <code>scg_lib_structs</code> project page has a more updated version of the comparison.</p>
+<p>All files from this project is here: <a href="https://github.com/Teichlab/scg_lib_structs"><strong>https://github.com/Teichlab/scg_lib_structs</strong></a></p>
+<p>GitHub Pages here: <a href="https://teichlab.github.io/scg_lib_structs/"><strong>https://teichlab.github.io/scg_lib_structs/</strong></a></p>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

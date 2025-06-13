@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Use Aliyun OSS For UCSC Visualisation In China Mainland</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, bioinformatics, unix, ucsc genome browser, aliyun, ossutils'>
+
+    <meta property="og:url" content="https://notarocketscientist.xyz/posts/2019-05-02-use-aliyun-oss-for-ucsc-visualisation/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Use Aliyun OSS For UCSC Visualisation In China Mainland">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Use Aliyun OSS For UCSC Visualisation In China Mainland">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://notarocketscientist.xyz/posts/2019-05-02-use-aliyun-oss-for-ucsc-visualisation/">
+    <meta property="twitter:url" content="https://notarocketscientist.xyz/posts/2019-05-02-use-aliyun-oss-for-ucsc-visualisation/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://notarocketscientist.xyz/posts/2019-05-02-use-aliyun-oss-for-ucsc-visualisation/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://notarocketscientist.xyz">
+                <img src="https://notarocketscientist.xyz/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://notarocketscientist.xyz">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Use Aliyun OSS For UCSC Visualisation In China Mainland</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            May 2, 2019
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/bioinformatics">bioinformatics</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/unix">unix</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/ucsc-genome-browser">ucsc genome browser</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/aliyun">aliyun</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/ossutils">ossutils</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>You always need to repeat some basic tasks that you did in the past when you relocate to a new place. For some of them, you need to find alternative ways of achieving the same goals. For example, finding a way of visualising <strong><a href="https://genome.ucsc.edu/goldenpath/help/bigWig.html">bigWig</a></strong> signal files. This is very important for the assessment of the data quality. I hate to say it, but it is often true that the most efficient way of telling whether an experiment works or not is the least scientific way, which is by visual inspection. Looking at bigWig signals is relatively easy in <a href="https://randomstate.net/2018-07-02-setting-up-public-links-for-ucsc-visualisation/">my previous institute</a>, but it is not so straigtforward for a small lab that does not have good computational support. Things become even more annoying and complicated when your lab is in China mainland for obvious reasons.</p>
+<h2 id="the-problem">The problem.</h2>
+<p>The bigWig files we got nowadays are often large (&gt;100 MB), so it is not possible to physically upload them to the UCSC genome browser. You need a server to host the files. You put your bigWig files on the server and allow them to be accessed publicly so that UCSC genome browser can reach them. Of course, you can use sevices like <a href="https://www.dropbox.com/">Dropbox</a> or <a href="https://aws.amazon.com/s3/">Amazon S3</a>, but they are either blocked in China mainland or extremely slow. Try upload a bigWig file generated from only 1 million sequencing reads from your univeristy network. It takes ages here. Therefore, we need to solve both the server problem and the internet speed problem.</p>
+<h2 id="the-goal">The Goal.</h2>
+<ol>
+<li>Find a server that is publicly reachable to host your files.</li>
+<li>Speed needs to be fast: the connection between your local machine and the server, and the connection between the server and the UCSC genome browser.</li>
+<li>Affordable.</li>
+</ol>
+<h2 id="the-solution">The Solution.</h2>
+<p>Having looked around for a few things, I think I find a solution. This may not be THE solution, because I haven&rsquo;t tried hard enough. This solution is to use <a href="https://www.aliyun.com/">Aliyun Object Storage Service</a>, which is similar to Amazon S3, and it really solves all the problems mentioned above. The price is pretty affordable. For 100GB of data, you only pay 12 RMB per month. With 100GB of space, you can store quite a lot of experiments. The price is nothing comparing to the reagents you spent on your experiments, and you don&rsquo;t need to worry about the maintaince of the sever etc.</p>
+<p><img src="/images/000/oss_price.png" alt=""></p>
+<p>To use it, purchase the service, and login to the <a href="https://oss.console.aliyun.com">OSS console</a>. Now at the top right corner, click the <code>Access Key</code> button:</p>
+<p><img src="/images/000/oss_console.png" alt=""></p>
+<p>Then a warning will pop up, but you just click &ldquo;Continue to use Access Key&rdquo;. Then you can get your <code>Access Key ID</code> and your <code>Access Key Secret</code>:</p>
+<p><img src="/images/000/oss_accesskey.png" alt=""></p>
+<p>Now in your local machine, open up your <code>Terminal</code> and download the right binary from <a href="https://help.aliyun.com/document_detail/50452.html?spm=a2c4g.11186623.6.1382.fe817e90clvugi">this page</a>. Start configure your OSS storage by type:</p>
+<pre tabindex="0"><code>ossutil64 config
+</code></pre><p>Just input the information required, and here is mine:</p>
+<pre tabindex="0"><code>For the following settings, carriage return means skip the configuration. Please try &#34;help config&#34; to see the meaning of the settings
+Please enter endpoint:https://oss-cn-shenzhen.aliyuncs.com
+Please enter accessKeyID:your_access_key_id
+Please enter accessKeySecret:your_access_key_secret
+Please enter stsToken:
+</code></pre><p>The <code>stsToken</code> is optional, so just press <kbd>Enter</kbd>. You have the following options for endpoints:</p>
+<pre tabindex="0"><code>https://oss-cn-hangzhou.aliyuncs.com
+https://oss-cn-shanghai.aliyuncs.com
+https://oss-cn-qingdao.aliyuncs.com
+https://oss-cn-beijing.aliyuncs.com
+https://oss-cn-zhangjiakou.aliyuncs.com
+https://oss-cn-huhehaote.aliyuncs.com
+https://oss-cn-shenzhen.aliyuncs.com
+https://oss-cn-hongkong.aliyuncs.com
+...
+
+and a few more in other countries.
+</code></pre><p>Okay, just like Amazon S3, you need to create a bucket and put your files into the bucket. For example, I created a bucket called <code>myatacbucket</code> by (Note: only lowercase letters, numbers and <code>-</code> are allowed to name a bucket):</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ossutil64 mb oss://myatacbucket --acl<span style="color:#56b6c2">=</span>public-read --storage-class Standard
+</span></span></code></pre></div><p>This creates a bucket called <code>myatacbucket</code> that can be read by public. Okay, now locate the bigWig file in your local machine, and transfer it to the bucket:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ossutil64 cp my_bigwig.bw oss://myatacbucket
+</span></span></code></pre></div><p>Now, to get an URL so that UCSC can reach it. You go to your OSS console, and do <code>your bucket name --&gt; File Management --&gt; Tick your files --&gt; Export URL</code>, like this:</p>
+<p><img src="/images/000/oss_url.png" alt=""></p>
+<p>So, using the above example, my URL will be:</p>
+<pre tabindex="0"><code>https://myatacbucket.oss-cn-shenzhen.aliyuncs.com/my_bigwig.bw
+</code></pre><p>Go to UCSC (recommend the Asia mirror if you are in China: <a href="https://genome-asia.ucsc.edu">https://genome-asia.ucsc.edu</a>), and put your URL there like usual (the following text should be in one single line):</p>
+<pre tabindex="0"><code>track type=bigWig name=atac_seq description=the_best_atac_seq_ever_pileup
+bigDataUrl=https://myatacbucket.oss-cn-shenzhen.aliyuncs.com/my_bigwig.bw
+visibility=full maxHeightPixels=10:50:128 viewLimits=0:20 autoScale=OFF color=0,0,255
+</code></pre><p>Now it is done, and the speed is quite nice. You can find more information about ossutils from their <a href="https://help.aliyun.com/document_detail/50452.html?spm=a2c4g.11186623.6.1382.1e0a1594MxR9iZ">documentation</a>.</p>
+<p><img src="/images/000/ucsc_vis.png" alt=""></p>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

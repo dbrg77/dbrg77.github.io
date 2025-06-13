@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>notebook on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/notebook/</link>
+    <description>Recent content in notebook on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 16 Sep 2024 09:00:00 +0800</lastBuildDate>
+    <atom:link href="https://dbrg77.github.io/tags/notebook/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quarto With Hugo</title>
+      <link>https://dbrg77.github.io/posts/2024-09-16-quarto-with-hugo/</link>
+      <pubDate>Mon, 16 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2024-09-16-quarto-with-hugo/</guid>
+      <description>Very often, I need to write in a Jupyter/IPython Notebook-like style, where output is immediately shown after a block of code. In the past, I just copy pasted the code block, saved the output plot as image files and displayed them using the ![](imagePath) syntax in markdown or the figure shortcode of Hugo. However, it becomes tedious when there are many blocks of code and plots, obviously. I need a better option.</description>
+    </item>
+  </channel>
+</rss>

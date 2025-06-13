@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reference manager on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/reference-manager/</link>
+    <description>Recent content in reference manager on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 04 Oct 2022 15:07:53 +0800</lastBuildDate>
+    <atom:link href="https://dbrg77.github.io/tags/reference-manager/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using Zotero With iCloud As The Storage</title>
+      <link>https://dbrg77.github.io/posts/2022-10-04-using-zotero-with-icloud-as-the-storage/</link>
+      <pubDate>Tue, 04 Oct 2022 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2022-10-04-using-zotero-with-icloud-as-the-storage/</guid>
+      <description>I used to use Paperpile and Google Doc for writing scientific papers and managing the literature PDFs. The process was very smooth. I did not really have the habit of saving PDFs locally, because I did not need to. In 2019, I relocated to my current place, and accessing Google Doc has been a pain ever since. Even if I managed to use Google Doc, the speed was pathetic and the connection was intermittent.</description>
+    </item>
+  </channel>
+</rss>

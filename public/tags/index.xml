@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/</link>
+    <description>Recent content in Tags on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 08 Feb 2025 09:07:53 +0800</lastBuildDate>
+    <atom:link href="https://dbrg77.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>icloud</title>
+      <link>https://dbrg77.github.io/tags/icloud/</link>
+      <pubDate>Sat, 08 Feb 2025 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/icloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>latex</title>
+      <link>https://dbrg77.github.io/tags/latex/</link>
+      <pubDate>Sat, 08 Feb 2025 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/latex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>texifier</title>
+      <link>https://dbrg77.github.io/tags/texifier/</link>
+      <pubDate>Sat, 08 Feb 2025 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/texifier/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>vscode</title>
+      <link>https://dbrg77.github.io/tags/vscode/</link>
+      <pubDate>Sat, 08 Feb 2025 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/vscode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>writing</title>
+      <link>https://dbrg77.github.io/tags/writing/</link>
+      <pubDate>Sat, 08 Feb 2025 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/writing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>zotero</title>
+      <link>https://dbrg77.github.io/tags/zotero/</link>
+      <pubDate>Sat, 08 Feb 2025 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/zotero/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>book</title>
+      <link>https://dbrg77.github.io/tags/book/</link>
+      <pubDate>Fri, 20 Dec 2024 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/book/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>pgfplots</title>
+      <link>https://dbrg77.github.io/tags/pgfplots/</link>
+      <pubDate>Fri, 20 Dec 2024 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/pgfplots/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>tikz</title>
+      <link>https://dbrg77.github.io/tags/tikz/</link>
+      <pubDate>Fri, 20 Dec 2024 09:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/tikz/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>hugo</title>
+      <link>https://dbrg77.github.io/tags/hugo/</link>
+      <pubDate>Mon, 16 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>notebook</title>
+      <link>https://dbrg77.github.io/tags/notebook/</link>
+      <pubDate>Mon, 16 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/notebook/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>python</title>
+      <link>https://dbrg77.github.io/tags/python/</link>
+      <pubDate>Mon, 16 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>quarto</title>
+      <link>https://dbrg77.github.io/tags/quarto/</link>
+      <pubDate>Mon, 16 Sep 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/quarto/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ATAC-seq</title>
+      <link>https://dbrg77.github.io/tags/atac-seq/</link>
+      <pubDate>Tue, 23 Jul 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/atac-seq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>chromap</title>
+      <link>https://dbrg77.github.io/tags/chromap/</link>
+      <pubDate>Tue, 23 Jul 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/chromap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>illumina sequencing</title>
+      <link>https://dbrg77.github.io/tags/illumina-sequencing/</link>
+      <pubDate>Tue, 23 Jul 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/illumina-sequencing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sequencing library</title>
+      <link>https://dbrg77.github.io/tags/sequencing-library/</link>
+      <pubDate>Tue, 23 Jul 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/sequencing-library/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>single cell genomics</title>
+      <link>https://dbrg77.github.io/tags/single-cell-genomics/</link>
+      <pubDate>Tue, 23 Jul 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/single-cell-genomics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>fluentbio</title>
+      <link>https://dbrg77.github.io/tags/fluentbio/</link>
+      <pubDate>Tue, 11 Jun 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/fluentbio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>pipseeker</title>
+      <link>https://dbrg77.github.io/tags/pipseeker/</link>
+      <pubDate>Tue, 11 Jun 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/pipseeker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>pipseq</title>
+      <link>https://dbrg77.github.io/tags/pipseq/</link>
+      <pubDate>Tue, 11 Jun 2024 09:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/pipseq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>bioinformatics</title>
+      <link>https://dbrg77.github.io/tags/bioinformatics/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/bioinformatics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>chip-qpcr</title>
+      <link>https://dbrg77.github.io/tags/chip-qpcr/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/chip-qpcr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>chip-seq</title>
+      <link>https://dbrg77.github.io/tags/chip-seq/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/chip-seq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>foxm1</title>
+      <link>https://dbrg77.github.io/tags/foxm1/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/foxm1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>genomics</title>
+      <link>https://dbrg77.github.io/tags/genomics/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/genomics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>molecular biology</title>
+      <link>https://dbrg77.github.io/tags/molecular-biology/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/molecular-biology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>primer3</title>
+      <link>https://dbrg77.github.io/tags/primer3/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/primer3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>transcriptional regulation</title>
+      <link>https://dbrg77.github.io/tags/transcriptional-regulation/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/transcriptional-regulation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>figures</title>
+      <link>https://dbrg77.github.io/tags/figures/</link>
+      <pubDate>Wed, 14 Feb 2024 16:01:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/figures/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ipe</title>
+      <link>https://dbrg77.github.io/tags/ipe/</link>
+      <pubDate>Wed, 14 Feb 2024 16:01:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/ipe/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>publication</title>
+      <link>https://dbrg77.github.io/tags/publication/</link>
+      <pubDate>Wed, 14 Feb 2024 16:01:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/publication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>bioconductor</title>
+      <link>https://dbrg77.github.io/tags/bioconductor/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/bioconductor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>preprocessing</title>
+      <link>https://dbrg77.github.io/tags/preprocessing/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/preprocessing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>r</title>
+      <link>https://dbrg77.github.io/tags/r/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/r/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>scanpy</title>
+      <link>https://dbrg77.github.io/tags/scanpy/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/scanpy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>seurat</title>
+      <link>https://dbrg77.github.io/tags/seurat/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/seurat/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>software installation</title>
+      <link>https://dbrg77.github.io/tags/software-installation/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/software-installation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>unix</title>
+      <link>https://dbrg77.github.io/tags/unix/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/unix/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>introduction</title>
+      <link>https://dbrg77.github.io/tags/introduction/</link>
+      <pubDate>Sun, 31 Dec 2023 22:25:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/introduction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>cutadapt</title>
+      <link>https://dbrg77.github.io/tags/cutadapt/</link>
+      <pubDate>Mon, 11 Dec 2023 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/cutadapt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>fastp</title>
+      <link>https://dbrg77.github.io/tags/fastp/</link>
+      <pubDate>Mon, 11 Dec 2023 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/fastp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>math</title>
+      <link>https://dbrg77.github.io/tags/math/</link>
+      <pubDate>Mon, 10 Jul 2023 16:01:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/math/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>statistics</title>
+      <link>https://dbrg77.github.io/tags/statistics/</link>
+      <pubDate>Mon, 10 Jul 2023 16:01:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/statistics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>teaching</title>
+      <link>https://dbrg77.github.io/tags/teaching/</link>
+      <pubDate>Mon, 10 Jul 2023 16:01:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/teaching/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>seqspec</title>
+      <link>https://dbrg77.github.io/tags/seqspec/</link>
+      <pubDate>Sun, 02 Jul 2023 00:30:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/seqspec/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>history</title>
+      <link>https://dbrg77.github.io/tags/history/</link>
+      <pubDate>Fri, 27 Jan 2023 00:10:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/history/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>normal distribution</title>
+      <link>https://dbrg77.github.io/tags/normal-distribution/</link>
+      <pubDate>Fri, 27 Jan 2023 00:10:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/normal-distribution/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>probability</title>
+      <link>https://dbrg77.github.io/tags/probability/</link>
+      <pubDate>Fri, 27 Jan 2023 00:10:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/probability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>paperpile</title>
+      <link>https://dbrg77.github.io/tags/paperpile/</link>
+      <pubDate>Tue, 04 Oct 2022 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/paperpile/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>papers</title>
+      <link>https://dbrg77.github.io/tags/papers/</link>
+      <pubDate>Tue, 04 Oct 2022 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/papers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>reference manager</title>
+      <link>https://dbrg77.github.io/tags/reference-manager/</link>
+      <pubDate>Tue, 04 Oct 2022 15:07:53 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/reference-manager/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>fastq</title>
+      <link>https://dbrg77.github.io/tags/fastq/</link>
+      <pubDate>Tue, 26 Jul 2022 10:07:27 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/fastq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sratools</title>
+      <link>https://dbrg77.github.io/tags/sratools/</link>
+      <pubDate>Tue, 26 Jul 2022 10:07:27 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/sratools/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>beamer</title>
+      <link>https://dbrg77.github.io/tags/beamer/</link>
+      <pubDate>Wed, 02 Mar 2022 10:49:27 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/beamer/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>matplotlib</title>
+      <link>https://dbrg77.github.io/tags/matplotlib/</link>
+      <pubDate>Wed, 02 Mar 2022 10:49:27 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/matplotlib/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>metropolis</title>
+      <link>https://dbrg77.github.io/tags/metropolis/</link>
+      <pubDate>Wed, 02 Mar 2022 10:49:27 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/metropolis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>macs2</title>
+      <link>https://dbrg77.github.io/tags/macs2/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/macs2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>peak calling</title>
+      <link>https://dbrg77.github.io/tags/peak-calling/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/peak-calling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>aliyun</title>
+      <link>https://dbrg77.github.io/tags/aliyun/</link>
+      <pubDate>Thu, 02 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/aliyun/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ossutils</title>
+      <link>https://dbrg77.github.io/tags/ossutils/</link>
+      <pubDate>Thu, 02 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/ossutils/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UCSC genome browser</title>
+      <link>https://dbrg77.github.io/tags/ucsc-genome-browser/</link>
+      <pubDate>Thu, 02 May 2019 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/ucsc-genome-browser/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>cut&amp;run</title>
+      <link>https://dbrg77.github.io/tags/cutrun/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/cutrun/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>cut&amp;tag</title>
+      <link>https://dbrg77.github.io/tags/cuttag/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/cuttag/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>samtools</title>
+      <link>https://dbrg77.github.io/tags/samtools/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/samtools/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>text manipulation</title>
+      <link>https://dbrg77.github.io/tags/text-manipulation/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/text-manipulation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>classic game</title>
+      <link>https://dbrg77.github.io/tags/classic-game/</link>
+      <pubDate>Thu, 17 Nov 2016 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/classic-game/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>diablo 2</title>
+      <link>https://dbrg77.github.io/tags/diablo-2/</link>
+      <pubDate>Thu, 17 Nov 2016 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/diablo-2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mac</title>
+      <link>https://dbrg77.github.io/tags/mac/</link>
+      <pubDate>Thu, 17 Nov 2016 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/mac/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>https://dbrg77.github.io/tags/windows/</link>
+      <pubDate>Thu, 17 Nov 2016 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>wine</title>
+      <link>https://dbrg77.github.io/tags/wine/</link>
+      <pubDate>Thu, 17 Nov 2016 00:00:00 +0800</pubDate>
+      <guid>https://dbrg77.github.io/tags/wine/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

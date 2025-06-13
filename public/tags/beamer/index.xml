@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>beamer on Not A Rocket Scientist</title>
+    <link>https://dbrg77.github.io/tags/beamer/</link>
+    <description>Recent content in beamer on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 02 Mar 2022 10:49:27 +0800</lastBuildDate>
+    <atom:link href="https://dbrg77.github.io/tags/beamer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matplotlib With The Beamer Metropolis Style</title>
+      <link>https://dbrg77.github.io/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/</link>
+      <pubDate>Wed, 02 Mar 2022 10:49:27 +0800</pubDate>
+      <guid>https://dbrg77.github.io/posts/2022-03-02-matplotlib-with-the--beamer-metropolis-style/</guid>
+      <description>Ever since I came across the metropolis theme of Beamer two years ago, I always used that theme to prepare presentation and lecture slides whenever possible. I really like the design. The style is hard to resist. One problem with it or with beamer in general is that plotting is difficult and limited. I know that pgfplots is very powerful, and you can do some pretty complicated plots with it. I used it for routine basic plotting in Beamer, such as the box/scatter plot, the bar chart, the histogram.</description>
+    </item>
+  </channel>
+</rss>

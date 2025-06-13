@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cut&amp;run on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/cutrun/</link>
+    <description>Recent content in cut&amp;run on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/cutrun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why do I like CUT&amp;RUN more than ChIP-seq</title>
+      <link>https://notarocketscientist.xyz/posts/2018-10-23-why-do-i-like-cut-and-run-more-than-chip-seq/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2018-10-23-why-do-i-like-cut-and-run-more-than-chip-seq/</guid>
+      <description>Chromatin immunoprecipitation (ChIP) is one of the gold standards to study protein-DNA interaction in vivo. In 1984, John Lis&amp;rsquo; lab at Cornell invented the first ChIP method using UV to crosslink protein to DNA, and they used this approach to study the interaction of the RNA polymerase with specific genes (Gilmour and Lis, 1984). However, UV crosslinking causes DNA damage that makes cerntain downstream analysis, such as PCR, very difficult. Most people often choose to use another approach developed by Alexander Varshavsky&amp;rsquo;s lab later in 1988 at MIT, where they used formaldehyde for the crosslinking to study the histone-DNA interaction around the hsp70 gene (Solomon et al.</description>
+    </item>
+  </channel>
+</rss>

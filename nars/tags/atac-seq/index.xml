@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ATAC-seq on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/atac-seq/</link>
+    <description>Recent content in ATAC-seq on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 23 Jul 2024 09:00:00 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/atac-seq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding The Chromap Summary File</title>
+      <link>https://notarocketscientist.xyz/posts/2024-07-23-understanding-the-chromap-summary-file/</link>
+      <pubDate>Tue, 23 Jul 2024 09:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2024-07-23-understanding-the-chromap-summary-file/</guid>
+      <description>Background When talking about scATAC-seq data preprocessing, I guess the first method that most people choose is Cell Ranger ATAC. The 10x Genomics Single Cell ATAC kit is probably the most widely used commercial method for doing scATAC-seq, and Cell Ranger ATAC provides a very convenient way of converting the raw sequencing reads to some sort of count matrix for downstream in-depth analyses. The problems with Cell Ranger ATAC are that:</description>
+    </item>
+    <item>
+      <title>The -O (--overlap) Option of Cutadapt</title>
+      <link>https://notarocketscientist.xyz/posts/2023-12-10-the-o-option-in-cutadapt/</link>
+      <pubDate>Mon, 11 Dec 2023 15:07:53 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2023-12-10-the-o-option-in-cutadapt/</guid>
+      <description>In recent years, I noticed one problem about the ATAC-seq/scATAC-seq experiments we did in the lab. Specifically, it is related to the ATAC-seq insert size, or fragment length, plotting. The distribution of the fragment length in an ATAC-seq experiment is an important quality control metric. Since the transposase Tn5 can only go to those nucleosome-free regions, the lengths of the fragments after Tn5 transposition often exhibit a nucleosomal ladder pattern, like shown in this post where I described how to draw the plot by looking at the 9th column of the aligned SAM/BAM file.</description>
+    </item>
+    <item>
+      <title>ATAC-seq Peak Calling With MACS2</title>
+      <link>https://notarocketscientist.xyz/posts/2020-12-09-atac-seq-peak-calling-with-macs2/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2020-12-09-atac-seq-peak-calling-with-macs2/</guid>
+      <description>Although ATAC-seq has been extensively used in the functional genomics field to study chromatin accessibility, it is still under debate how we should perform peak calling to identify oepn chromatin regions. MACS2 is a very popular peak caller for ChIP-seq, and it has been used for ATAC-seq as well. How should we perform ATAC-seq peak calling using MACS2? That is a recurring question. If you pay attention to the details in those publications that uses ATAC-seq, you might notice that some people uses the --shift -100 --extsize 200 flags during MACS2 peak calling.</description>
+    </item>
+    <item>
+      <title>ATAC-seq Insert Size Plotting</title>
+      <link>https://notarocketscientist.xyz/posts/2017-02-10-atac-seq-insert-size-plotting/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2017-02-10-atac-seq-insert-size-plotting/</guid>
+      <description>ATAC-seq is THE simplest genomic protocol to profile open chromatin regions in the genome. The original publication (Nature Methods 10, 1213-1218) has been cited 441 times at this moment of writing (1,073 times at this moment of re-posting). It has become almost a routine for a lab that is interested in transcriptional regulation.&#xA;One common QC for the data is to plot the fragment size density of your libraries. The successful construction of a ATAC library requires a proper pair of Tn5 transposase cutting events at the ends of DNA.</description>
+    </item>
+  </channel>
+</rss>

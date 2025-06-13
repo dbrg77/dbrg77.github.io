@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>software installation on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/software-installation/</link>
+    <description>Recent content in software installation on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 26 Jan 2024 10:07:53 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/software-installation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Difficult Is It To Start Your Single-cell Analysis As A Beginner</title>
+      <link>https://notarocketscientist.xyz/posts/2024-01-18-how-difficult-is-it-to-start-your-single-cell-analysis-as-a-beginner/</link>
+      <pubDate>Fri, 26 Jan 2024 10:07:53 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2024-01-18-how-difficult-is-it-to-start-your-single-cell-analysis-as-a-beginner/</guid>
+      <description>The title for this post is &amp;ldquo;How Difficult Is It To Start Your Single-cell Analysis As A Beginner&amp;rdquo;. However, once I finished writing the post, the majority of the content is actually about &amp;ldquo;Seurat and OSCA Installation On Freshly Installed Ubuntu/Debian/Fedora&amp;rdquo;. Oh well &amp;hellip; If you do not have time, just go to the final Summary section to see the final results.&#xA;Introduction When I started my NGS analysis during my PhD, which was more than 10 years ago, one of the most difficult things was software installation.</description>
+    </item>
+  </channel>
+</rss>

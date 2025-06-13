@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>The -O (--overlap) Option of Cutadapt</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, bioinformatics, ATAC-seq, cutadapt, fastp, preprocessing'>
+
+    <meta property="og:url" content="https://dbrg77.github.io/posts/2023-12-10-the-o-option-in-cutadapt/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The -O (--overlap) Option of Cutadapt">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The -O (--overlap) Option of Cutadapt">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://dbrg77.github.io/posts/2023-12-10-the-o-option-in-cutadapt/">
+    <meta property="twitter:url" content="https://dbrg77.github.io/posts/2023-12-10-the-o-option-in-cutadapt/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://dbrg77.github.io/posts/2023-12-10-the-o-option-in-cutadapt/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://dbrg77.github.io">
+                <img src="https://dbrg77.github.io/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://dbrg77.github.io">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>The -O (--overlap) Option of Cutadapt</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            December 11, 2023
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/bioinformatics">bioinformatics</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/atac-seq">ATAC-seq</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/cutadapt">cutadapt</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/fastp">fastp</a></li>
+        
+            <li class="post-tag"><a href="https://dbrg77.github.io/tags/preprocessing">preprocessing</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>In recent years, I noticed one problem about the ATAC-seq/scATAC-seq experiments we did in the lab. Specifically, it is related to the ATAC-seq insert size, or fragment length, plotting. The distribution of the fragment length in an ATAC-seq experiment is an important quality control metric. Since the transposase Tn5 can only go to those nucleosome-free regions, the lengths of the fragments after Tn5 transposition often exhibit a nucleosomal ladder pattern, like shown in <a href="/posts/2017-02-10-atac-seq-insert-size-plotting/"><strong>this post</strong></a> where I described how to draw the plot by looking at the 9th column of the aligned SAM/BAM file.</p>
+<p>However, the fragment length distribution looks like this in all recent experiments we had:</p>
+<figure><img src="/images/2023-12-11/original.png" width="500px"/>
+</figure>
+
+<p>Note the sudden drop of frequency around 150 bp indicated by the blue arrow. This is something unusual.</p>
+<p>The ATAC-seq library is the same as the <a href="https://teichlab.github.io/scg_lib_structs/methods_html/Illumina.html"><strong>Nextera library</strong></a> since they use the same type of Tn5 for the experiment. The sequencing scheme is like this:</p>
+<p><img src="/images/2023-12-11/nextera_adapter_trimming.png" alt=""></p>
+<p>In an ATAC-seq experiment, the vast majority of the fragments, that is the insert between two sequencing primers, are very short. In early days of the sequencing when the read length was quite short (25 - 36 bp), there was no problem if you directly mapped the sequencing reads to the genome. In modern days, people tend to sequence much longer, typically 50 - 150 bp. In this case, many reads will go over the genomic insert and read into the sequencing primer regions, causing a contamination at the 3&rsquo; end of the read indicated by the grey arrows in the above picture.</p>
+<p>Therefore, in a typical ATAC-seq preprocessing workflow we always trimmed the adapter sequence by <a href="https://cutadapt.readthedocs.io/en/stable/"><strong>cutadapt</strong></a>. The command we use (with <code>v4.5</code>) is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cutadapt -j <span style="color:#d19a66">20</span> -m <span style="color:#d19a66">25</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -A CTGTCTCTTATACACATCTGACGCTGCCGACGA <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -o <span style="color:#56b6c2">{</span>output.r1<span style="color:#56b6c2">}</span> -p <span style="color:#56b6c2">{</span>output.r2<span style="color:#56b6c2">}</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         &lt;r1.fq.gz&gt; &lt;r2.fq.gz&gt; <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         1&gt; out.stdout 2&gt; out.stderr
+</span></span></code></pre></div><p>At present I figured out the unusual fragment length distribution was basically caused by something happened during the adapter trimming step performed by <code>cutadapt</code>, because the problem disappeared when I only used the first 36 bp of the reads for the mapping or used <a href="https://github.com/OpenGene/fastp"><strong>fastp</strong></a> for the adapter trimming, as shown below:</p>
+<p><img src="/images/2023-12-11/others.png" alt=""></p>
+<p>Now I&rsquo;m documenting how I found out the problem. Let&rsquo;s use a public ATAC-seq data to demonstrate the point so that you can reproduce the results if you want. I&rsquo;m using <code>SRR5837342</code> which is an ATAC-seq from the H1 hESC cell line. The fastq files can be downloaded from <a href="https://www.ebi.ac.uk/ena/browser/view/PRJNA394846">this ENA link</a>. Once we have the paired end fastq files, we could start with the easiest:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># simply use the first 36 bp of the reads for the mapping without trimming</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># SRR5837342 was using 150 bp PE sequencing, so we passed -3 114 option to bowtie2</span>
+</span></span><span style="display:flex;"><span>bowtie2 -p <span style="color:#d19a66">20</span> -X <span style="color:#d19a66">2000</span> -3 <span style="color:#d19a66">114</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        --very-sensitive <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        -x &lt;hg38_bwt2_idx&gt; <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        -1 SRR5837342_1.fastq.gz -2 SRR5837342_2.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        samtools view -@ <span style="color:#d19a66">20</span> -hu - | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        samtools sort - -@ <span style="color:#d19a66">20</span> -T tmp -o first36bp_sorted.bam
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># now we plot the fragment (isize)</span>
+</span></span><span style="display:flex;"><span>samtools view -F <span style="color:#d19a66">4</span> -f <span style="color:#d19a66">66</span> -q <span style="color:#d19a66">30</span> first36bp_sorted.bam | <span style="color:#98c379">\ </span><span style="color:#7f848e"># remove un-mapped reads (-F4), only look at read 1 (-f64) and properly paired reads (-f2), only look at &#34;uniquely&#34; mapped reads (-q30) </span>
+</span></span><span style="display:flex;"><span>    sed <span style="color:#98c379">&#39;/chrM/d&#39;</span> | <span style="color:#98c379">\ </span><span style="color:#7f848e"># remove MT reads</span>
+</span></span><span style="display:flex;"><span>    awk <span style="color:#98c379">&#39;{ if($9&gt;0) {print $9} else {print -1*$9} }&#39;</span> | <span style="color:#98c379">\ </span><span style="color:#7f848e"># output insert size</span>
+</span></span><span style="display:flex;"><span>    sort | uniq -c | sort -b -k2,2n | <span style="color:#98c379">\ </span><span style="color:#7f848e"># check distribution of each insert size</span>
+</span></span><span style="display:flex;"><span>    awk <span style="color:#98c379">&#39;BEGIN{OFS=&#34;\t&#34;}{print $2, $1}&#39;</span> &gt; first36bp_f2q30_isize.tsv <span style="color:#7f848e"># format output</span>
+</span></span></code></pre></div><p>Then we can have a look at our typical workflow where <code>cutadapt</code> was used to trim the adapters, and then the same steps were performed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># adapter removal</span>
+</span></span><span style="display:flex;"><span>cutadapt -j <span style="color:#d19a66">20</span> -m <span style="color:#d19a66">25</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -A CTGTCTCTTATACACATCTGACGCTGCCGACGA <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -o cutadapt_r1.fq.gz -p cutadapt_r2.fq.gz <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         SRR5837342_1.fastq.gz SRR5837342_2.fastq.gz <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         1&gt; cutadapt.stdout 2&gt; cutadapt.stderr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># bowtie2 mapping</span>
+</span></span><span style="display:flex;"><span>bowtie2 -p <span style="color:#d19a66">20</span> -X <span style="color:#d19a66">2000</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        --very-sensitive <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        -x &lt;hg38_bwt2_idx&gt; <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        -1 cutadapt_r1.fq.gz -2 cutadapt_r2.fq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        samtools view -@ <span style="color:#d19a66">20</span> -hu - | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        samtools sort - -@ <span style="color:#d19a66">20</span> -T tmp -o cutadapt_sorted.bam
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># look at the fragment (isize)</span>
+</span></span><span style="display:flex;"><span>samtools view -F <span style="color:#d19a66">4</span> -f <span style="color:#d19a66">66</span> -q <span style="color:#d19a66">30</span> cutadapt_sorted.bam | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed <span style="color:#98c379">&#39;/chrM/d&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;{ if($9&gt;0) {print $9} else {print -1*$9} }&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | sort -b -k2,2n | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;BEGIN{OFS=&#34;\t&#34;}{print $2, $1}&#39;</span> &gt; cutadapt_f2q30_isize.tsv
+</span></span></code></pre></div><p>Then, let&rsquo;s do the same analysis with <code>fastp</code> as the trimming programme:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># adapter removal</span>
+</span></span><span style="display:flex;"><span>fastp -l <span style="color:#d19a66">25</span> -w <span style="color:#d19a66">16</span> -x <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      --detect_adapter_for_pe <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      -i SRR5837342_1.fastq.gz -I SRR5837342_2.fastq.gz <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      -o fastp_r1.fq.gz -O fastp_r2.fq.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># bowtie2 mapping</span>
+</span></span><span style="display:flex;"><span>bowtie2 -p <span style="color:#d19a66">20</span> -X <span style="color:#d19a66">2000</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        --very-sensitive <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        -x &lt;hg38_bwt2_idx&gt; <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        -1 fastp_r1.fq.gz -2 fastp_r2.fq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        samtools view -@ <span style="color:#d19a66">20</span> -hu - | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        samtools sort - -@ <span style="color:#d19a66">20</span> -T tmp -o fastp_sorted.bam
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># look at the fragment (isize)</span>
+</span></span><span style="display:flex;"><span>samtools view -F <span style="color:#d19a66">4</span> -f <span style="color:#d19a66">66</span> -q <span style="color:#d19a66">30</span> fastp_sorted.bam | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed <span style="color:#98c379">&#39;/chrM/d&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;{ if($9&gt;0) {print $9} else {print -1*$9} }&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | sort -b -k2,2n | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;BEGIN{OFS=&#34;\t&#34;}{print $2, $1}&#39;</span> &gt; fastp_f2q30_isize.tsv
+</span></span></code></pre></div><p>Now we could look at the insert distributions from those three different <code>tsv</code> files, which is shown below:</p>
+<p><img src="/images/2023-12-11/SRR5837342.png" alt=""></p>
+<p>Apparently, there are something wrong with our <code>cutadapt</code> workflow. First, let&rsquo;s have a look what fragment lengths are kind of &ldquo;depleted&rdquo; in the <code>cutadapt_f2q30_isize.tsv</code>. This is the content of the file around lines 122 - 127:</p>
+<div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">122
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">123
+</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">124
+</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">125
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">126
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">127
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#d19a66">146</span>     <span style="color:#d19a66">6789</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">147</span>     <span style="color:#d19a66">7195</span>
+</span></span><span style="display:flex; background-color:#3d4148"><span><span style="color:#d19a66">148</span>     <span style="color:#d19a66">105</span>
+</span></span><span style="display:flex; background-color:#3d4148"><span><span style="color:#d19a66">149</span>     <span style="color:#d19a66">113</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">150</span>     <span style="color:#d19a66">8064</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">151</span>     <span style="color:#d19a66">8132</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Oh, it turned out that very few mapped fragments had a length of 148 or 149 bp, which is really weird. Apparently, there are many fragments with length 148 or 149 bp in the <code>fastp</code> workflow. We could extract all fragments with length of 148 or 149 bp from the <code>fastp</code> workflow and look at how they are treated in the <code>cutadapt</code> workflow. They might be filtered out by any of the <code>-F4 -f66 -q30</code> flags in the preprocessing. I think it is better to go back to the original fastq files to have a look. To this end, we extract all Read IDs with length of 148 or 149 bp from <code>fastp_sorted.bam</code>, and get the fastq reads based on the Read IDs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># extract isize==148 or 149, keep Read ID and isize which might be useful</span>
+</span></span><span style="display:flex;"><span>samtools view -F <span style="color:#d19a66">4</span> -f <span style="color:#d19a66">66</span> -q <span style="color:#d19a66">30</span> fastp_sorted.bam | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed <span style="color:#98c379">&#39;/chrM/d&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;($9==148)||($9==-148)||($9==149)||($9==-149)&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    cut -f 1,9 | sort -k1,1 &gt; fastp_f2q30_read_isize_148_149.tsv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># use seqtk to get fastq reads</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## get original reads</span>
+</span></span><span style="display:flex;"><span>seqtk subseq SRR5837342_1.fastq.gz &lt;<span style="color:#56b6c2">(</span>cut -f <span style="color:#d19a66">1</span> fastp_f2q30_read_isize_148_149.tsv<span style="color:#56b6c2">)</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      gzip &gt; SRR5837342_isize148_149_r1.fq.gz
+</span></span><span style="display:flex;"><span>seqtk subseq SRR5837342_2.fastq.gz &lt;<span style="color:#56b6c2">(</span>cut -f <span style="color:#d19a66">1</span> fastp_f2q30_read_isize_148_149.tsv<span style="color:#56b6c2">)</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      gzip &gt; SRR5837342_isize148_149_r2.fq.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## get the same set of reads from cutadapt reads</span>
+</span></span><span style="display:flex;"><span>seqtk subseq cutadapt_r1.fq.gz &lt;<span style="color:#56b6c2">(</span>cut -f <span style="color:#d19a66">1</span> fastp_f2q30_read_isize_148_149.tsv<span style="color:#56b6c2">)</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      gzip &gt; cutadapt_isize148_149_r1.fq.gz
+</span></span><span style="display:flex;"><span>seqtk subseq cutadapt_r2.fq.gz &lt;<span style="color:#56b6c2">(</span>cut -f <span style="color:#d19a66">1</span> fastp_f2q30_read_isize_148_149.tsv<span style="color:#56b6c2">)</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      gzip &gt; cutadapt_isize148_149_r2.fq.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">## get the same set of reads from fastp reads</span>
+</span></span><span style="display:flex;"><span>seqtk subseq fastp_r1.fq.gz &lt;<span style="color:#56b6c2">(</span>cut -f <span style="color:#d19a66">1</span> fastp_f2q30_read_isize_148_149.tsv<span style="color:#56b6c2">)</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      gzip &gt; fastp_isize148_149_r1.fq.gz
+</span></span><span style="display:flex;"><span>seqtk subseq cutadapt_r2.fq.gz &lt;<span style="color:#56b6c2">(</span>cut -f <span style="color:#d19a66">1</span> fastp_f2q30_read_isize_148_149.tsv<span style="color:#56b6c2">)</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>      gzip &gt; fastp_isize148_149_r2.fq.gz
+</span></span></code></pre></div><p>Now we are ready to manually look at some reads. This is the first ten lines of <code>fastp_f2q30_read_isize_148_149.tsv</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>SRR5837342.10000218	-148
+</span></span><span style="display:flex;"><span>SRR5837342.10000523	-149
+</span></span><span style="display:flex;"><span>SRR5837342.10000984	-149
+</span></span><span style="display:flex;"><span>SRR5837342.100014	<span style="color:#d19a66">149</span>
+</span></span><span style="display:flex;"><span>SRR5837342.10001497	-149
+</span></span><span style="display:flex;"><span>SRR5837342.10001822	-149
+</span></span><span style="display:flex;"><span>SRR5837342.10002543	<span style="color:#d19a66">148</span>
+</span></span><span style="display:flex;"><span>SRR5837342.10002643	<span style="color:#d19a66">149</span>
+</span></span><span style="display:flex;"><span>SRR5837342.10003834	-149
+</span></span><span style="display:flex;"><span>SRR5837342.10003929	<span style="color:#d19a66">148</span>
+</span></span></code></pre></div><p>Now we can have a look at the read <code>SRR5837342.10000218</code>. First, let&rsquo;s look at it from the original fastq files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ zcat SRR5837342_isize148_149_r1.fq.gz | grep -A <span style="color:#d19a66">3</span> -w <span style="color:#98c379">&#39;SRR5837342.10000218&#39;</span>
+</span></span><span style="display:flex;"><span>@SRR5837342.10000218 10000218/1
+</span></span><span style="display:flex;"><span>CGTGACGGCCTCTGCGTGCCTACGTGCGCGCCCCCGGCCGGGAGCTTCTAGCGCTTGTCCCGCCCTCCAGGCCTGCCTAGCGCGGCGCGGGGCTGCTGCGCCTGCGCGCTCGCGGCTTGCCGCGGCCCGGAGCGCAGCCCAGCTGTCACT
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>AAFFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJJJJJJJJ7JAJFFJJJJJJJ7JAFJJJ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ zcat SRR5837342_isize148_149_r2.fq.gz | grep -A <span style="color:#d19a66">3</span> -w <span style="color:#98c379">&#39;SRR5837342.10000218&#39;</span>
+</span></span><span style="display:flex;"><span>@SRR5837342.10000218 10000218/2
+</span></span><span style="display:flex;"><span>TGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCAGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACGCT
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>AAAFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJAJFJ&lt;FFFJJJFFF&lt;JJJJJJJJJFFJJJJFJJJFFJJJ7FJAJFJAFFJJJ-&lt;FA&lt;
+</span></span></code></pre></div><p>We could manually align them. The 5&rsquo; end of <code>r1</code> and <code>r2</code> are reverse complementary to each other (<code>r1</code> on top):</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>5<span style="color:#98c379">&#39;- CGTGACGGCCTCTGCGTGCCTACGTGCGCGCCCCCGGCCGGGAGCTTCTAGCGCTTGTCCCGCCCTCCAGGCCTGCCTAGCGCGGCGCGGGGCTGCTGCGCCTGCGCGCTCGCGGCTTGCCGCGGCCCGGAGCGCAGCCCAGCTGTCACT
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">    ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379">  TCGCACTGCCGGAGACGCACGGATGCACGCGCGGGGGCCGGCCCTCGAAGATCGCGAACAGGGCGGGAGGTCCGGACGGATCGCGCCGCGCCCCGACGACGCGGACGCGCGAGCGCCGAACGGCGCCGGGCCTCGCGTCGGGTCGACAGT -5&#39;</span>
+</span></span></code></pre></div><p>This is the situation we mentioned before. The read length is actually longer than the insert size. In this case, a successful trimming workflow would trim off the extra 2 bp at the 3&rsquo; end of both reads. This is indeed the case in the <code>fastp</code> trimmed fastq:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ zcat fastp_isize148_149_r1.fq.gz | grep -A <span style="color:#d19a66">3</span> -w <span style="color:#98c379">&#39;SRR5837342.10000218&#39;</span>
+</span></span><span style="display:flex;"><span>@SRR5837342.10000218 10000218/1
+</span></span><span style="display:flex;"><span>CGTGACGGCCTCTGCGTGCCTACGTGCGCGCCCCCGGCCGGGAGCTTCTAGCGCTTGTCCCGCCCTCCAGGCCTGCCTAGCGCGGCGCGGGGCTGCTGCGCCTGCGCGCTCGCGGCTTGCCGCGGCCCGGAGCGCAGCCCAGCTGTCA
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>AAFFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJJJJJJJJ7JAJFFJJJJJJJ7JAFJ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ zcat fastp_isize148_149_r2.fq.gz | grep -A <span style="color:#d19a66">3</span> -w <span style="color:#98c379">&#39;SRR5837342.10000218&#39;</span>
+</span></span><span style="display:flex;"><span>@SRR5837342.10000218 10000218/2
+</span></span><span style="display:flex;"><span>TGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCAGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACG
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>AAAFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJAJFJ&lt;FFFJJJFFF&lt;JJJJJJJJJFFJJJJFJJJFFJJJ7FJAJFJAFFJJJ-&lt;F
+</span></span></code></pre></div><p>As expected, <code>fastp</code> successfully trimmed off the extra 2 bp at both ends of the read, making a pair of 148 bp reads that were reverse complementary to each other. However, if we look at the the <code>cutadapt</code> trimmed fastq, the reads are unchanged:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ zcat cutadapt_isize148_149_r1.fq.gz | grep -A <span style="color:#d19a66">3</span> -w <span style="color:#98c379">&#39;SRR5837342.10000218&#39;</span>
+</span></span><span style="display:flex;"><span>@SRR5837342.10000218 10000218/1
+</span></span><span style="display:flex;"><span>CGTGACGGCCTCTGCGTGCCTACGTGCGCGCCCCCGGCCGGGAGCTTCTAGCGCTTGTCCCGCCCTCCAGGCCTGCCTAGCGCGGCGCGGGGCTGCTGCGCCTGCGCGCTCGCGGCTTGCCGCGGCCCGGAGCGCAGCCCAGCTGTCACT
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>AAFFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJJJJJJJJ7JAJFFJJJJJJJ7JAFJJJ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ zcat cutadapt_isize148_149_r2.fq.gz | grep -A <span style="color:#d19a66">3</span> -w <span style="color:#98c379">&#39;SRR5837342.10000218&#39;</span>
+</span></span><span style="display:flex;"><span>@SRR5837342.10000218 10000218/2
+</span></span><span style="display:flex;"><span>TGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCAGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACGCT
+</span></span><span style="display:flex;"><span>+
+</span></span><span style="display:flex;"><span>AAAFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJAJFJ&lt;FFFJJJFFF&lt;JJJJJJJJJFFJJJJFJJJFFJJJ7FJAJFJAFFJJJ-&lt;FA&lt;
+</span></span></code></pre></div><p>In this case, the extra 2 bp would affect the mapping. Now let&rsquo;s look at how exactly this read is mapped to the genome by <code>bowtie2</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># from fastp</span>
+</span></span><span style="display:flex;"><span>$ samtools view fastp_sorted.bam | grep -w <span style="color:#98c379">&#39;SRR5837342.10000218&#39;</span>
+</span></span><span style="display:flex;"><span>SRR5837342.10000218    <span style="color:#d19a66">163</span>    chr18    <span style="color:#d19a66">9913859</span>    <span style="color:#d19a66">42</span>    <span style="color:#e06c75">148M</span>    <span style="color:#56b6c2">=</span>    <span style="color:#d19a66">9913859</span>     <span style="color:#d19a66">148</span>    TGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCAGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACG    AAAFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJAJFJ&lt;FFFJJJFFF&lt;JJJJJJJJJFFJJJJFJJJFFJJJ7FJAJFJAFFJJJ-&lt;F    AS:i:-6 XN:i:0 XM:i:1 XO:i:0 XG:i:0 NM:i:1MD:Z:74C73 YS:i:-6 YT:Z:CP
+</span></span><span style="display:flex;"><span>SRR5837342.10000218     <span style="color:#d19a66">83</span>    chr18    <span style="color:#d19a66">9913859</span>    <span style="color:#d19a66">42</span>    <span style="color:#e06c75">148M</span>    <span style="color:#56b6c2">=</span>    <span style="color:#d19a66">9913859</span>    -148    TGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCAGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACG    JFAJ7JJJJJJJFFJAJ7JJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFFFAA    AS:i:-6 XN:i:0 XM:i:1 XO:i:0 XG:i:0 NM:i:1MD:Z:74C73 YS:i:-6 YT:Z:CP
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># from cutadapt</span>
+</span></span><span style="display:flex;"><span>$ samtools view cutadapt_sorted.bam | grep -w <span style="color:#98c379">&#39;SRR5837342.10000218&#39;</span>
+</span></span><span style="display:flex;"><span>SRR5837342.10000218     <span style="color:#d19a66">81</span>    chr18    <span style="color:#d19a66">9913857</span>    <span style="color:#d19a66">42</span>    <span style="color:#e06c75">150M</span>    <span style="color:#56b6c2">=</span>    <span style="color:#d19a66">9913859</span>     <span style="color:#d19a66">152</span>    AGTGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCAGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACG    JJJFAJ7JJJJJJJFFJAJ7JJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFFFAA    AS:i:-18 XN:i:0 XM:i:3 XO:i:0XG:i:0 NM:i:3 MD:Z:0C0T74C73 YS:i:-15 YT:Z:DP
+</span></span><span style="display:flex;"><span>SRR5837342.10000218    <span style="color:#d19a66">161</span>    chr18    <span style="color:#d19a66">9913859</span>    <span style="color:#d19a66">42</span>    <span style="color:#e06c75">150M</span>    <span style="color:#56b6c2">=</span>    <span style="color:#d19a66">9913857</span>    -152    TGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCAGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACGCT    AAAFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJAJFJ&lt;FFFJJJFFF&lt;JJJJJJJJJFFJJJJFJJJFFJJJ7FJAJFJAFFJJJ-&lt;FA&lt;    AS:i:-15 XN:i:0 XM:i:3 XO:i:0XG:i:0 NM:i:3 MD:Z:74C73T0G0 YS:i:-18 YT:Z:DP
+</span></span></code></pre></div><p>As we can see, the <code>fastp</code> trimmed reads were successfully and correctly mapped to the genome. The <code>cutadapt</code> trimmed reads that are actually untouched original reads were also successfully mapped to the genome in a incorrect way like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Ref <span style="color:#56b6c2">(</span>5<span style="color:#98c379">&#39;-&gt;3&#39;</span><span style="color:#56b6c2">)</span>: CCTTGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCCGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACGTG
+</span></span><span style="display:flex;"><span>                 <span style="color:#56b6c2">||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</span>*<span style="color:#56b6c2">||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</span>|**
+</span></span><span style="display:flex;"><span>R2 <span style="color:#56b6c2">(</span>5<span style="color:#98c379">&#39;-&gt;3&#39;</span><span style="color:#56b6c2">)</span>:     TGACAGCTGGGCTGCGCTCCGGGCCGCGGCAAGCCGCGAGCGCGCAGGCGCAGCAGCCCCGCGCCGCGCTAGGCAGGCCTGGAGGGCGGGACAAGCGCTAGAAGCTCCCGGCCGGGGGCGCGCACGTAGGCACGCAGAGGCCGTCACGCT
+</span></span><span style="display:flex;"><span>               **<span style="color:#56b6c2">||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</span>*<span style="color:#56b6c2">||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</span>|
+</span></span><span style="display:flex;"><span>R1 <span style="color:#56b6c2">(</span>3<span style="color:#98c379">&#39;&lt;-5&#39;</span><span style="color:#56b6c2">)</span>:   TCACTGTCGACCCGACGCGAGGCCCGGCGCCGTTCGGCGCTCGCGCGTCCGCGTCGTCGGGGCGCGGCGCGATCCGTCCGGACCTCCCGCCCTGTTCGCGATCTTCGAGGGCCGGCCCCCGCGCGTGCATCCGTGCGTCTCCGGCAGTGC
+</span></span></code></pre></div><p>See that the extra 2 bp overhang at the 3&rsquo; end of the reads together with a mismatch in the middle of the reads (a total of three mismatches) are tolerated during <code>bowtie2</code> mapping, which resulted in a dovetail alignment. This alignment was treated as not properly paired, and it was filtered out by the <code>-f2</code> flag. The fragment length is also incorrectly set as 152 bp due to the dovetail.</p>
+<p>If we manually check some other reads, we realised that all of them are in the situation described above. Now the question becomes: why <code>cutadapt</code> failed to trim the extra 1 or 2 bp at the 3&rsquo; end of the reads? It seems to be successfully and correctly trimmed the reads when the overhang is 3 or more bp. This led me to take a closer look at the <code>cutadapt.stdout</code> which I often overlooked. Most of the time, I only look at the % of reads that have the adapters and the % of reads left. However, there is extra information that is useful at the end of the log. For example, this is a few lines of the <strong>&ldquo;Overview of removed sequences&rdquo;</strong> section from the output from <code>SRR5837342</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Overview of removed sequences
+</span></span><span style="display:flex;"><span>length  count   expect  max.err error counts
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">3</span>       <span style="color:#d19a66">130890</span>  188714.1        <span style="color:#d19a66">0</span>       <span style="color:#d19a66">130890</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">4</span>       <span style="color:#d19a66">53819</span>   47178.5 <span style="color:#d19a66">0</span>       <span style="color:#d19a66">53819</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">5</span>       <span style="color:#d19a66">34523</span>   11794.6 <span style="color:#d19a66">0</span>       <span style="color:#d19a66">34523</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">6</span>       <span style="color:#d19a66">30372</span>   2948.7  <span style="color:#d19a66">0</span>       <span style="color:#d19a66">30372</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">7</span>       <span style="color:#d19a66">30723</span>   737.2   <span style="color:#d19a66">0</span>       <span style="color:#d19a66">30723</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">8</span>       <span style="color:#d19a66">30063</span>   184.3   <span style="color:#d19a66">0</span>       <span style="color:#d19a66">30063</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">9</span>       <span style="color:#d19a66">31567</span>   46.1    <span style="color:#d19a66">0</span>       <span style="color:#d19a66">30842</span> <span style="color:#d19a66">725</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">10</span>      <span style="color:#d19a66">33603</span>   11.5    <span style="color:#d19a66">1</span>       <span style="color:#d19a66">32327</span> <span style="color:#d19a66">1276</span>
+</span></span></code></pre></div><p>As expected, by default, the <code>cutadapt</code> just does not trim adapters that are less than 3 bp. In the case described here, if the insert size is too short, we would expect read 1 and read 2 to be reverse complementary to each other, so we can confidently trim off the adapters even if it is only 1 bp at the 3&rsquo; end<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. There must be an option to adjust that. It turns out it is the <code>-O --overlap</code> option:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-O MINLENGTH, --overlap MINLENGTH
+</span></span><span style="display:flex;"><span>                      Require MINLENGTH overlap between <span style="color:#e5c07b">read</span> and adapter <span style="color:#c678dd">for</span> an adapter to be found.
+</span></span><span style="display:flex;"><span>                      Default: <span style="color:#d19a66">3</span>
+</span></span></code></pre></div><p>Now, let&rsquo;s try that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#7f848e"># adapter removal</span>
+</span></span><span style="display:flex;"><span>cutadapt -j <span style="color:#d19a66">20</span> -m <span style="color:#d19a66">25</span> -O 1<span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -A CTGTCTCTTATACACATCTGACGCTGCCGACGA <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         -o cutadapt_O1_r1.fq.gz -p cutadapt_O1_r2.fq.gz <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         SRR5837342_1.fastq.gz SRR5837342_2.fastq.gz <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>         1&gt; cutadapt_O1.stdout 2&gt; cutadapt_O1.stderr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># bowtie2 mapping</span>
+</span></span><span style="display:flex;"><span>bowtie2 -p <span style="color:#d19a66">20</span> -X <span style="color:#d19a66">2000</span> <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        --very-sensitive <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        -x &lt;hg38_bwt2_idx&gt; <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        -1 cutadapt_O1_r1.fq.gz -2 cutadapt_O2_r2.fq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        samtools view -@ <span style="color:#d19a66">20</span> -hu - | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>        samtools sort - -@ <span style="color:#d19a66">20</span> -T tmp -o cutadapt_O1_sorted.bam
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e"># look at the fragment (isize)</span>
+</span></span><span style="display:flex;"><span>samtools view -F <span style="color:#d19a66">4</span> -f <span style="color:#d19a66">66</span> -q <span style="color:#d19a66">30</span> cutadapt_O1_sorted.bam | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed <span style="color:#98c379">&#39;/chrM/d&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;{ if($9&gt;0) {print $9} else {print -1*$9} }&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | sort -b -k2,2n | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk <span style="color:#98c379">&#39;BEGIN{OFS=&#34;\t&#34;}{print $2, $1}&#39;</span> &gt; cutadapt_O1_f2q30_isize.tsv
+</span></span></code></pre></div><p>First, the log is promising, showing the vast majority of the reads got trimmed off by 1 bp:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Overview of removed sequences
+</span></span><span style="display:flex;"><span>length  count   expect  max.err error counts
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">1</span>       <span style="color:#d19a66">1285763</span> 3019425.2       <span style="color:#d19a66">0</span>       <span style="color:#d19a66">1285763</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">2</span>       <span style="color:#d19a66">408198</span>  754856.3        <span style="color:#d19a66">0</span>       <span style="color:#d19a66">408198</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">3</span>       <span style="color:#d19a66">130890</span>  188714.1        <span style="color:#d19a66">0</span>       <span style="color:#d19a66">130890</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">4</span>       <span style="color:#d19a66">53819</span>   47178.5 <span style="color:#d19a66">0</span>       <span style="color:#d19a66">53819</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">5</span>       <span style="color:#d19a66">34523</span>   11794.6 <span style="color:#d19a66">0</span>       <span style="color:#d19a66">34523</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">6</span>       <span style="color:#d19a66">30372</span>   2948.7  <span style="color:#d19a66">0</span>       <span style="color:#d19a66">30372</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">7</span>       <span style="color:#d19a66">30723</span>   737.2   <span style="color:#d19a66">0</span>       <span style="color:#d19a66">30723</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">8</span>       <span style="color:#d19a66">30063</span>   184.3   <span style="color:#d19a66">0</span>       <span style="color:#d19a66">30063</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">9</span>       <span style="color:#d19a66">31567</span>   46.1    <span style="color:#d19a66">0</span>       <span style="color:#d19a66">30842</span> <span style="color:#d19a66">725</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">10</span>      <span style="color:#d19a66">33603</span>   11.5    <span style="color:#d19a66">1</span>       <span style="color:#d19a66">32327</span> <span style="color:#d19a66">1276</span>
+</span></span></code></pre></div><p>Then we check the fragment distribution:</p>
+<figure><img src="/images/2023-12-11/cutadapt_O1.png" width="500px"/>
+</figure>
+
+<p>Finally, we have solved the problem. If I really paid attention to all the content in the log file, it would save me a lot of time.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>This is just an intuition. I actually do not think <code>cutadapt</code> really checks if Read 1 and Read 2 are reverse complementary to each other. I know <a href="https://github.com/jsh58/NGmerge">NGmerge</a> has a special mode for doing that.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

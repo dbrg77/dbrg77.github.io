@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>chip-qpcr on Not A Rocket Scientist</title>
+    <link>https://notarocketscientist.xyz/tags/chip-qpcr/</link>
+    <description>Recent content in chip-qpcr on Not A Rocket Scientist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 17 May 2024 15:07:53 +0800</lastBuildDate>
+    <atom:link href="https://notarocketscientist.xyz/tags/chip-qpcr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ChIP Primer Design</title>
+      <link>https://notarocketscientist.xyz/posts/2024-05-17-chip-primer-design/</link>
+      <pubDate>Fri, 17 May 2024 15:07:53 +0800</pubDate>
+      <guid>https://notarocketscientist.xyz/posts/2024-05-17-chip-primer-design/</guid>
+      <description>When we study the functions of a gene of interest (GOI), it is common to use a combination of loss-of-function and gain-of-function assays in a study. In the era of genomics, we often use RNA-seq experiments to find out the affected genes when the level of the GOI is reduced, e.g. siRNA, shRNA &amp;amp; degron, or elevated e.g. over-expression. If the GOI is a transcription factor (TF), a special type of proteins that can specifically interact with DNA to regulate transcription, the natural question to ask is whether those affected genes are regulated directly by the TF.</description>
+    </item>
+  </channel>
+</rss>

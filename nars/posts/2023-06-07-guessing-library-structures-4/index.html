@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Guessing Library Structures (4) - PIP-seq V1prototype</title>
+    <meta name="description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta name="keywords" content='blog, gokarna, hugo, data science, biology, genomics, single cell genomics, sequencing library, illumina sequencing, fluentbio, pipseq, seqspec'>
+
+    <meta property="og:url" content="https://notarocketscientist.xyz/posts/2023-06-07-guessing-library-structures-4/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Guessing Library Structures (4) - PIP-seq V1prototype">
+    <meta property="og:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="og:image" content="/images/profile_avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guessing Library Structures (4) - PIP-seq V1prototype">
+    <meta name="twitter:description" content="Genomics | Bioinformatics | Epigenetics">
+    <meta property="twitter:domain" content="https://notarocketscientist.xyz/posts/2023-06-07-guessing-library-structures-4/">
+    <meta property="twitter:url" content="https://notarocketscientist.xyz/posts/2023-06-07-guessing-library-structures-4/">
+    <meta name="twitter:image" content="/images/profile_avatar.png">
+
+    
+    <link rel="canonical" href="https://notarocketscientist.xyz/posts/2023-06-07-guessing-library-structures-4/" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="/css/dark.css">
+
+    <script src="/js/svg-injector.min.js"></script>
+    <script src="/js/feather-icons.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.css" integrity="sha384-6LkG2wmY8FK9E0vU9OOr8UvLwsaqUg9SETfpq4uTCN1agNe8HRdE9ABlk+fVx6gZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/katex.min.js" integrity="sha384-31El76TwmbHj4rF9DyLsygbq6xoIobG0W+jqXim+a3dU9W53tdH3A/ngRPxOzzaB" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.16/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://notarocketscientist.xyz">
+                <img src="https://notarocketscientist.xyz/images/profile_avatar.png" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://notarocketscientist.xyz">Not A Rocket Scientist</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/about/"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/posts/"><span data-feather='list'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/projects/"><span data-feather='square'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://notarocketscientist.xyz/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://dbrg77.github.io/SUSTech-BIO210"><span data-feather='bar-chart-2'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/Teichlab/scg_lib_structs"><span data-feather='smile'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Guessing Library Structures (4) - PIP-seq V1prototype</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            June 7, 2023
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/single-cell-genomics">single cell genomics</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/sequencing-library">sequencing library</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/illumina-sequencing">illumina sequencing</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/fluentbio">fluentbio</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/pipseq">pipseq</a></li>
+        
+            <li class="post-tag"><a href="https://notarocketscientist.xyz/tags/seqspec">seqspec</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            
+
+<div class="admonition note">
+    <div class="title">Portal</div>
+    <div class="content"><ul>
+<li><a href="/posts/2023-05-28-guessing-library-structures-1/">Guessing Library Structures (1) - Background</a></li>
+<li><a href="/posts/2023-06-03-guessing-library-structures-2/">Guessing Library Structures (2) - PIPseq$^{\textmd{TM}}$ V3</a></li>
+<li><a href="/posts/2023-06-04-guessing-library-structures-3/">Guessing Library Structures (3) - PIP-seq V2</a></li>
+<li><a href="/posts/2023-06-07-guessing-library-structures-4/">Guessing Library Structures (4) - PIP-seq V1prototype</a></li>
+</ul>
+</div>
+</div>
+<p>This is the fourth post, also the last, from a series where I use the recent <a href="https://www.nature.com/articles/s41587-023-01685-z">PIP-seq</a> data as an example to demonstrate the importance to use a common standard like <a href="https://www.biorxiv.org/content/10.1101/2023.03.17.533215v1"><em>seqspec</em></a> to accompany sequencing reads submissions into public repositories.</p>
+<h2 id="the-v1-chemistry">The V1? Chemistry</h2>
+<p>The mysterious samples come from the experiments of looking at the single-cell transcriptional responses of two cancer cell lines (H1975 and PC9) to gefitinibis. I name it <strong>&ldquo;PIP-seq V1prototype&rdquo;</strong>, which by no means is accurate. Anyway, they are:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GSM6106784 Fresh <span style="color:#d19a66">2000</span> cell H1975 with drug treatment
+</span></span><span style="display:flex;"><span>GSM6106785 Fresh <span style="color:#d19a66">2000</span> cell H1975 with control DMSO treatment
+</span></span><span style="display:flex;"><span>GSM6106786 Fresh <span style="color:#d19a66">2000</span> cell PC9 with drug treatment
+</span></span><span style="display:flex;"><span>GSM6106787 Fresh <span style="color:#d19a66">2000</span> cell PC9 with control DMSO treatment
+</span></span><span style="display:flex;"><span>GSM6106788 Fresh <span style="color:#d19a66">1000</span> cell PC9:H1975 9:1 with drug treatment
+</span></span></code></pre></div><p>Here, we are just using <code>SRR9086119</code> as an example. We started with downloading the FASTQ files, and have a look at the content inside:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ fastq-dump --split-3 -A SRR19086119
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ zcat SRR19086119_1.fastq.gz | head -12
+</span></span><span style="display:flex;"><span>@SRR19086119.1 <span style="color:#d19a66">1</span> <span style="color:#e06c75">length</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">35</span>
+</span></span><span style="display:flex;"><span>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+</span></span><span style="display:flex;"><span>+SRR19086119.1 <span style="color:#d19a66">1</span> <span style="color:#e06c75">length</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">35</span>
+</span></span><span style="display:flex;"><span><span style="color:#7f848e">###################################</span>
+</span></span><span style="display:flex;"><span>@SRR19086119.2 <span style="color:#d19a66">2</span> <span style="color:#e06c75">length</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">51</span>
+</span></span><span style="display:flex;"><span>TGAATNCGACGGAGTGATTGCTTGTGACGCCTTACGTGTTTCCTCCATTTT
+</span></span><span style="display:flex;"><span>+SRR19086119.2 <span style="color:#d19a66">2</span> <span style="color:#e06c75">length</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">51</span>
+</span></span><span style="display:flex;"><span>AAAAA#EAAEEAEEAA&lt;AEEEEAEEEEEEEEE6EEEEEE/AEEEEEEEEEE
+</span></span><span style="display:flex;"><span>@SRR19086119.3 <span style="color:#d19a66">3</span> <span style="color:#e06c75">length</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">51</span>
+</span></span><span style="display:flex;"><span>GATAANCATCGAGTGATTGCTTGTGACGCCTTGAGTTCACTCCCGGTTTTT
+</span></span><span style="display:flex;"><span>+SRR19086119.3 <span style="color:#d19a66">3</span> <span style="color:#e06c75">length</span><span style="color:#56b6c2">=</span><span style="color:#d19a66">51</span>
+</span></span><span style="display:flex;"><span>A/AAA#EEEEE/EEEEEEEEAEEAAEEEEEEEEEEEEAEAEEEEE&lt;EEEEE
+</span></span></code></pre></div><p>It seems the reads are variable in length, and it seems 51 bp is the longest. I&rsquo;m not entirely sure what is going on here, since I do not have much experience with GEO submission. Let&rsquo;s focus on the reads whose lengths are 51 bp which are more likely to be the untrimmed good reads. We can do this by:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zcat SRR19086119_1.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    grep <span style="color:#98c379">&#39;length=51&#39;</span> -A <span style="color:#d19a66">1</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sed <span style="color:#98c379">&#39;/^--$/d&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    gzip &gt; SRR19086119_1_51bp.fastq.gz
+</span></span></code></pre></div><p>Now we could start FastQC with the new FASTQ:</p>
+<p><img src="/images/2023-06-07/pip-seq_srr19086119.png" alt=""></p>
+<p>Now we do not immediately see constant regions like linkers or splints. According to the experience described in the previous posts, we think there should be some linkers or splints in the reads. It is likely that there are some variable bases in the reads to increase base complexities in each sequencing cycle. Whenever this happens, we could print 40 sequences (only showing 10 below), which is the number of sequences that fit well with the height of my screen:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ zcat SRR19086119_1_51bp.fastq.gz | sed -n <span style="color:#98c379">&#39;2~4 p&#39;</span> | head -40
+</span></span><span style="display:flex;"><span>TGAATNCGACGGAGTGATTGCTTGTGACGCCTTACGTGTTTCCTCCATTTT
+</span></span><span style="display:flex;"><span>GATAANCATCGAGTGATTGCTTGTGACGCCTTGAGTTCACTCCCGGTTTTT
+</span></span><span style="display:flex;"><span>TGAGGNATAGAGAGTGATTGCTTGTGACGCCTTGCCTCTTTTCGCCGTTTT
+</span></span><span style="display:flex;"><span>GAAAGNTTGTGAGTGATTGCTTGTGACGCCTTGATGTATTAGGGCTTTTTT
+</span></span><span style="display:flex;"><span>GATGTNCCAGGAGTGATTGCTTGTGACGCCTTAATGTTTGACGTATTTTTT
+</span></span><span style="display:flex;"><span>AATGTNTGGAGTGATTGCTTGTGACGCCTTCTAGTAACGTTTGATTTTTTT
+</span></span><span style="display:flex;"><span>ACCCANGAGAGTGATTGCTTGTGACGCCTTGTTACCGCATGCTCTTTTTTT
+</span></span><span style="display:flex;"><span>TGAAGNGTAGGGAGTGATTGCTTGTGACGCCTTCTATAGAGTGTGCATTTT
+</span></span><span style="display:flex;"><span>GACCANATTAGAGTGATTGCTTGTGACGCCTTAGCTACGGATGAGTTTTTT
+</span></span><span style="display:flex;"><span>GCTCTNGTGAGTGATTGCTTGTGACGCCTTAGGAAATCAGGCCATTTTTTT
+</span></span></code></pre></div><p>Then, we could copy and paste those sequences into <a href="https://code.visualstudio.com"><strong>VS Code</strong></a>, and start select some strings with our cursor around the middle of the reads. When you start selection, VS Code automatically highlights all occurrences of your selection in the current file, like shown below (only 10 sequences are shown):</p>
+<p><img src="/images/2023-06-07/vscode_selection.png" alt=""></p>
+<p>By playing around with this and using the multi-line editing function, also bear in mind that the variable regions flanking the constant linker or splint contain cell barcode and UMI information, we can separate the reads like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>TGA ATNCGACG GAGTGATTGCTTGTGACGCCTT ACGTGTTTCCTCCA TTTT
+</span></span><span style="display:flex;"><span> GA TAANCATC GAGTGATTGCTTGTGACGCCTT GAGTTCACTCCCGG TTTTT
+</span></span><span style="display:flex;"><span>TGA GGNATAGA GAGTGATTGCTTGTGACGCCTT GCCTCTTTTCGCCG TTTT
+</span></span><span style="display:flex;"><span> GA AAGNTTGT GAGTGATTGCTTGTGACGCCTT GATGTATTAGGGCT TTTTT
+</span></span><span style="display:flex;"><span> GA TGTNCCAG GAGTGATTGCTTGTGACGCCTT AATGTTTGACGTAT TTTTT
+</span></span><span style="display:flex;"><span>    AATGTNTG GAGTGATTGCTTGTGACGCCTT CTAGTAACGTTTGA TTTTTTT
+</span></span><span style="display:flex;"><span>    ACCCANGA GAGTGATTGCTTGTGACGCCTT GTTACCGCATGCTC TTTTTTT
+</span></span><span style="display:flex;"><span>TGA AGNGTAGG GAGTGATTGCTTGTGACGCCTT CTATAGAGTGTGCA TTTT
+</span></span><span style="display:flex;"><span> GA CCANATTA GAGTGATTGCTTGTGACGCCTT AGCTACGGATGAGT TTTTT
+</span></span><span style="display:flex;"><span>    GCTCTNGT GAGTGATTGCTTGTGACGCCTT AGGAAATCAGGCCA TTTTTTT
+</span></span><span style="display:flex;"><span>    GCTTTNGC GAGTGATTGCTTGTGACGCCTT GGAAACAGCCATTG TTTTTTT
+</span></span><span style="display:flex;"><span>    GCAGTNGA GAGTGATTGCTTGTGACGCCTT GGGCCAATGAAGTG TTTTTTT
+</span></span><span style="display:flex;"><span> GA AAGNTTGT GAGTGATTGCTTGTGACACCTT CGAACGTATCGTTC TTTTT
+</span></span><span style="display:flex;"><span>  A AGCTNCGG GAGTGATTGCTTGTGACGCCTT AAACAGGGTCATCC TTTTTT
+</span></span><span style="display:flex;"><span>    TCCTTNTT GAGTGATTGCTTGTGACGCCTT ACCACGCTAAAAAA TTTTTTT
+</span></span><span style="display:flex;"><span>    AACTTNGC GAGTGATTGCTTGTGACGCCTT AAGTTTCGAAGTTT TTTTTTT
+</span></span><span style="display:flex;"><span>    GAGTCNAG GAGTGATTGCTTGTGACGCCGT ACTCACCGGGAGCG TTTTGTT
+</span></span><span style="display:flex;"><span>    TCCAGNGA GAGTGATTGCTTGTGACGCCTT GGCCTAAGTGCAAT TTTTTTT
+</span></span><span style="display:flex;"><span>    GGGTTNGT GAGTGATTGCTTGTGACGCCTT AACCCTTGGCTACT TTTTTTT
+</span></span><span style="display:flex;"><span> GA GACNATGG GAGTGATTGCTTGTGACGCCTT CGTACCTAACCATT TTTTT
+</span></span><span style="display:flex;"><span>TGA GANGCACT GAGTGATTGCTTGTGACGCCTT TCGGTTTACCCAAT TTTT
+</span></span><span style="display:flex;"><span> GA GGCNTTAG GAGTGATTGCTTGTGACGCCTT AGGTTGGTAACATC TTTTT
+</span></span><span style="display:flex;"><span> GA TCGNTACG GAGTGATTGCTTGTGACGCCTT GTTCCAGACTTACT TTTTT
+</span></span><span style="display:flex;"><span> GA GAGNCCAT GAGTGATTGCTTGTGACGCCTT AGCTCCGTACCGTG TTTTT
+</span></span><span style="display:flex;"><span>TGA ATNACCGA GAGTGATTGCTTGTGACGCCTT ACCAAGATGTGAAG TTTT
+</span></span><span style="display:flex;"><span>  A TCACNTTT GAGTGATTGCTTGTGACGCCTT ACCTTCTTGGAATC TTTTTT
+</span></span><span style="display:flex;"><span> GA CTTNTTCG GAGTGATTGCTTGTGACGCCTT AGCAGAACACCTTA TTTTT
+</span></span><span style="display:flex;"><span> GA CTCNTGAC GAGTGATTGCTTGTAACGCCTT GCCACATCAGCGAC TTTTT
+</span></span><span style="display:flex;"><span>    TACCGNCA GAGTGATTGCTTGTGACGCCTT ATGGAAATCTGAAC TTTTTTT
+</span></span><span style="display:flex;"><span> GA GGCGTTAG GAGTGATTGCTTGTGACGCCTT AGGCAACGCTTTCA TTTTT
+</span></span><span style="display:flex;"><span>    TGCAAGGG GAGTGATTGCTTGTGACGCCTT GCCACATCAGTGCC TTTTTTT
+</span></span><span style="display:flex;"><span>  A TAGTCGCA GAGTGATTGCTTGTGACGCCTT ATGATCTATTTGCG TTTTTT
+</span></span><span style="display:flex;"><span> GA CATTTGTT GAGTGATTGCTTGTGACGCCTT ATGGAGCTGCTGCA TTTTT
+</span></span><span style="display:flex;"><span>TGA ACATCTAT GAGTGATTGCTTGTGACGCCTT ACAGCGGAAAGTCG TTTT
+</span></span><span style="display:flex;"><span> GA TTGATCTA GAGTGATTGCTTGTGACGCCTT ACCCATATTGCCAT TTTTT
+</span></span><span style="display:flex;"><span>  A ATGGATTA GAGTGATTGCTTGTGACGCCTT TTGCACGCTTGGTA TTTTTT
+</span></span><span style="display:flex;"><span>  A GCACCTCT GAGTGATTGCTTGTGACGCCTT TGATGCCAAGATTC TCATTT
+</span></span><span style="display:flex;"><span>    AATGTTTG GAGTGATTGCTTGTGACGCCTT CTAGTACCGTTTGA TTTTTTT
+</span></span><span style="display:flex;"><span>TGA CAACAAAT GAGTGATTGCTTGTGACGCCTT GAATACTTACCCTA TTTT
+</span></span><span style="display:flex;"><span> GA TGTAGTTT GAGTGATTGCTTGTGACGCCTT AATTGCGATTATTA TTTTT
+</span></span></code></pre></div><p>Now it seems the sequence of the constant region is <code>GAGTGATTGCTTGTGACGCCTT</code>, which is basically the so called <strong>W1</strong> linker sequence in <a href="https://teichlab.github.io/scg_lib_structs/methods_html/inDrop.html">inDrop</a>. Before W1, there are 8 - 11 bp sequence. We also noticed that when the leading sequence is 9 bp in length, it always started with <code>A</code>; if the leading sequence is 10 bp in length, it always started with <code>GA</code>; if the leading sequence is 11 bp in length, it always started with <code>TGA</code>. Therefore, the variable bases are <code>None/A/GA/TGA</code>. The 8 bp after the variable bases should be barcodes. The 14 bp after W1 should be barcodes and UMI, just like <strong>inDrop</strong>.</p>
+<h3 id="the-percentage-of-reads-with-the-correct-pattern">The Percentage of Reads With The Correct Pattern</h3>
+<p>Now let&rsquo;s confirm our guesses. First, let&rsquo;s check the percentage of reads containing the patterns:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zcat SRR19086119_1_51bp.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    grep -P <span style="color:#98c379">&#39;[ACGTN]{8,11}GAGTGATTGCTTGTGACGCCTT[ACGTN]{14}T*&#39;</span> | wc -l
+</span></span></code></pre></div><p>The output is 16,629,904. The FASTQ file contains 18,371,831 reads. Therefore, the percentage of reads with the correct pattern is $16629904/18371831 = 90.52\%$. This is very promising. Note <code>grep</code> only returns perfect matches. Therefore if we allow some mismatches, the percentage would be even higher.</p>
+<h3 id="the-beginning-variable-bases">The Beginning Variable Bases</h3>
+<p>Now let&rsquo;s see if the variable bases at the beginning of the reads are indeed <code>None/A/GA/TGA</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zcat SRR19086119_1_51bp.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    grep -P <span style="color:#98c379">&#39;[ACGTN]{8,11}GAGTGATTGCTTGTGACGCCTT[ACGTN]{14}T*&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk -F <span style="color:#98c379">&#39;GAGTGATTGCTTGTGACGCCTT&#39;</span> <span style="color:#98c379">&#39;{print $1}&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    rev | cut -c 9- | rev | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort -b -k1,1nr
+</span></span></code></pre></div><p>The results (only showing top 10 lines) are:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#d19a66">4367189</span> GA
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">4158045</span>
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">3971934</span> A
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">3928682</span> TGA
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">62870</span> G
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">30395</span> TG
+</span></span><span style="display:flex;"><span>  <span style="color:#d19a66">13505</span> TA
+</span></span><span style="display:flex;"><span>   <span style="color:#d19a66">8686</span> AA
+</span></span><span style="display:flex;"><span>   <span style="color:#d19a66">7645</span> T
+</span></span><span style="display:flex;"><span>   <span style="color:#d19a66">6857</span> AGA
+</span></span></code></pre></div><p>As you can see, the most frequent bases are <code>GA</code>, <code>None</code>, <code>A</code> and <code>TGA</code>. They are orders of magnitude more than all of the rest.</p>
+<h3 id="the-8-bp-barcode-before-w1">The 8-bp Barcode Before W1</h3>
+<p>Now let&rsquo;s see if the 8-bp sequences before W1 might be barcodes. If they are, there should be a fixed number (like 48, 96, 384 <em>etc</em>.) of 8-mers. We use similar commands as described before:</p>
+<div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zcat SRR19086119_1_51bp.fastq.gz | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    grep -P <span style="color:#98c379">&#39;[ACGTN]{8,11}GAGTGATTGCTTGTGACGCCTT[ACGTN]{14}T*&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    awk -F <span style="color:#98c379">&#39;GAGTGATTGCTTGTGACGCCTT&#39;</span> <span style="color:#98c379">&#39;{print $1}&#39;</span> | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    rev | cut -c 1-8 | rev | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort | uniq -c | <span style="color:#98c379">\
+</span></span></span><span style="display:flex;"><span><span style="color:#98c379"></span>    sort -b -k1,1nr |
+</span></span><span style="display:flex;"><span>    less -N
+</span></span></code></pre></div><p>The above commands display the counts of all possible 8-mers in the 8 bp immediately before the W1 sequence, sorted in descending order. If we check the output, the occurrences of the top 383 8-mers are comparable, but there is a sudden drop from 383rd to 384th 8-mer. The difference is quite sharp. Below are lines 381 - 385:</p>
+<div class="highlight"><div style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">381
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">382
+</span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">383
+</span></span><span style="background-color:#3d4148"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">384
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#55595f">385
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#d19a66">17125</span> CTTACTCC
+</span></span><span style="display:flex;"><span><span style="color:#d19a66">15511</span> GGTCTGAC
+</span></span><span style="display:flex; background-color:#3d4148"><span><span style="color:#d19a66">15179</span> GTCAATAC
+</span></span><span style="display:flex; background-color:#3d4148"><span> <span style="color:#d19a66">2574</span> GAAAGCCC
+</span></span><span style="display:flex;"><span> <span style="color:#d19a66">1301</span> AATGCCCC</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>It seems 383 barcodes are used here for the first barcodes.</p>
+<h3 id="the-barcode-and-umi-after-w1">The Barcode And UMI After W1</h3>
+<p>Okay, so this is where I get stuck. It seems I could not find a fixed set of barcodes within the 14 bp after W1. I tried to look at different positions without success. Since this is similar to <strong>inDrop</strong>, I assume the 14 bp after W1 contains 8 bp barcodes + 6 bp UMI. However, the 8-bp barcodes here do not have a fixed set of sequences. Therefore, I could not get a whitelist.</p>
+<p>The proposed library structure is <a href="https://teichlab.github.io/scg_lib_structs/methods_html/PIP-seq_v1p.html">here</a>, but this is not really correct. I will update once we get more information in the future.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>It really took a long time to guess and figure out the library structure of a new method. Very often, just reading the method section is not sufficient. We have to do some digging with the data. As you can see, even after messing around with the FASTQ files for quite a long time, there is still something we have not really figured out. In the future, the whole painful procedures can be completely avoided by providing a <a href="https://www.biorxiv.org/content/10.1101/2023.03.17.533215v1"><em>seqspec</em></a> together with the sequencing reads.</p>
+
+        </p>
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-v1-chemistry">The V1? Chemistry</a>
+      <ul>
+        <li><a href="#the-percentage-of-reads-with-the-correct-pattern">The Percentage of Reads With The Correct Pattern</a></li>
+        <li><a href="#the-beginning-variable-bases">The Beginning Variable Bases</a></li>
+        <li><a href="#the-8-bp-barcode-before-w1">The 8-bp Barcode Before W1</a></li>
+        <li><a href="#the-barcode-and-umi-after-w1">The Barcode And UMI After W1</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Not A Rocket Scientist</span>
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>
