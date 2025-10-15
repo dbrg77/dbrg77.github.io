@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Text Manipulation on Not A Rocket Scientist</title><link>http://localhost:1313/tags/text-manipulation/</link><description>Recent content in Text Manipulation on Not A Rocket Scientist</description><generator>Hugo</generator><language>en-gb</language><lastBuildDate>Fri, 10 Feb 2017 00:00:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/text-manipulation/index.xml" rel="self" type="application/rss+xml"/><item><title>ATAC-seq Insert Size Plotting</title><link>http://localhost:1313/posts/2017-02-10-atac-seq-insert-size-plotting/</link><pubDate>Fri, 10 Feb 2017 00:00:00 +0800</pubDate><guid>http://localhost:1313/posts/2017-02-10-atac-seq-insert-size-plotting/</guid><description>&lt;p>ATAC-seq is THE simplest genomic protocol to profile open chromatin regions in the genome. The original publication (&lt;strong>&lt;a href="http://www.nature.com/nmeth/journal/v10/n12/full/nmeth.2688.html">Nature Methods 10, 1213-1218&lt;/a>&lt;/strong>) has been cited 441 times at this moment of writing (1,073 times at this moment of re-posting). It has become almost a routine for a lab that is interested in transcriptional regulation.&lt;/p>
+&lt;p>One common QC for the data is to plot the fragment size density of your libraries. The successful construction of a ATAC library requires a proper pair of Tn5 transposase cutting events at the ends of DNA. In the nucleosome-free open chromatin regions, many molecules of Tn5 can kick in and chop the DNA into small pieces; around nucleosome-occupied regions, Tn5 can only access the linker regions. Therefore, in a normal ATAC-seq library, you should expect to see a sharp peak at the &amp;lt;100 bp region (open chromatin), and a peak at ~200bp region (mono-nucleosome), and other larger peaks (multi-nucleosomes). Examples from one of my data:&lt;/p></description></item><item><title>Getting RefSeq gene TSS from UCSC</title><link>http://localhost:1313/posts/2016-11-09-getting-refseq-gene-tss-from-ucsc/</link><pubDate>Wed, 09 Nov 2016 00:00:00 +0800</pubDate><guid>http://localhost:1313/posts/2016-11-09-getting-refseq-gene-tss-from-ucsc/</guid><description>&lt;p>As a practice of using the unix command lines, let&amp;rsquo;s get the transcription start site (TSS) coordinates of all hg38 RefSeq genes from the UCSC genome browser, and change it to a proper bed format:&lt;/p>
+&lt;p>&lt;strong>1. Go to the &lt;a href="http://genome-euro.ucsc.edu/index.html">UCSC genome browser&lt;/a>.&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>2. Go to the table browser: Tools –&amp;gt; Table Browser.&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>3. Choose the following options:&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>clade:&lt;/strong> Mammal&lt;br>
+&lt;strong>genome:&lt;/strong> Human&lt;br>
+&lt;strong>assembly:&lt;/strong> Dec. 2013 (GRCh38/hg38)&lt;br>
+&lt;strong>group:&lt;/strong> Genes and Genes Predictions&lt;br>
+&lt;strong>track:&lt;/strong> RefSeq Genes&lt;br>
+&lt;strong>table:&lt;/strong> refGene&lt;br>
+&lt;strong>region:&lt;/strong> genome&lt;br>
+&lt;strong>output:&lt;/strong> all fields from selected table&lt;br>
+&lt;strong>output file:&lt;/strong> whatever name you want (e.g. refseq_genes_hg38.txt)&lt;/p></description></item><item><title>Common Bioinformatics Tasks With UNIX Commands</title><link>http://localhost:1313/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/</link><pubDate>Thu, 20 Oct 2016 00:00:00 +0800</pubDate><guid>http://localhost:1313/posts/2016-10-20-common-bioinformatics-tasks-with-unix-commands/</guid><description>&lt;h3 id="awk">awk&lt;/h3>
+&lt;p>&lt;strong>1. Give names to each peak in a 3-column bed file:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ cat Oct4_union_peaks.bed
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3062833&lt;/span> &lt;span style="color:#d19a66">3063056&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3343519&lt;/span> &lt;span style="color:#d19a66">3343843&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3482630&lt;/span> &lt;span style="color:#d19a66">3483324&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3549654&lt;/span> &lt;span style="color:#d19a66">3549895&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3648929&lt;/span> &lt;span style="color:#d19a66">3649295&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ awk &lt;span style="color:#98c379">&amp;#39;BEGIN{OFS=&amp;#34;\t&amp;#34;}{print $1,$2,$3,&amp;#34;Oct4_union_peak_&amp;#34; NR}&amp;#39;&lt;/span> Oct4_union_peaks.bed
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3062833&lt;/span> &lt;span style="color:#d19a66">3063056&lt;/span> Oct4_union_peak_1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3343519&lt;/span> &lt;span style="color:#d19a66">3343843&lt;/span> Oct4_union_peak_2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3482630&lt;/span> &lt;span style="color:#d19a66">3483324&lt;/span> Oct4_union_peak_3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3549654&lt;/span> &lt;span style="color:#d19a66">3549895&lt;/span> Oct4_union_peak_4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chr1 &lt;span style="color:#d19a66">3648929&lt;/span> &lt;span style="color:#d19a66">3649295&lt;/span> Oct4_union_peak_5
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>2. Print the number of fileds for each line:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>awk &lt;span style="color:#98c379">&amp;#39;{print NF}&amp;#39;&lt;/span> some_file.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>3. Print the last column of a text file:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>awk &lt;span style="color:#98c379">&amp;#39;{print $NF}&amp;#39;&lt;/span> some_file.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>4. In a &lt;a href="https://genome.ucsc.edu/FAQ/FAQformat#format12">narrowPeak format&lt;/a> file, Get all peaks that have more than 5 fold enrichment:&lt;/strong>&lt;/p></description></item></channel></rss>

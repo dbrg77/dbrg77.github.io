@@ -1,0 +1,13 @@
+<div class="photo-grid">
+  {{ range $index, $src := .Params }}
+    <div class="photo-grid-item">
+      <a href="{{ $src }}" data-lightbox="photo-grid-{{ $.Ordinal }}" data-title="Photo {{ add $index 1 }}">
+        <img src="{{ $src }}" alt="Photo {{ add $index 1 }}" loading="lazy">
+      </a>
+    </div>
+  {{ end }}
+</div>
+
+<!-- Include Lightbox2 CSS & JS -->
+<link rel="stylesheet" href="{{ "css/lightbox.min.css" | relURL }}">
+<script src="{{ "js/lightbox-plus-jquery.min.js" | relURL }}"></script>
