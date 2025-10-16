@@ -685,6 +685,7 @@ table td {
 }
 
 /* Responsive design */
+/* removed to ensure 3 by 3 grid on smaller screens
 @media (max-width: 768px) {
   .photo-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -698,3 +699,4 @@ table td {
     gap: 6px;
   }
 }
+*/

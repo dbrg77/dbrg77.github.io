@@ -10,7 +10,7 @@ Recently, I have the idea of adding some photos taken by me at the end of a post
 
 What I wanted to achieve is to preview nine photos in a 3-by-3 photo grid and the full-sized photo will be shown when I click one of them. Conceptually, this is a straightforward thing to do. There are definitely available tools for this purpose, because we see this functionality very often on the internet. In past I probably will Google a bit, and perform some trials and errors. Now we are all embracing AI, so I just ask [DeepSeek](https://deepseek.com/). After a few conversations in just a few minutes, I manage to achieve what I want.
 
-Here is the post to record the procedure that DeepSeek told me and the tweaks I made. If you like, you can view the entire conversions by [clicking here](https://chat.deepseek.com/share/aeulg9idf8m8j1vqzq). It turns out that [Lightbox](https://github.com/lokesh/lightbox2) is doing exactly what I want. The idea is to create a shortcode to load Lightbox and setup the options. Then we call the shortcode in the markdown file when we write the post.
+Here is the post to record the procedure that DeepSeek told me and the tweaks I made. If you like, you can view the entire conversions by [clicking here](https://chat.deepseek.com/share/2aotkhl4q2vxk4s5xf). It turns out that [Lightbox](https://github.com/lokesh/lightbox2) is doing exactly what I want. The idea is to create a shortcode to load Lightbox and setup the options. Then we call the shortcode in the markdown file when we write the post.
 
 To use Lightbox to create a photo grid in Hugo, we first create the file `layouts/shortcodes/photo-grid.html` file as our shortcode. The content of this file is:
 
@@ -64,7 +64,9 @@ In the documentation, it is mentioned that **jQuery** is required and needed to 
 <script src="{{ "js/lightbox-plus-jquery.min.js" | relURL }}"></script>
 ```
 
-Finally, I add the following css styling to the custom css file of my hugo site:
+Finally, I add the following css styling to the custom css file of my hugo site[^1]:
+
+[^1]: The responsive design part is to ensure pictures are shown in decent size on mobile devices where the browser window is very narrow. This may kill the 3 by 3 grid, and the photos will be shown in 2 or 1 per row. I'm fine with showing smaller thumbnails, so I don't want this behaviour. Therefore, I eventually deleted the responsive design part of the css.
 
 ```css
 .photo-grid {
@@ -141,4 +143,4 @@ which leads to the following results:
   "/images/2025-10-16/img9.jpg" 
 >}}
 
-Those pictures show the keyboard and the keycaps that I used to wite this post. I think I will add those at the end of my future posts. Let's see if I could write more often, lol!
+Those pictures show the keyboard and the keycaps that I used to write this post. I think I will add those at the end of my future posts. Let's see if I could write more often, lol!
